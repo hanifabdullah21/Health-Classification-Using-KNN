@@ -9,29 +9,20 @@ use Illuminate\Support\Facades\Hash;
 class Auth extends Controller
 {
 
-    public function register(Request $req) 
-    {
-        $account = new Account;
-        $account->username = $req->username;
-        $account->email = $req->email;
-        $account->password = Hash::make($req->password);
-        $account->save();
-
+    public function register(Request $req) {
+        $req->merge(['password' => Hash::make($req->password)]);
+        $account = Account::create($req->only('email', 'username', 'name', 'password'));
         return response()->json($account);
     }
 
     public function login(Request $req) {
         $account = Account::where('username', $req->username)->first();
 
-        if(!$account){
-            return response()->json(['message' => 'username tidak ditemukan']);
-        }
-
-        if (Hash::check($req->password, $account->password)) {
+        if ($account && Hash::check($req->password, $account->password)) {
             return response()->json($account);
         }
 
-        return response()->json(['message' => 'salah goblok']);
+        return response()->json(['message' => 'username/password salah']);
     }
 
 }
