@@ -22,9 +22,10 @@ $router->group(['prefix' => 'auth'], function() use ($router) {
 
 $router->group(['middleware' => 'auth'], function() use ($router) {
 
+  $router->get('/GetDusun', 'Dusun@getDusun');
+
   $router->group(['prefix' => 'profil'], function() use ($router) {
     $router->get('/', 'Profil@profil');
     $router->put('/', 'Profil@update');
   });
-
 });
