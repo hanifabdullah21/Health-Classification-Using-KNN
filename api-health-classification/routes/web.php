@@ -15,5 +15,16 @@ $router->get('/', function () use ($router) {
     return $router->app->version();
 });
 
-$router->post('/register', 'Auth@register');
-$router->post('/login', 'Auth@login');
+$router->group(['prefix' => 'auth'], function() use ($router) {
+  $router->post('/register', 'Auth@register');
+  $router->post('/login', 'Auth@login');
+});
+
+$router->group(['middleware' => 'auth'], function() use ($router) {
+
+  $router->group(['prefix' => 'profil'], function() use ($router) {
+    $router->get('/', 'Profil@profil');
+    $router->put('/', 'Profil@update');
+  });
+
+});

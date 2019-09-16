@@ -8,9 +8,7 @@ class Account extends Model {
 
     protected $table = 'accounts';
 
-    protected $fillable = [
-        'email', 'username', 'password'
-    ];
+    protected $guarded = [];
 
     protected $hidden = [
         'password'

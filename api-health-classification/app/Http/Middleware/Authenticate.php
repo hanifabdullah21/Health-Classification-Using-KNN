@@ -2,8 +2,11 @@
 
 namespace App\Http\Middleware;
 
+use App\Handlers\Response;
+use App\Models\Account;
 use Closure;
 use Illuminate\Contracts\Auth\Factory as Auth;
+use JWT;
 
 class Authenticate
 {
@@ -35,10 +38,16 @@ class Authenticate
      */
     public function handle($request, Closure $next, $guard = null)
     {
-        if ($this->auth->guard($guard)->guest()) {
-            return response('Unauthorized.', 401);
+        if ($token = $request->bearerToken()) {
+          try {
+              $validate = JWT::decode($token, env('JWT_SECRET'), ['HS256']);
+              $request->merge(['account' => Account::find($validate->sub->id)] );
+              return $next($request);
+          } catch(\Exception $e) {
+              return (new Response)->forbidden('Token is not valid');
+          }
         }
 
-        return $next($request);
+        (new Response)->forbidden('Invalid Type Token');
     }
 }
