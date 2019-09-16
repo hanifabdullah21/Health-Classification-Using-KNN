@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\Dusun;
+use App\Models\Dusun as DusunModel;
 
 class Dusun extends Controller{
 
@@ -12,7 +12,12 @@ class Dusun extends Controller{
     }
 
     public function getDusun(){
-        return $this->response->success(Dusun::get());
+        return $this->response->success(DusunModel::get());
+    }
+
+    public function addDusun(Request $req){
+        $dusun = DusunModel::create($req->only('nama'));
+        return $this->response->success($dusun);
     }
 
 }
