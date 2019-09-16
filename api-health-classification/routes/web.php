@@ -21,5 +21,9 @@ $router->group(['prefix' => 'auth'], function() use ($router) {
 });
 
 $router->group(['middleware' => 'auth'], function() use ($router) {
+  
+  $router->group(['prefix' => 'profil'], function() use ($router) {
+    $router->get('/', 'Profil@profil');
+  });
 
 });
