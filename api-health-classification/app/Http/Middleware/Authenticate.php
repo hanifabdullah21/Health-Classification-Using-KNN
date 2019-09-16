@@ -3,6 +3,7 @@
 namespace App\Http\Middleware;
 
 use App\Handlers\Response;
+use App\Models\Account;
 use Closure;
 use Illuminate\Contracts\Auth\Factory as Auth;
 use JWT;
@@ -40,7 +41,7 @@ class Authenticate
         if ($token = $request->bearerToken()) {
           try {
               $validate = JWT::decode($token, env('JWT_SECRET'), ['HS256']);
-              $request->merge(['account' => $validate->sub] );
+              $request->merge(['account' => Account::find($validate->sub->id)] );
               return $next($request);
           } catch(\Exception $e) {
               return (new Response)->forbidden('Token is not valid');

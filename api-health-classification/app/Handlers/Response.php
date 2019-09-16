@@ -18,6 +18,9 @@ class Response {
   public function success($data) {
     return $this->responseJson(true, 200, 'OK', $data);
   }
+  public function notValidInput($data) {
+    return $this->responseJson(false, 400, 'Invalid Input', $data);
+  }
   public function forbidden($message) {
       return $this->responseJson(false, 401, $message, $message);
   }
