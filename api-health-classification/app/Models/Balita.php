@@ -20,4 +20,8 @@ class Balita extends Model {
         return $this->belongsTo('App\Models\Account', 'account_id');
     }
 
+    public function balitaClassification(){
+        return $this->hasMany('App\Models\BalitaClassificationModel', 'balita_id');
+    }
+
 }

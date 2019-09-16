@@ -17,4 +17,8 @@ class Account extends Model {
     public function balita(){
         return $this->hasMany('App\Models\Balita', 'account_id');
     }
+
+    public function balitaClassification(){
+        return $this->hasMany('App\Models\BalitaClassificationModel', 'account_id');
+    }
 }
