@@ -13,4 +13,8 @@ class Account extends Model {
     protected $hidden = [
         'password'
     ];
+
+    public function balita(){
+        return $this->hasMany('App\Models\Balita', 'account_id');
+    }
 }

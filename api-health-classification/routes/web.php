@@ -31,4 +31,9 @@ $router->group(['middleware' => 'auth'], function() use ($router) {
     $router->get('/', 'Profil@profil');
     $router->put('/', 'Profil@update');
   });
+
+  $router->group(['prefix' => 'balita'], function() use ($router){
+    $router->post('/', 'Balita@addBalita');
+    $router->get('/', 'Balita@getListBalita');
+  });
 });
