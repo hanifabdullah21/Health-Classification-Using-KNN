@@ -26,7 +26,7 @@ class Balita extends Controller{
 
         $req->merge(['account_id'=>$req->account->id]);
         $balita = BalitaModel::create($req->only('account_id','dusun_id','nama','jenis_kelamin','tanggal_lahir'));
-        return $this->response->success($balita->with('dusun','account')->first());
+        return $this->response->success($balita->with('dusun','account')->orderBy('id','desc')->first());
     }
 
     public function updateBalita(){}
