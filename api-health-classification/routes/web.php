@@ -36,5 +36,6 @@ $router->group(['middleware' => 'auth'], function() use ($router) {
     $router->post('/', 'Balita@addBalita');
     $router->get('/', 'Balita@getListBalita');
     $router->post('/classification', 'Balita@addBalitaClassification');
+    $router->get('/classification', 'Balita@getListBalitaClassification');
   });
 });

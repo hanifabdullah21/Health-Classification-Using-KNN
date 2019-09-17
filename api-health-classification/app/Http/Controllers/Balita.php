@@ -43,6 +43,9 @@ class Balita extends Controller{
         return $this->response->success($balitaClassification->with('account','balita')->first());
     }
 
-    public function getListBalitaClassification(){}
+    public function getListBalitaClassification(Request $req){
+        $balita = BalitaClassificationModel::where('balita_id', $req->balita_id);
+        return $this->response->success($balita->get());
+    }
 
 }
