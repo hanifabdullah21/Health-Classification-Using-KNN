@@ -35,6 +35,9 @@ dependencies {
     //Recyclerview and cardview
     implementation 'androidx.recyclerview:recyclerview:1.1.0-beta04'
     implementation 'androidx.cardview:cardview:1.0.0'
+
+    //loading animation
+    implementation 'com.airbnb.android:lottie:3.0.7'
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'androidx.test:runner:1.2.0'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
