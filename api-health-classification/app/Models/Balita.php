@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Carbon\Carbon;
 
 class Balita extends Model {
 
@@ -11,6 +12,10 @@ class Balita extends Model {
     protected $guarded = [];
 
     protected $hidden = ['dusun_id','account_id'];
+
+    protected $appends = [
+        'umur'
+    ];
 
     public function dusun(){
         return $this->belongsTo('App\Models\Dusun', 'dusun_id');
@@ -22,6 +27,11 @@ class Balita extends Model {
 
     public function balitaClassification(){
         return $this->hasMany('App\Models\BalitaClassificationModel', 'balita_id');
+    }
+
+    public function getUmurAttribute() {
+        $tgl_lahir = new Carbon($this->tanggal_lahir);
+        return $tgl_lahir->diffInMonths(Carbon::today());
     }
 
 }
