@@ -14,7 +14,12 @@ class Balita extends Controller{
         parent::__construct();
     }
 
-    public function getListBalita(){
+    public function getListBalita(Request $req){
+        if($req->dusun_id != null){
+            $balita = BalitaModel::where('dusun_id', $req->dusun_id);
+            return $this->response->success($balita->with('dusun','account')->get());
+        }
+        
         return $this->response->success(BalitaModel::with('dusun','account')->get());
     }
 
