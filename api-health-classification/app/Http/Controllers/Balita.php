@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Balita as BalitaModel;
 use App\Models\BalitaClassificationModel;
+use App\Models\BalitaTrainingModel;
 use Validator;
 
 class Balita extends Controller{
@@ -48,4 +49,13 @@ class Balita extends Controller{
         return $this->response->success($balita->get());
     }
 
+
+    public function addBalitaTraining(Request $req){
+        $balitaTraining = BalitaTrainingModel::create($req->only('umur', 'berat_badan', 'tinggi_badan', 'status'));
+        return $this->response->success($balitaTraining->first());
+    }
+
+    public function getBalitaTraining(){
+        return $this->response->success(BalitaTrainingModel::get());
+    }
 }
