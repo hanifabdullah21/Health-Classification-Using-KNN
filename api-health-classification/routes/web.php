@@ -35,6 +35,7 @@ $router->group(['middleware' => 'auth'], function() use ($router) {
   $router->group(['prefix' => 'balita'], function() use ($router){
     $router->post('/', 'Balita@addBalita');
     $router->get('/', 'Balita@getListBalita');
+    $router->get('/filter', 'Balita@getListBalitaFilter');
     $router->post('/classification', 'Balita@addBalitaClassification');
     $router->get('/classification', 'Balita@getListBalitaClassification');
     $router->post('/training', 'Balita@addBalitaTraining');
