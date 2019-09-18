@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#FFF"
+    android:focusableInTouchMode="true"
     android:padding="20dp"
     tools:context=".mvp.login.LoginActivity">
 
@@ -12,8 +13,9 @@
         android:id="@+id/login_tv_title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Masuk"
-        android:textSize="18sp"
+        android:text="LOGIN"
+        android:textColor="#000"
+        android:textSize="24sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintLeft_toLeftOf="parent"
@@ -21,35 +23,79 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.281" />
 
+    <TextView
+        android:id="@+id/login_tv_username"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:text="Username"
+        android:textColor="#000"
+        android:textSize="14sp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/login_tv_title" />
+
     <EditText
         android:id="@+id/login_edt_username"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
+        android:background="@drawable/border_black"
         android:hint="Masukkan Username"
+        android:imeOptions="actionNext"
+        android:inputType="text"
+        android:lines="1"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/login_tv_title" />
+        app:layout_constraintTop_toBottomOf="@id/login_tv_username" />
 
-    <EditText
-        android:id="@+id/login_edt_password"
-        android:layout_width="match_parent"
+    <TextView
+        android:id="@+id/login_tv_password"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
-        android:hint="Masukkan Password"
-        android:inputType="textPassword"
+        android:text="Password"
+        android:textColor="#000"
+        android:textSize="14sp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/login_edt_username" />
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/login_til_password"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:hintEnabled="false"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/login_edt_username" />
+        app:layout_constraintTop_toBottomOf="@id/login_tv_password"
+        app:passwordToggleEnabled="true">
+
+        <androidx.appcompat.widget.AppCompatEditText
+            android:id="@+id/login_edt_password"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/border_black"
+            android:hint="Masukkan password"
+            android:imeOptions="actionDone"
+            android:inputType="textPassword" />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
 
     <Button
         android:id="@+id/login_btn_login"
-        android:layout_width="match_parent"
+        android:layout_width="150dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
         android:text="MASUK"
-        app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/login_edt_password" />
+        app:layout_constraintTop_toBottomOf="@id/login_til_password" />
+
+    <Button
+        android:id="@+id/login_btn_register"
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:text="DAFTAR"
+        app:layout_constraintRight_toLeftOf="@id/login_btn_login"
+        app:layout_constraintTop_toBottomOf="@id/login_til_password" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
