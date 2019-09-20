@@ -25,36 +25,27 @@
 
     <TextView
         android:id="@+id/login_tv_username"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        style="@style/title_edittext"
         android:layout_marginTop="20dp"
         android:text="Username"
-        android:textColor="#000"
-        android:textSize="14sp"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintTop_toBottomOf="@id/login_tv_title" />
 
     <EditText
         android:id="@+id/login_edt_username"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@drawable/border_black"
         android:hint="Masukkan Username"
         android:imeOptions="actionNext"
         android:inputType="text"
-        android:lines="1"
+        style="@style/style_edittext_field"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toBottomOf="@id/login_tv_username" />
 
     <TextView
         android:id="@+id/login_tv_password"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
         android:text="Password"
-        android:textColor="#000"
-        android:textSize="14sp"
+        style="@style/title_edittext"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintTop_toBottomOf="@id/login_edt_username" />
 
@@ -70,9 +61,7 @@
 
         <androidx.appcompat.widget.AppCompatEditText
             android:id="@+id/login_edt_password"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@drawable/border_black"
+            style="@style/style_edittext_field"
             android:hint="Masukkan password"
             android:imeOptions="actionDone"
             android:inputType="textPassword" />
