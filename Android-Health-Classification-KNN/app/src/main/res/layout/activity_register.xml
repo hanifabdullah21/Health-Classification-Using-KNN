@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#FFF"
+    android:padding="20dp"
+    tools:context=".RegisterActivity">
+
+    <TextView
+        android:id="@+id/reg_tv_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="REGISTER"
+        android:textColor="#000"
+        android:textSize="24sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.2" />
+
+    <TextView
+        android:id="@+id/reg_tv_email"
+        style="@style/title_edittext"
+        android:layout_marginTop="20dp"
+        android:text="Email"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/reg_tv_title" />
+
+    <EditText
+        android:id="@+id/reg_edt_email"
+        style="@style/style_edittext_field"
+        android:hint="Masukkan Email"
+        android:imeOptions="actionNext"
+        android:inputType="textEmailAddress"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/reg_tv_email" />
+
+    <TextView
+        android:id="@+id/reg_tv_username"
+        style="@style/title_edittext"
+        android:layout_marginTop="10dp"
+        android:text="Username"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/reg_edt_email" />
+
+    <EditText
+        android:id="@+id/reg_edt_username"
+        style="@style/style_edittext_field"
+        android:hint="Masukkan Username"
+        android:imeOptions="actionNext"
+        android:inputType="text"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/reg_tv_username" />
+
+    <TextView
+        android:id="@+id/reg_tv_password"
+        style="@style/title_edittext"
+        android:layout_marginTop="10dp"
+        android:text="Password"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/reg_edt_username" />
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/reg_til_password"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:hintEnabled="false"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/reg_tv_password"
+        app:passwordToggleEnabled="true">
+
+        <androidx.appcompat.widget.AppCompatEditText
+            android:id="@+id/reg_edt_password"
+            style="@style/style_edittext_field"
+            android:hint="Masukkan password"
+            android:imeOptions="actionDone"
+            android:inputType="textPassword" />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <TextView
+        android:id="@+id/reg_tv_confirm_password"
+        style="@style/title_edittext"
+        android:layout_marginTop="10dp"
+        android:text="Konfirmasi Password"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/reg_til_password" />
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/reg_til_confirm_password"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:hintEnabled="false"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/reg_tv_confirm_password"
+        app:passwordToggleEnabled="true">
+
+        <androidx.appcompat.widget.AppCompatEditText
+            android:id="@+id/reg_edt_confirm_password"
+            style="@style/style_edittext_field"
+            android:hint="Masukkan password"
+            android:imeOptions="actionDone"
+            android:inputType="textPassword" />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <Button
+        android:id="@+id/reg_btn_register"
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:text="DAFTAR"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/reg_til_confirm_password" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
