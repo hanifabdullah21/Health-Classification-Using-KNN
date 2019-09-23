@@ -2,6 +2,7 @@ package com.singpaulee.android_health_classification_knn.mvp.login
 
 import com.singpaulee.android_health_classification_knn.connection.ApiInterface
 import com.singpaulee.android_health_classification_knn.connection.NetworkConfig
+import com.singpaulee.android_health_classification_knn.helper.AppContants
 import com.singpaulee.android_health_classification_knn.mvp.base.BasePresenter
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.CompositeDisposable
@@ -18,6 +19,9 @@ internal constructor(compositeDisposable: CompositeDisposable) :
     }
 
     override fun onButtonLoginClick(username: String?, password: String?) {
+        if (!validation(username, password)) {
+            return
+        }
         val observable = apiNetwork?.loginAccount(username, password)
 
         getMvpView()?.showLoading()
@@ -27,15 +31,27 @@ internal constructor(compositeDisposable: CompositeDisposable) :
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe({
                     getMvpView()?.hideLoading()
-                    if (it?.status?.success as Boolean){
+                    if (it?.status?.success as Boolean) {
                         getMvpView()?.openMainActivity()
-                    }else{
+                    } else {
                         getMvpView()?.showMessage(it.status.message.toString())
                     }
-                },{
+                }, {
+                    getMvpView()?.hideLoading()
                     getMvpView()?.onError(it.localizedMessage!!)
                 })
         )
+    }
+
+    override fun validation(username: String?, password: String?): Boolean {
+        if (username.toString().isEmpty() || username.toString().isBlank()) {
+            getMvpView()?.showValidationError(AppContants.EMPTY_USERNAME)
+            return false
+        } else if (password.toString().isEmpty() || password.toString().isBlank()) {
+            getMvpView()?.showValidationError(AppContants.EMPTY_PASSWORD)
+            return false
+        }
+        return true
     }
 
     override fun onButtonRegisterClick() {

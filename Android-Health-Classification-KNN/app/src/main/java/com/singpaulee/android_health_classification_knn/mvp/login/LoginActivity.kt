@@ -1,11 +1,14 @@
 package com.singpaulee.android_health_classification_knn.mvp.login
 
+import android.app.ProgressDialog
 import android.os.Bundle
 import android.util.Log
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import com.singpaulee.android_health_classification_knn.MainActivity
 import com.singpaulee.android_health_classification_knn.R
+import com.singpaulee.android_health_classification_knn.helper.AppContants
+import com.singpaulee.android_health_classification_knn.helper.LoadingUtil
 import com.singpaulee.android_health_classification_knn.mvp.base.MvpView
 import io.reactivex.disposables.CompositeDisposable
 import kotlinx.android.synthetic.main.activity_login.*
@@ -14,7 +17,8 @@ import org.jetbrains.anko.toast
 
 class LoginActivity : AppCompatActivity(), LoginView, View.OnClickListener {
 
-    internal lateinit var presenter: LoginMvpPresenter<LoginView>
+    private var progressDialog: ProgressDialog? = null
+    private lateinit var presenter: LoginMvpPresenter<LoginView>
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -44,11 +48,12 @@ class LoginActivity : AppCompatActivity(), LoginView, View.OnClickListener {
     }
 
     override fun showLoading() {
-        toast("Show Loading")
+        hideLoading()
+        progressDialog = LoadingUtil.showLoadingDialog(this)
     }
 
     override fun hideLoading() {
-        toast("Hide Loading")
+        progressDialog?.let { if (it.isShowing) it.cancel() }
     }
 
     override fun onError(message: String) {
@@ -59,5 +64,19 @@ class LoginActivity : AppCompatActivity(), LoginView, View.OnClickListener {
     override fun showMessage(message: String) {
         toast("Error $message")
         Log.e("CONNECTION", message)
+    }
+
+    override fun showValidationError(errorCode: Int) {
+        when(errorCode){
+            AppContants.EMPTY_USERNAME -> {
+                login_edt_username.requestFocus()
+                login_edt_username.error = "Tidak Boleh Kosong"
+                toast("oi error cuk")
+            }
+            AppContants.EMPTY_PASSWORD -> {
+                login_edt_password.requestFocus()
+                login_edt_password.error = "Tidak Boleh Kosong"
+            }
+        }
     }
 }
