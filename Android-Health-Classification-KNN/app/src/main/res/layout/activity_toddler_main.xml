@@ -5,7 +5,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ToddlerMainActivity">
+    tools:context=".mvp.maintoddler.ToddlerMainActivity">
 
     <androidx.cardview.widget.CardView
         android:id="@+id/tma_cv_registration"

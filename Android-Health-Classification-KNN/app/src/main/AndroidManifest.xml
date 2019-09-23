@@ -17,7 +17,7 @@
             android:label="DAFTARKAN BALITA">
         </activity>
         <activity
-            android:name=".ToddlerMainActivity"
+            android:name=".mvp.maintoddler.ToddlerMainActivity"
             android:label="BALITA" />
         <activity android:name=".RegisterActivity" />
         <activity

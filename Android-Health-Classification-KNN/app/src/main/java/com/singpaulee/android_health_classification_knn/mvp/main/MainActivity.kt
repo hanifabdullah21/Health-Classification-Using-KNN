@@ -4,7 +4,7 @@ import android.os.Bundle
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import com.singpaulee.android_health_classification_knn.R
-import com.singpaulee.android_health_classification_knn.ToddlerMainActivity
+import com.singpaulee.android_health_classification_knn.mvp.maintoddler.ToddlerMainActivity
 import com.singpaulee.android_health_classification_knn.mvp.login.LoginActivity
 import kotlinx.android.synthetic.main.activity_main.*
 import org.jetbrains.anko.intentFor
