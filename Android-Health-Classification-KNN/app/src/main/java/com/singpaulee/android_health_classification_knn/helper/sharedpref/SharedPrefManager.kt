@@ -16,11 +16,11 @@ class SharedPrefManager(context: Context) {
     fun getIsLoggedIn(): Boolean = preference.getBoolean(IS_LOGGED_IN, false)
     fun getToken(): String? = preference.getString(TOKEN_EXTRA, null)
 
-    fun setToken(token: String) {
+    fun setToken(token: String?) {
         preference.edit { putString(TOKEN_EXTRA, token) }
     }
 
     fun setIsLoggedIn(isLoggedIn: Boolean) {
-        preference.edit { putBoolean(IS_LOGGED_IN, true) }
+        preference.edit { putBoolean(IS_LOGGED_IN, isLoggedIn) }
     }
 }

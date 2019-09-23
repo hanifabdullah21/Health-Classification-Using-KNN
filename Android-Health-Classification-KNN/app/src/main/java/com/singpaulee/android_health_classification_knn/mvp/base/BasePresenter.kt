@@ -3,7 +3,7 @@ package com.singpaulee.android_health_classification_knn.mvp.base
 import io.reactivex.disposables.CompositeDisposable
 
 abstract class BasePresenter<V : MvpView>
-internal constructor(protected val compositeDisposable: CompositeDisposable) : MvpPresenter<V> {
+internal constructor(protected val compositeDisposable: CompositeDisposable?) : MvpPresenter<V> {
 
     private var mMvpView: V? = null
 
@@ -12,7 +12,7 @@ internal constructor(protected val compositeDisposable: CompositeDisposable) : M
     }
 
     override fun onDetach() {
-        compositeDisposable.dispose()
+        compositeDisposable?.dispose()
         mMvpView = null
     }
 

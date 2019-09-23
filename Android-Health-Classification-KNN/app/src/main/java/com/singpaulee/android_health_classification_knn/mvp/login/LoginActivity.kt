@@ -5,11 +5,10 @@ import android.os.Bundle
 import android.util.Log
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
-import com.singpaulee.android_health_classification_knn.MainActivity
+import com.singpaulee.android_health_classification_knn.mvp.main.MainActivity
 import com.singpaulee.android_health_classification_knn.R
 import com.singpaulee.android_health_classification_knn.helper.AppContants
 import com.singpaulee.android_health_classification_knn.helper.LoadingUtil
-import com.singpaulee.android_health_classification_knn.mvp.base.MvpView
 import io.reactivex.disposables.CompositeDisposable
 import kotlinx.android.synthetic.main.activity_login.*
 import org.jetbrains.anko.intentFor

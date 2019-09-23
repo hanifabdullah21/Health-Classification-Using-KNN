@@ -33,7 +33,7 @@ internal constructor(compositeDisposable: CompositeDisposable, val context: Cont
         val observable = apiNetwork?.loginAccount(username, password)
 
         getMvpView()?.showLoading()
-        compositeDisposable.add(
+        compositeDisposable?.add(
             observable!!
                 .subscribeOn(Schedulers.newThread())
                 .observeOn(AndroidSchedulers.mainThread())
