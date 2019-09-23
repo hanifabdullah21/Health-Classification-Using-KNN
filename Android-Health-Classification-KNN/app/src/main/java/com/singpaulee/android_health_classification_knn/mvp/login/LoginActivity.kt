@@ -24,8 +24,10 @@ class LoginActivity : AppCompatActivity(), LoginView, View.OnClickListener {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login)
 
-        presenter = LoginPresenter(CompositeDisposable())
+        presenter = LoginPresenter(CompositeDisposable(), this)
         presenter.onAttach(this)
+
+        presenter.checkIsLoggedIn()
 
         login_btn_login.setOnClickListener(this)
     }
@@ -45,6 +47,7 @@ class LoginActivity : AppCompatActivity(), LoginView, View.OnClickListener {
 
     override fun openMainActivity() {
         startActivity(intentFor<MainActivity>())
+        finish()
     }
 
     override fun showLoading() {
