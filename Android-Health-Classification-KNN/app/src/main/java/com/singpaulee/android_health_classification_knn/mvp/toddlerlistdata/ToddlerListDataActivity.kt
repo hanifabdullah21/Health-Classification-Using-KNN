@@ -1,31 +1,36 @@
 package com.singpaulee.android_health_classification_knn.mvp.toddlerlistdata
 
 import android.app.ProgressDialog
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.MenuItem
 import android.view.View
+import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.singpaulee.android_health_classification_knn.R
 import com.singpaulee.android_health_classification_knn.adapter.SpinnerVillageAdapter
 import com.singpaulee.android_health_classification_knn.adapter.ToddlerMasterAdapter
+import com.singpaulee.android_health_classification_knn.eventlistener.ToddlerItemClickListener
 import com.singpaulee.android_health_classification_knn.helper.LoadingUtil
+import com.singpaulee.android_health_classification_knn.model.base.ToddlerModel
 import com.singpaulee.android_health_classification_knn.model.base.VillageModel
 import io.reactivex.disposables.CompositeDisposable
 import kotlinx.android.synthetic.main.activity_toddler_list_data.*
-import kotlinx.android.synthetic.main.activity_toddler_register.*
 import org.jetbrains.anko.sdk27.coroutines.onItemSelectedListener
 import org.jetbrains.anko.toast
 
-class ToddlerListDataActivity : AppCompatActivity(), ToddlerListDataMvpView, View.OnClickListener {
+class ToddlerListDataActivity : AppCompatActivity(), ToddlerListDataMvpView, View.OnClickListener,
+    ToddlerItemClickListener {
 
     private var progressDialog: ProgressDialog? = null
-    private lateinit var presenter : ToddlerListDataMvpPresenter<ToddlerListDataMvpView>
+    private lateinit var presenter: ToddlerListDataMvpPresenter<ToddlerListDataMvpView>
 
-    private var villageId : Int? = null
+    private var villageId: Int? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_toddler_list_data)
+
+        supportActionBar?.setDisplayHomeAsUpEnabled(true)
 
         presenter = ToddlerListDataPresenter(CompositeDisposable(), this)
         presenter.onAttach(this)
@@ -36,9 +41,10 @@ class ToddlerListDataActivity : AppCompatActivity(), ToddlerListDataMvpView, Vie
         tlda_btn_search.setOnClickListener(this)
     }
 
-    override fun showRecyclerviewToddler(adapter: ToddlerMasterAdapter) {
-        tlda_rv_toddler.layoutManager = LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false)
-        tlda_rv_toddler.adapter = adapter
+    override fun showRecyclerviewToddler(listData: ArrayList<ToddlerModel>?) {
+        tlda_rv_toddler.layoutManager =
+            LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false)
+        tlda_rv_toddler.adapter = ToddlerMasterAdapter(listData, this, this)
     }
 
     override fun showSpinnerVillage(adapter: SpinnerVillageAdapter) {
@@ -80,9 +86,37 @@ class ToddlerListDataActivity : AppCompatActivity(), ToddlerListDataMvpView, Vie
         TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
     }
 
-    override fun onClick(v: View?) {
-        when(v){
-            tlda_btn_search -> presenter.getListToddlerFilter(villageId, tlda_edt_search_name.text.toString())
+    override fun emptyListData(hide: Boolean) {
+        if (hide) {
+            tlda_rv_toddler.visibility = View.GONE
+            tlda_group.visibility = View.VISIBLE
+        } else {
+            tlda_rv_toddler.visibility = View.VISIBLE
+            tlda_group.visibility = View.GONE
         }
+    }
+
+    override fun onClick(v: View?) {
+        when (v) {
+            tlda_btn_search -> presenter.getListToddlerFilter(
+                villageId,
+                tlda_edt_search_name.text.toString()
+            )
+        }
+    }
+
+    override fun onEditClickListener(toddler: ToddlerModel?) {
+
+    }
+
+    override fun onDeleteClickListener(toddlerId: Int?) {
+
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        when(item.itemId){
+            android.R.id.home -> onBackPressed()
+        }
+        return true
     }
 }

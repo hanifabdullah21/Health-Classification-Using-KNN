@@ -62,8 +62,12 @@ internal constructor(compositeDisposable: CompositeDisposable, val context: Cont
                 .subscribe({
                     getMvpView()?.hideLoading()
                     if (it?.statusModel?.success as Boolean) {
-                        val adapter = ToddlerMasterAdapter(it.result, context)
-                        getMvpView()?.showRecyclerviewToddler(adapter)
+                        if (it.result?.size == 0){
+                            getMvpView()?.emptyListData(true)
+                        }else{
+                            getMvpView()?.emptyListData(false)
+                            getMvpView()?.showRecyclerviewToddler(it.result)
+                        }
                     } else {
                         getMvpView()?.showMessage(it.statusModel.message.toString())
                     }
