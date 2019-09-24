@@ -13,15 +13,17 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:ignore="GoogleAppIndexingWarning">
-        <activity android:name=".mvp.toddlerlistdata.ToddlerListDataActivity"></activity>
+        <activity android:name=".mvp.toddlerlistdata.ToddlerListDataActivity" />
         <activity
             android:name=".mvp.toddlerregister.ToddlerRegisterActivity"
             android:label="DAFTARKAN BALITA"
-            android:windowSoftInputMode="adjustResize"></activity>
+            android:windowSoftInputMode="adjustResize" />
         <activity
             android:name=".mvp.maintoddler.ToddlerMainActivity"
             android:label="BALITA" />
-        <activity android:name=".RegisterActivity" />
+        <activity
+            android:name=".mvp.register.RegisterActivity"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
         <activity
             android:name=".mvp.login.LoginActivity"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar"
@@ -34,7 +36,7 @@
         </activity>
         <activity
             android:name=".mvp.main.MainActivity"
-            android:theme="@style/Theme.AppCompat.Light.NoActionBar"></activity>
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar"/>
     </application>
 
 </manifest>

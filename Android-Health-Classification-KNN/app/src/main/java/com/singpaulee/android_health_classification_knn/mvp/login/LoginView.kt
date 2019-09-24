@@ -6,4 +6,6 @@ interface LoginView : MvpView {
 
     fun openMainActivity()
 
+    fun openRegisterActivity()
+
 }

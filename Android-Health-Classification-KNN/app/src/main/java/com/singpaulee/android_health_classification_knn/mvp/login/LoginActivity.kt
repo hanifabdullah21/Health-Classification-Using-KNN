@@ -9,6 +9,7 @@ import com.singpaulee.android_health_classification_knn.mvp.main.MainActivity
 import com.singpaulee.android_health_classification_knn.R
 import com.singpaulee.android_health_classification_knn.helper.AppContants
 import com.singpaulee.android_health_classification_knn.helper.LoadingUtil
+import com.singpaulee.android_health_classification_knn.mvp.register.RegisterActivity
 import io.reactivex.disposables.CompositeDisposable
 import kotlinx.android.synthetic.main.activity_login.*
 import org.jetbrains.anko.intentFor
@@ -29,6 +30,7 @@ class LoginActivity : AppCompatActivity(), LoginView, View.OnClickListener {
         presenter.checkIsLoggedIn()
 
         login_btn_login.setOnClickListener(this)
+        login_btn_register.setOnClickListener(this)
     }
 
     override fun onDestroy() {
@@ -41,7 +43,12 @@ class LoginActivity : AppCompatActivity(), LoginView, View.OnClickListener {
             login_btn_login -> presenter.onButtonLoginClick(
                 login_edt_username.text.toString(), login_edt_password.text.toString()
             )
+            login_btn_register -> presenter.onButtonRegisterClick()
         }
+    }
+
+    override fun openRegisterActivity() {
+        startActivity(intentFor<RegisterActivity>())
     }
 
     override fun openMainActivity() {

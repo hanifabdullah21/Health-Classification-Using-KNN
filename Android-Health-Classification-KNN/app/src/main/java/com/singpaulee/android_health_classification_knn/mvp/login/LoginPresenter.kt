@@ -66,7 +66,7 @@ internal constructor(compositeDisposable: CompositeDisposable, val context: Cont
     }
 
     override fun onButtonRegisterClick() {
-
+        getMvpView()?.openRegisterActivity()
     }
 
 }
