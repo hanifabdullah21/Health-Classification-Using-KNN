@@ -10,6 +10,9 @@ data class ToddlerModel(
     @field:SerializedName("nama")
     val name: String? = null,
 
+    @field:SerializedName("umur")
+    val age: String? = null,
+
     @field:SerializedName("jenis_kelamin")
     val gender: String? = null,
 

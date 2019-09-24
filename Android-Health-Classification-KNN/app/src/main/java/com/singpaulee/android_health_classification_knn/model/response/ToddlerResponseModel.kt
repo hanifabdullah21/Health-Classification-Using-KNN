@@ -13,3 +13,11 @@ data class ToddlerResponseModel(
     @field:SerializedName("result")
     val result: ToddlerModel? = null
 )
+
+data class ToddlerListResponseModel(
+    @field:SerializedName("status")
+    val statusModel: StatusModel? = null,
+
+    @field:SerializedName("result")
+    val result: ArrayList<ToddlerModel>? = null
+)

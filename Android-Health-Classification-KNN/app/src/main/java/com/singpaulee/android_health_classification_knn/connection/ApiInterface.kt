@@ -2,6 +2,7 @@ package com.singpaulee.android_health_classification_knn.connection
 
 import com.singpaulee.android_health_classification_knn.model.base.VillageModel
 import com.singpaulee.android_health_classification_knn.model.response.AuthResponseModel
+import com.singpaulee.android_health_classification_knn.model.response.ToddlerListResponseModel
 import com.singpaulee.android_health_classification_knn.model.response.ToddlerResponseModel
 import com.singpaulee.android_health_classification_knn.model.response.VillageResponseModel
 import io.reactivex.Observable
@@ -53,5 +54,12 @@ interface ApiInterface {
         @Field("jenis_kelamin") jenisKelamin: String?,
         @Field("tanggal_lahir") tanggalLahir: String?
     ): Observable<ToddlerResponseModel?>
+
+    @GET("balita/filter")
+    fun getListBalitaFilter(
+        @Header("Authorization") auth: String?,
+        @Query("dusun_id") dusunId: Int?,
+        @Query("nama") nama: String?
+    ): Observable<ToddlerListResponseModel?>
 
 }
