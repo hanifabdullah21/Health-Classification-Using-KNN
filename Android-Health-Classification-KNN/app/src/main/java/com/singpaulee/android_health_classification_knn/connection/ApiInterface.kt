@@ -1,11 +1,11 @@
 package com.singpaulee.android_health_classification_knn.connection
 
+import com.singpaulee.android_health_classification_knn.model.base.VillageModel
 import com.singpaulee.android_health_classification_knn.model.response.AuthResponseModel
+import com.singpaulee.android_health_classification_knn.model.response.ToddlerResponseModel
+import com.singpaulee.android_health_classification_knn.model.response.VillageResponseModel
 import io.reactivex.Observable
-import retrofit2.http.Field
-import retrofit2.http.FormUrlEncoded
-import retrofit2.http.Header
-import retrofit2.http.POST
+import retrofit2.http.*
 
 interface ApiInterface {
 
@@ -17,6 +17,7 @@ interface ApiInterface {
     //        @Body body: JsonObject
     //    ): Observable<ResponseBody>
 
+    /* **************************************** AUTH and PROFIL ************************************/
 
     @FormUrlEncoded
     @POST("auth/register")
@@ -33,5 +34,24 @@ interface ApiInterface {
         @Field("username") username: String?,
         @Field("password") password: String?
     ): Observable<AuthResponseModel?>
+
+    /* **************************************** VILLAGE *******************************************/
+
+    @GET("dusun")
+    fun getListVillage(
+        @Header("Authorization") auth: String?
+    ): Observable<VillageResponseModel?>
+
+    /* **************************************** TODDLER *******************************************/
+
+    @FormUrlEncoded
+    @POST("balita")
+    fun addNewToddler(
+        @Header("Authorization") auth: String?,
+        @Field("dusun_id") dusunId: Int?,
+        @Field("nama") nama: String?,
+        @Field("jenis_kelamin") jenisKelamin: String?,
+        @Field("tanggal_lahir") tanggalLahir: String?
+    ): Observable<ToddlerResponseModel?>
 
 }

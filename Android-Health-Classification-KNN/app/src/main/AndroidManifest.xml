@@ -13,13 +13,14 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:ignore="GoogleAppIndexingWarning">
-        <activity android:name=".ToddlerRegisterActivity"
-            android:label="DAFTARKAN BALITA">
+        <activity android:name=".mvp.toddlerregister.ToddlerRegisterActivity"
+            android:label="DAFTARKAN BALITA"
+            android:windowSoftInputMode="adjustResize">
         </activity>
         <activity
             android:name=".mvp.maintoddler.ToddlerMainActivity"
             android:label="BALITA" />
-        <activity android:name=".RegisterActivity" />
+        <activity android:name=".RegisterActivity"/>
         <activity
             android:name=".mvp.login.LoginActivity"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar"

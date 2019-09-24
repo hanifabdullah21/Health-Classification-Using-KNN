@@ -10,7 +10,6 @@
     android:padding="10dp"
     tools:text="Contoh"
     android:gravity="center_vertical"
-    android:drawablePadding="10dp"
-    android:drawableLeft="@drawable/ic_gender_man">
+    android:drawablePadding="10dp">
 
 </TextView>
