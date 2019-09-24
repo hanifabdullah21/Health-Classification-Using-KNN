@@ -13,6 +13,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:ignore="GoogleAppIndexingWarning">
+        <activity android:name=".mvp.toddlerlistbeforeclassification.ToddlerListBeforeClassificationActivity"></activity>
         <activity android:name=".mvp.toddlerlistdata.ToddlerListDataActivity" />
         <activity
             android:name=".mvp.toddlerregister.ToddlerRegisterActivity"
@@ -36,7 +37,7 @@
         </activity>
         <activity
             android:name=".mvp.main.MainActivity"
-            android:theme="@style/Theme.AppCompat.Light.NoActionBar"/>
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
     </application>
 
 </manifest>

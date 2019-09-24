@@ -8,4 +8,5 @@ interface ToddlerItemClickListener {
 
     fun onDeleteClickListener(toddlerId: Int?)
 
+    fun onItemClickListener(toddler: ToddlerModel?)
 }

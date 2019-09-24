@@ -5,6 +5,7 @@ import android.view.MenuItem
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import com.singpaulee.android_health_classification_knn.R
+import com.singpaulee.android_health_classification_knn.mvp.toddlerlistbeforeclassification.ToddlerListBeforeClassificationActivity
 import com.singpaulee.android_health_classification_knn.mvp.toddlerlistdata.ToddlerListDataActivity
 import com.singpaulee.android_health_classification_knn.mvp.toddlerregister.ToddlerRegisterActivity
 import kotlinx.android.synthetic.main.activity_toddler_main.*
@@ -38,7 +39,7 @@ class ToddlerMainActivity : AppCompatActivity(), MainToddlerMvpView, View.OnClic
     }
 
     override fun moveToToddlerClassification() {
-
+        startActivity(intentFor<ToddlerListBeforeClassificationActivity>())
     }
 
     override fun moveToToddlerResult() {
