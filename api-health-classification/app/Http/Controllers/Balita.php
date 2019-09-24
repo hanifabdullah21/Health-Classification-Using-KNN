@@ -19,7 +19,11 @@ class Balita extends Controller{
     }
 
     public function getListBalitaFilter(Request $req){
-        $balita = BalitaModel::orWhere('dusun_id',$req->dusun_id)->orWhere('nama','like','%'.$req->nama.'%');
+        $balita = BalitaModel::when($req->filled('nama'), function($q) use ($req) {
+            $q->where('nama','like','%'.$req->nama.'%');
+        })->when($req->filled('dusun_id'), function($q) use ($req) {
+            $q->where('dusun_id', $req->dusun_id);
+        });
         return $this->response->success($balita->with('dusun','account')->get());
     }
 
