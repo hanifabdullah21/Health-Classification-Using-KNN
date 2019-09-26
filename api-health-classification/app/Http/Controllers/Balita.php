@@ -50,11 +50,13 @@ class Balita extends Controller{
 
         $req->merge(['account_id'=>$req->account->id]);
         $balitaClassification = BalitaClassificationModel::create($req->only('account_id','balita_id','umur','tanggal_posyandu','berat_badan','tinggi_badan','status'));
-        return $this->response->success($balitaClassification->with('account','balita')->first());
+        return $this->response->success($balitaClassification->with('account','balita')->orderBy('id','desc')->first());
     }
 
     public function getListBalitaClassification(Request $req){
-        $balita = BalitaClassificationModel::where('balita_id', $req->balita_id);
+        $balita = BalitaClassificationModel::when($req->filled('balita_id'), function($q) use ($req){
+            $q->where('balita_id', $req->balita_id);
+        });
         return $this->response->success($balita->get());
     }
 
