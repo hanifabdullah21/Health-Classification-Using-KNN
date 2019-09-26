@@ -10,4 +10,6 @@ interface ToddlerClassificationMvpPresenter<V : ToddlerClassificationMvpView> : 
     fun classificationToddler(toddler: ToddlerModel?)
 
     fun addClassification(toddler: ToddlerModel?)
+
+    fun validationInput(height: String?, weight: String?) : Boolean
 }

@@ -13,7 +13,8 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:ignore="GoogleAppIndexingWarning">
-        <activity android:name=".mvp.toddlerclassification.ToddlerClassificationActivity"></activity>
+        <activity android:name=".mvp.toddlerclassification.ToddlerClassificationActivity"
+            android:windowSoftInputMode="adjustResize"/>
         <activity android:name=".mvp.toddlerlistbeforeclassification.ToddlerListBeforeClassificationActivity" />
         <activity android:name=".mvp.toddlerlistdata.ToddlerListDataActivity" />
         <activity

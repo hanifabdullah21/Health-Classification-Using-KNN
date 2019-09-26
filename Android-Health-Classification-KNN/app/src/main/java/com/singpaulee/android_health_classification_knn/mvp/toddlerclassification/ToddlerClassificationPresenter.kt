@@ -51,8 +51,16 @@ internal constructor(compositeDisposable: CompositeDisposable, context: Context)
 
     override fun classificationToddler(toddler: ToddlerModel?) {
         val resultToddler = ToddlerKnn.doClassification(listTrainingToddler, toddler, 3)
-//        getMvpView()?.showResultClassification(resultToddler)
         addClassification(resultToddler)
+    }
+
+    override fun validationInput(height: String?, weight: String?): Boolean {
+        if (height.toString().isEmpty() || height.toString().isBlank()) {
+            return false
+        }else if (weight.toString().isEmpty() || weight.toString().isBlank()) {
+            return false
+        }
+        return true
     }
 
     override fun addClassification(toddler: ToddlerModel?) {

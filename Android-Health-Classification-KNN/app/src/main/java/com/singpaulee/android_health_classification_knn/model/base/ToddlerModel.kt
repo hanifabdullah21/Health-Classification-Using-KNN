@@ -46,5 +46,9 @@ data class ToddlerModel(
     var status: String? = null,
 
     @field:SerializedName("distance")
-    var distance: Double? = null
+    var distance: Double? = null,
+
+    @field:SerializedName("balita")
+    val toddler: ToddlerModel? = null
+
 ) : Parcelable

@@ -10,12 +10,13 @@ import com.singpaulee.android_health_classification_knn.R
 import com.singpaulee.android_health_classification_knn.helper.HelperDate
 import com.singpaulee.android_health_classification_knn.helper.LoadingUtil
 import com.singpaulee.android_health_classification_knn.model.base.ToddlerModel
+import com.singpaulee.android_health_classification_knn.mvp.dialogresult.DialogResultFragment
 import io.reactivex.disposables.CompositeDisposable
 import kotlinx.android.synthetic.main.activity_toddler_classification.*
 import org.jetbrains.anko.sdk27.coroutines.onClick
 import org.jetbrains.anko.toast
 
-class ToddlerClassificationActivity : AppCompatActivity(), ToddlerClassificationMvpView {
+class ToddlerClassificationActivity : AppCompatActivity(), ToddlerClassificationMvpView, DialogResultFragment.DialogResultFragmentListener {
 
     var toddler: ToddlerModel? = null
 
@@ -35,6 +36,10 @@ class ToddlerClassificationActivity : AppCompatActivity(), ToddlerClassification
         presenter.getListDataTraining()
 
         tca_btn_classification.onClick {
+            if (!presenter.validationInput(tca_edt_height.text.toString(), tca_edt_weight.text.toString())){
+                toast("error")
+                return@onClick
+            }
             toddler?.height = tca_edt_height.text.toString().toDouble()
             toddler?.weight = tca_edt_weight.text.toString().toDouble()
             toddler?.posyanduDate = HelperDate.getCurrentDateFormatDefault()
@@ -92,5 +97,22 @@ class ToddlerClassificationActivity : AppCompatActivity(), ToddlerClassification
 
     override fun showResultClassification(toddler: ToddlerModel?) {
         Log.d("RESULT_CLASSIFICATION", toddler.toString())
+
+        val dialogFragment = DialogResultFragment()
+        val bundle = Bundle()
+        bundle.putParcelable("toddler", toddler)
+        dialogFragment.arguments = bundle
+        val ft = supportFragmentManager.beginTransaction()
+        val prev = supportFragmentManager.findFragmentByTag("dialog")
+        if (prev != null) {
+            ft.remove(prev)
+        }
+        ft.addToBackStack(null)
+        dialogFragment.isCancelable = false
+        dialogFragment.show(ft, "dialog")
+    }
+
+    override fun backToMainMenu() {
+        finish()
     }
 }
