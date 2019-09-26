@@ -19,8 +19,8 @@ class CreateTableBalitaClassification extends Migration
           $table->unsignedBigInteger('balita_id')->nullable();
           $table->integer('umur');
           $table->date('tanggal_posyandu');
-          $table->integer('berat_badan');
-          $table->integer('tinggi_badan');
+          $table->double('berat_badan');
+          $table->double('tinggi_badan');
           $table->string('status');
           $table->timestamps();
 

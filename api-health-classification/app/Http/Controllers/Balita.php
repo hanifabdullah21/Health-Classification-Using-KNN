@@ -78,7 +78,7 @@ class Balita extends Controller{
     }
 
     public function getListBalitaClassification(Request $req){
-        $balita = BalitaClassificationModel::with('balita')
+        $balita = BalitaClassificationModel::with('balita.dusun')
         ->when($req->filled('balita_id'), function($q) use ($req){
           $q->where('balita_id', $req->balita_id);
         })
