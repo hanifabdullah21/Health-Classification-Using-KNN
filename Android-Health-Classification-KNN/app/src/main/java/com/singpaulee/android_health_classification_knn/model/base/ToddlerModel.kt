@@ -1,11 +1,13 @@
 package com.singpaulee.android_health_classification_knn.model.base
 
+import android.os.Parcelable
 import com.google.gson.annotations.SerializedName
-import java.util.stream.Stream
+import kotlinx.android.parcel.Parcelize
 
+@Parcelize
 data class ToddlerModel(
     @field:SerializedName("id")
-    val id : Int? = null,
+    val id: Int? = null,
 
     @field:SerializedName("nama")
     val name: String? = null,
@@ -29,5 +31,17 @@ data class ToddlerModel(
     val village: VillageModel? = null,
 
     @field:SerializedName("account")
-    val account: AccountModel? = null
-)
+    val account: AccountModel? = null,
+
+    @field:SerializedName("tinggi_badan")
+    var height: Int? = null,
+
+    @field:SerializedName("berat_badan")
+    var weight: Int? = null,
+
+    @field:SerializedName("status")
+    var status: String? = null,
+
+    @field:SerializedName("distance")
+    var distance: Double? = null
+) : Parcelable

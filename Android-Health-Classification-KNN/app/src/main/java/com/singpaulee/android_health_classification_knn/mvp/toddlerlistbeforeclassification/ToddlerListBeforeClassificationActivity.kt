@@ -9,14 +9,14 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.singpaulee.android_health_classification_knn.R
 import com.singpaulee.android_health_classification_knn.adapter.SpinnerVillageAdapter
 import com.singpaulee.android_health_classification_knn.adapter.ToddlerBeforeClassificationAdapter
-import com.singpaulee.android_health_classification_knn.adapter.ToddlerMasterAdapter
 import com.singpaulee.android_health_classification_knn.eventlistener.ToddlerItemClickListener
 import com.singpaulee.android_health_classification_knn.helper.LoadingUtil
 import com.singpaulee.android_health_classification_knn.model.base.ToddlerModel
 import com.singpaulee.android_health_classification_knn.model.base.VillageModel
+import com.singpaulee.android_health_classification_knn.mvp.toddlerclassification.ToddlerClassificationActivity
 import io.reactivex.disposables.CompositeDisposable
 import kotlinx.android.synthetic.main.activity_toddler_list_before_classification.*
-import kotlinx.android.synthetic.main.activity_toddler_list_data.*
+import org.jetbrains.anko.intentFor
 import org.jetbrains.anko.sdk27.coroutines.onItemSelectedListener
 import org.jetbrains.anko.toast
 
@@ -117,7 +117,7 @@ class ToddlerListBeforeClassificationActivity : AppCompatActivity(),
     }
 
     override fun onItemClickListener(toddler: ToddlerModel?) {
-
+        startActivity(intentFor<ToddlerClassificationActivity>("toddler" to toddler))
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {

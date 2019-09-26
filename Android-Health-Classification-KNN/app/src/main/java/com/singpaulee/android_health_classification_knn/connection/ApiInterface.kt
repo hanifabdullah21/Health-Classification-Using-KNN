@@ -62,4 +62,8 @@ interface ApiInterface {
         @Query("nama") nama: String?
     ): Observable<ToddlerListResponseModel?>
 
+    @GET("balita/training")
+    fun getListBalitaTraining(
+        @Header("Authorization") auth: String?
+    ): Observable<ToddlerListResponseModel?>
 }
