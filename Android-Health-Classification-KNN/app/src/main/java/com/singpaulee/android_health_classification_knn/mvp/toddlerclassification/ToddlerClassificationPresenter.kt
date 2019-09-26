@@ -15,10 +15,11 @@ class ToddlerClassificationPresenter<V : ToddlerClassificationMvpView>
 internal constructor(compositeDisposable: CompositeDisposable, context: Context) :
     BasePresenter<V>(compositeDisposable), ToddlerClassificationMvpPresenter<V> {
 
+
     private var apiNetwork: ApiInterface? = null
     private var token: String? = null
 
-    var listTrainingToddler : ArrayList<ToddlerModel>? = null
+    var listTrainingToddler: ArrayList<ToddlerModel>? = null
 
     init {
         apiNetwork = NetworkConfig.retrofitConfig().create(ApiInterface::class.java)
@@ -26,7 +27,6 @@ internal constructor(compositeDisposable: CompositeDisposable, context: Context)
     }
 
     override fun getListDataTraining() {
-
         val observable = apiNetwork?.getListBalitaTraining("Bearer $token")
 
         getMvpView()?.showLoading()
@@ -35,14 +35,14 @@ internal constructor(compositeDisposable: CompositeDisposable, context: Context)
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe({
                     getMvpView()?.hideLoading()
-                    if (it?.statusModel?.success as Boolean){
+                    if (it?.statusModel?.success as Boolean) {
                         getMvpView()?.showSuccessGetDataTraining(true)
                         listTrainingToddler = it.result
-                    }else{
+                    } else {
                         getMvpView()?.showMessage(it.statusModel.message.toString())
                         getMvpView()?.showSuccessGetDataTraining(false)
                     }
-                },{
+                }, {
                     getMvpView()?.hideLoading()
                     getMvpView()?.onError(it.localizedMessage!!)
                 })
@@ -50,8 +50,37 @@ internal constructor(compositeDisposable: CompositeDisposable, context: Context)
     }
 
     override fun classificationToddler(toddler: ToddlerModel?) {
-        var resultToddler = ToddlerKnn.doClassification(listTrainingToddler, toddler, 3)
-        getMvpView()?.showResultClassification(resultToddler)
+        val resultToddler = ToddlerKnn.doClassification(listTrainingToddler, toddler, 3)
+//        getMvpView()?.showResultClassification(resultToddler)
+        addClassification(resultToddler)
     }
 
+    override fun addClassification(toddler: ToddlerModel?) {
+        val observable = apiNetwork?.postClassification(
+            "Bearer $token",
+            toddler?.id,
+            toddler?.age,
+            toddler?.posyanduDate,
+            toddler?.height,
+            toddler?.weight,
+            toddler?.status
+        )
+
+        getMvpView()?.showLoading()
+        compositeDisposable?.add(
+            observable!!.subscribeOn(Schedulers.newThread())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe({
+                    getMvpView()?.hideLoading()
+                    if (it?.statusModel?.success as Boolean) {
+                        getMvpView()?.showResultClassification(it.result)
+                    } else {
+                        getMvpView()?.showMessage(it.statusModel.message.toString())
+                    }
+                }, {
+                    getMvpView()?.hideLoading()
+                    getMvpView()?.onError(it.localizedMessage!!)
+                })
+        )
+    }
 }

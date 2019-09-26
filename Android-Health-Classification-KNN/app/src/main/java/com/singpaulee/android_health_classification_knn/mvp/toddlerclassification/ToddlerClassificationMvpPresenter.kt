@@ -8,4 +8,6 @@ interface ToddlerClassificationMvpPresenter<V : ToddlerClassificationMvpView> : 
     fun getListDataTraining()
 
     fun classificationToddler(toddler: ToddlerModel?)
+
+    fun addClassification(toddler: ToddlerModel?)
 }

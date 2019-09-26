@@ -1,6 +1,5 @@
 package com.singpaulee.android_health_classification_knn.connection
 
-import com.singpaulee.android_health_classification_knn.model.base.VillageModel
 import com.singpaulee.android_health_classification_knn.model.response.AuthResponseModel
 import com.singpaulee.android_health_classification_knn.model.response.ToddlerListResponseModel
 import com.singpaulee.android_health_classification_knn.model.response.ToddlerResponseModel
@@ -66,4 +65,16 @@ interface ApiInterface {
     fun getListBalitaTraining(
         @Header("Authorization") auth: String?
     ): Observable<ToddlerListResponseModel?>
+
+    @FormUrlEncoded
+    @POST("balita/classification")
+    fun postClassification(
+        @Header("Authorization") auth: String?,
+        @Field("balita_id") balitaId: Int?,
+        @Field("umur") age: Int?,
+        @Field("tanggal_posyandu") posyanduDate: String?,
+        @Field("tinggi_badan") height: Double?,
+        @Field("berat_badan") weight: Double?,
+        @Field("status") status: String?
+    ): Observable<ToddlerResponseModel?>
 }

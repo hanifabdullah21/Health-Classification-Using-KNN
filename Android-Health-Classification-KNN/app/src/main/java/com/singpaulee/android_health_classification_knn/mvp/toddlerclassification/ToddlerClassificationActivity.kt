@@ -2,24 +2,22 @@ package com.singpaulee.android_health_classification_knn.mvp.toddlerclassificati
 
 import android.annotation.SuppressLint
 import android.app.ProgressDialog
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.view.View
+import androidx.appcompat.app.AppCompatActivity
 import com.singpaulee.android_health_classification_knn.R
 import com.singpaulee.android_health_classification_knn.helper.HelperDate
 import com.singpaulee.android_health_classification_knn.helper.LoadingUtil
 import com.singpaulee.android_health_classification_knn.model.base.ToddlerModel
-import com.squareup.picasso.Picasso
 import io.reactivex.disposables.CompositeDisposable
 import kotlinx.android.synthetic.main.activity_toddler_classification.*
-import org.jetbrains.anko.imageResource
 import org.jetbrains.anko.sdk27.coroutines.onClick
 import org.jetbrains.anko.toast
 
 class ToddlerClassificationActivity : AppCompatActivity(), ToddlerClassificationMvpView {
 
-    var toddler : ToddlerModel? = null
+    var toddler: ToddlerModel? = null
 
     private lateinit var presenter: ToddlerClassificationMvpPresenter<ToddlerClassificationMvpView>
     private var progressDialog: ProgressDialog? = null
@@ -37,8 +35,9 @@ class ToddlerClassificationActivity : AppCompatActivity(), ToddlerClassification
         presenter.getListDataTraining()
 
         tca_btn_classification.onClick {
-            toddler?.height = tca_edt_height.text.toString().toInt()
-            toddler?.weight = tca_edt_weight.text.toString().toInt()
+            toddler?.height = tca_edt_height.text.toString().toDouble()
+            toddler?.weight = tca_edt_weight.text.toString().toDouble()
+            toddler?.posyanduDate = HelperDate.getCurrentDateFormatDefault()
 
             presenter.classificationToddler(toddler)
         }
@@ -55,13 +54,13 @@ class ToddlerClassificationActivity : AppCompatActivity(), ToddlerClassification
 
     @SuppressLint("SetTextI18n")
     override fun showSuccessGetDataTraining(success: Boolean) {
-        if(success){
+        if (success) {
             tca_iv_indicator_success.visibility = View.VISIBLE
             tca_tv_indicator_message.visibility = View.VISIBLE
             tca_tv_indicator_try_again.visibility = View.GONE
             tca_iv_indicator_success.setImageDrawable(resources.getDrawable(R.drawable.ic_checked))
             tca_tv_indicator_message.text = "Data Training Tersedia"
-        }else{
+        } else {
             tca_iv_indicator_success.visibility = View.VISIBLE
             tca_tv_indicator_message.visibility = View.VISIBLE
             tca_tv_indicator_try_again.visibility = View.VISIBLE
@@ -76,7 +75,7 @@ class ToddlerClassificationActivity : AppCompatActivity(), ToddlerClassification
     }
 
     override fun hideLoading() {
-        progressDialog?.let { if(it.isShowing) it.cancel() }
+        progressDialog?.let { if (it.isShowing) it.cancel() }
     }
 
     override fun onError(message: String) {
