@@ -29,17 +29,41 @@ class Balita extends Controller{
 
     public function addBalita(Request $req){
         $validator = Validator::make($req->all(),[
-            'nama' => 'required|string'
+            'nama' => 'required|string',
+            'dusun_id' => 'required|integer',
+            'jenis_kelamin' => 'required|in:L,P',
+            'tanggal_lahir' => 'required|date'
         ]);
 
         if($validator->fails()) return $this->response->notValidInput($validator->errors());
 
         $req->merge(['account_id'=>$req->account->id]);
         $balita = BalitaModel::create($req->only('account_id','dusun_id','nama','jenis_kelamin','tanggal_lahir'));
-        return $this->response->success($balita->with('dusun','account')->orderBy('id','desc')->first());
+        $balita->load('dusun','account');
+        return $this->response->success($balita);
     }
 
-    public function updateBalita(){}
+    public function updateBalita(Request $req){
+        $validator = Validator::make($req->all(),[
+            'nama' => 'required|string',
+            'dusun_id' => 'required|integer',
+            'jenis_kelamin' => 'required|in:L,P',
+            'tanggal_lahir' => 'required|date',
+            'balita_id' => 'required|integer'
+        ]);
+
+        if($validator->fails()) return $this->response->notValidInput($validator->errors());
+
+        $balita = BalitaModel::with('dusun','account')->find($req->balita_id);
+        $balita->update($req->only('nama', 'dusun_id', 'jenis_kelamin', 'tanggal_lahir'));
+        return $this->response->success($balita);
+    }
+
+    public function deleteBalita(Request $req){
+        $balita = BalitaModel::find($req->balita_id);
+        $balita->delete();
+        return $this->response->success(null);
+    }
 
     public function addBalitaClassification(Request $req){
         $validator = Validator::make($req->all(),[
