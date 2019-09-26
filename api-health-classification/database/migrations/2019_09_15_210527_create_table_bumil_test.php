@@ -17,8 +17,8 @@ class CreateTableBumilTest extends Migration
             $table->bigIncrements('id');
             $table->string('nama');
             $table->integer('usia_kehamilan');
-            $table->integer('berat_badan');
-            $table->integer('tinggi_badan');
+            $table->double('berat_badan');
+            $table->double('tinggi_badan');
             $table->string('status');
             $table->timestamps();
         });
