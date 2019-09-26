@@ -67,7 +67,7 @@ class Balita extends Controller{
 
     public function addBalitaClassification(Request $req){
         $validator = Validator::make($req->all(),[
-            
+
         ]);
 
         if($validator->fails()) return $this->response->notValidInput($validator->errors());
@@ -78,8 +78,31 @@ class Balita extends Controller{
     }
 
     public function getListBalitaClassification(Request $req){
-        $balita = BalitaClassificationModel::when($req->filled('balita_id'), function($q) use ($req){
-            $q->where('balita_id', $req->balita_id);
+        $balita = BalitaClassificationModel::with('balita')
+        ->when($req->filled('balita_id'), function($q) use ($req){
+          $q->where('balita_id', $req->balita_id);
+        })
+        ->when($req->filled('nama'), function($q) use ($req) {
+          $q->whereHas('balita', function($b) use ($req){
+            $b->where('nama', 'LIKE', "%$req->nama%");
+          });
+        })
+        ->when($req->filled('jenis_kelamin'), function($q) use ($req) {
+          $q->whereHas('balita', function($b) use ($req){
+            $b->where('jenis_kelamin', $req->jenis_kelamin);
+          });
+        })
+        ->when($req->filled('dusun_id'), function($q) use ($req) {
+          $q->whereHas('balita', function($b) use ($req){
+            $b->where('dusun_id', $req->dusun_id);
+          });
+        })
+        ->when($req->filled('range_tanggal'), function($q) use ($req) {
+          $range = explode('to', $req->range_tanggal);
+          $q->whereBetween('tanggal_posyandu', $range);
+        })
+        ->when($req->filled('status'), function($q) use ($req) {
+          $q->where('status', $req->status);
         });
         return $this->response->success($balita->get());
     }
