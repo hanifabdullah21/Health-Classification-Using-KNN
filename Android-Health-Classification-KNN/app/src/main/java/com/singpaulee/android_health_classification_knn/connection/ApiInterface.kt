@@ -77,4 +77,15 @@ interface ApiInterface {
         @Field("berat_badan") weight: Double?,
         @Field("status") status: String?
     ): Observable<ToddlerResponseModel?>
+
+    @GET("balita/classification")
+    fun getClassificationToddler(
+        @Header("Authorization") auth: String?,
+        @Query("balita_id") toddlerId: Int?,
+        @Query("nama") name: String?,
+        @Query("jenis_kelamin") gender: String?,
+        @Query("dusun_id") villageId: Int?,
+        @Query("range_tanggal") rangeDate: String?,
+        @Query("status") status: String?
+    ): Observable<ToddlerListResponseModel?>
 }

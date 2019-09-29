@@ -16,5 +16,7 @@ object AppContants {
     internal val EMPTY_HEIGHT = 1012
     internal val EMPTY_WEIGHT = 1013
 
-
+    internal val DATE_PICKER = "datepicker"
+    internal val FROM_DATE = "FROM_DATE"
+    internal val UNTIL_DATE = "UNTIL_DATE"
 }

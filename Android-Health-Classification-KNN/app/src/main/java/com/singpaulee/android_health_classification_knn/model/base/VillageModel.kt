@@ -8,7 +8,7 @@ import kotlinx.android.parcel.Parcelize
 data class VillageModel(
 
     @field:SerializedName("id")
-    val id: Int? = null,
+    var id: Int? = null,
 
     @field:SerializedName("nama")
     val name: String? = null

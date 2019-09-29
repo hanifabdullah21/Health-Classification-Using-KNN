@@ -10,7 +10,7 @@ import com.singpaulee.android_health_classification_knn.R
 import com.singpaulee.android_health_classification_knn.helper.HelperDate
 import com.singpaulee.android_health_classification_knn.helper.LoadingUtil
 import com.singpaulee.android_health_classification_knn.model.base.ToddlerModel
-import com.singpaulee.android_health_classification_knn.mvp.dialogresult.DialogResultFragment
+import com.singpaulee.android_health_classification_knn.mvp.dialogfragment.DialogResultFragment
 import io.reactivex.disposables.CompositeDisposable
 import kotlinx.android.synthetic.main.activity_toddler_classification.*
 import org.jetbrains.anko.sdk27.coroutines.onClick

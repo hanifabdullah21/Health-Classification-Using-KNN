@@ -15,6 +15,11 @@
         tools:ignore="GoogleAppIndexingWarning">
         <activity android:name=".mvp.toddlerclassification.ToddlerClassificationActivity"
             android:windowSoftInputMode="adjustResize"/>
+            android:name=".mvp.toddlerresultclassification.ToddlerResultClassificationActivity"
+            android:windowSoftInputMode="adjustResize" />
+        <activity
+            android:name=".mvp.toddlerclassification.ToddlerClassificationActivity"
+            android:windowSoftInputMode="adjustResize" />
         <activity android:name=".mvp.toddlerlistbeforeclassification.ToddlerListBeforeClassificationActivity" />
         <activity android:name=".mvp.toddlerlistdata.ToddlerListDataActivity" />
         <activity

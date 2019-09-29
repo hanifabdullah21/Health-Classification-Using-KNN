@@ -22,4 +22,28 @@ object HelperDate {
         val sdf = SimpleDateFormat(SIMPLE_DATE_FORMAT_DMY)
         return sdf.format(date)
     }
+
+    fun dateFormatDefault(date: Date) : String{
+        val sdf = SimpleDateFormat(
+            SIMPLE_DATE_FORMAT_DEFAULT,
+            Locale(LOCALE_IN, LOCALE_ID)
+        )
+        return  sdf.format(date)
+    }
+
+    fun dateFormatDmy(date: Date) : String{
+        val sdf = SimpleDateFormat(
+            SIMPLE_DATE_FORMAT_DMY,
+            Locale(LOCALE_IN, LOCALE_ID)
+        )
+        return  sdf.format(date)
+    }
+
+    fun parseDateDefault(date: String) : Date{
+        val sdf = SimpleDateFormat(
+            SIMPLE_DATE_FORMAT_DEFAULT,
+            Locale(LOCALE_IN, LOCALE_ID)
+        )
+        return sdf.parse(date)
+    }
 }

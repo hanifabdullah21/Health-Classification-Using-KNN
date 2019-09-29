@@ -10,13 +10,13 @@ data class ToddlerModel(
     val id: Int? = null,
 
     @field:SerializedName("nama")
-    val name: String? = null,
+    var name: String? = null,
 
     @field:SerializedName("umur")
     val age: Int? = null,
 
     @field:SerializedName("jenis_kelamin")
-    val gender: String? = null,
+    var gender: String? = null,
 
     @field:SerializedName("tanggal_lahir")
     val bornDate: String? = null,
@@ -28,7 +28,7 @@ data class ToddlerModel(
     val updatedAt: String? = null,
 
     @field:SerializedName("dusun")
-    val village: VillageModel? = null,
+    var village: VillageModel? = null,
 
     @field:SerializedName("account")
     val account: AccountModel? = null,

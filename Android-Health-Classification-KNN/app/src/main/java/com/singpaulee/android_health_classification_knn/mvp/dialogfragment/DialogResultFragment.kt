@@ -1,4 +1,4 @@
-package com.singpaulee.android_health_classification_knn.mvp.dialogresult
+package com.singpaulee.android_health_classification_knn.mvp.dialogfragment
 
 
 import android.annotation.SuppressLint

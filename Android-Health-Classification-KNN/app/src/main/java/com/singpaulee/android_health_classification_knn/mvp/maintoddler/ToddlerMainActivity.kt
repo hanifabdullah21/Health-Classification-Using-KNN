@@ -8,6 +8,7 @@ import com.singpaulee.android_health_classification_knn.R
 import com.singpaulee.android_health_classification_knn.mvp.toddlerlistbeforeclassification.ToddlerListBeforeClassificationActivity
 import com.singpaulee.android_health_classification_knn.mvp.toddlerlistdata.ToddlerListDataActivity
 import com.singpaulee.android_health_classification_knn.mvp.toddlerregister.ToddlerRegisterActivity
+import com.singpaulee.android_health_classification_knn.mvp.toddlerresultclassification.ToddlerResultClassificationActivity
 import kotlinx.android.synthetic.main.activity_toddler_main.*
 import org.jetbrains.anko.intentFor
 
@@ -43,7 +44,7 @@ class ToddlerMainActivity : AppCompatActivity(), MainToddlerMvpView, View.OnClic
     }
 
     override fun moveToToddlerResult() {
-
+        startActivity(intentFor<ToddlerResultClassificationActivity>())
     }
 
     override fun showLoading() {
