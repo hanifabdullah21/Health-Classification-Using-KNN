@@ -66,8 +66,10 @@ class LoginActivity : AppCompatActivity(), LoginView, View.OnClickListener {
     }
 
     override fun onError(message: String) {
-        toast(message)
-        Log.e("CONNECTION", message)
+        when(message){
+            "HTTP 401 Unauthorized" -> toast("Username/password salah")
+            else -> toast(message)
+        }
     }
 
     override fun showMessage(message: String) {
