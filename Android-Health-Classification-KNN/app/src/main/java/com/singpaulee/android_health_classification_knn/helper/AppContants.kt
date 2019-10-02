@@ -19,4 +19,11 @@ object AppContants {
     internal val DATE_PICKER = "datepicker"
     internal val FROM_DATE = "FROM_DATE"
     internal val UNTIL_DATE = "UNTIL_DATE"
+
+    enum class STATUS_MODE(val status: String) {
+        STATUS_BAIK("Baik"),
+        STATUS_LEBIH("Lebih"),
+        STATUS_Kurang("Kurang"),
+        STATUS_Obesitas("Obesitas"),
+    }
 }

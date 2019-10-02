@@ -6,6 +6,7 @@ import android.view.MenuItem
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.DialogFragment
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.singpaulee.android_health_classification_knn.PercentageToddlerActivity
 import com.singpaulee.android_health_classification_knn.R
 import com.singpaulee.android_health_classification_knn.adapter.ToddlerClassificationAdapter
 import com.singpaulee.android_health_classification_knn.helper.LoadingUtil
@@ -14,6 +15,7 @@ import com.singpaulee.android_health_classification_knn.model.base.VillageModel
 import com.singpaulee.android_health_classification_knn.mvp.dialogfragment.DialogFilterToddlerFragment
 import io.reactivex.disposables.CompositeDisposable
 import kotlinx.android.synthetic.main.activity_toddler_result_classification.*
+import org.jetbrains.anko.intentFor
 import org.jetbrains.anko.sdk27.coroutines.onClick
 import org.jetbrains.anko.sdk27.coroutines.onTouch
 import org.jetbrains.anko.toast
@@ -25,6 +27,8 @@ class ToddlerResultClassificationActivity : AppCompatActivity(),
     private var progressDialog: ProgressDialog? = null
 
     var listAllVillage: List<VillageModel>? = null
+
+    var listClassification: ArrayList<ToddlerModel>? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -45,6 +49,10 @@ class ToddlerResultClassificationActivity : AppCompatActivity(),
         trca_btn_filter.onClick {
             openDialogFilter()
         }
+
+        trca_btn_presentase.onClick {
+            startActivity(intentFor<PercentageToddlerActivity>("listClassification" to listClassification))
+        }
     }
 
     override fun openDialogFilter() {
@@ -59,6 +67,7 @@ class ToddlerResultClassificationActivity : AppCompatActivity(),
     }
 
     override fun showListClassificationToddler(listClassificationToddler: ArrayList<ToddlerModel>?) {
+        listClassification = listClassificationToddler
         trca_rv_result.layoutManager =
             LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false)
         val adapter = ToddlerClassificationAdapter(listClassificationToddler, this)

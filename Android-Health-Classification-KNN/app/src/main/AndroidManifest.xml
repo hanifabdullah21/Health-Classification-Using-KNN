@@ -6,6 +6,7 @@
     <uses-permission android:name="android.permission.INTERNET" />
 
     <application
+        android:name="androidx.multidex.MultiDexApplication"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
@@ -13,8 +14,8 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:ignore="GoogleAppIndexingWarning">
-        <activity android:name=".mvp.toddlerclassification.ToddlerClassificationActivity"
-            android:windowSoftInputMode="adjustResize"/>
+        <activity android:name=".PercentageToddlerActivity" />
+        <activity
             android:name=".mvp.toddlerresultclassification.ToddlerResultClassificationActivity"
             android:windowSoftInputMode="adjustResize" />
         <activity
