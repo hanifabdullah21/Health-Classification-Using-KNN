@@ -48,6 +48,8 @@ class RegisterActivity : AppCompatActivity(), RegisterMvpView {
         reg_edt_email.text = null
         reg_edt_password.text = null
         reg_edt_confirm_password.text = null
+
+        finish()
     }
 
     override fun showLoading() {
