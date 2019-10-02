@@ -44,7 +44,12 @@ internal constructor(compositeDisposable: CompositeDisposable, val context: Cont
                 .subscribe({
                     getMvpView()?.hideLoading()
                     if (it?.statusModel?.success as Boolean) {
-                        getMvpView()?.showListClassificationToddler(it.result)
+                        if (it.result?.size == 0){
+                            getMvpView()?.hideListClassification(true)
+                        }else{
+                            getMvpView()?.hideListClassification(false)
+                            getMvpView()?.showListClassificationToddler(it.result)
+                        }
                     } else {
                         getMvpView()?.showMessage(it.statusModel.message.toString())
                     }

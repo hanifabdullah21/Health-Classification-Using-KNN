@@ -3,6 +3,7 @@ package com.singpaulee.android_health_classification_knn.mvp.toddlerresultclassi
 import android.app.ProgressDialog
 import android.os.Bundle
 import android.view.MenuItem
+import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.DialogFragment
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -112,5 +113,19 @@ class ToddlerResultClassificationActivity : AppCompatActivity(),
             android.R.id.home -> onBackPressed()
         }
         return true
+    }
+
+    override fun hideListClassification(hide: Boolean) {
+        if (hide){
+            trca_rv_result.visibility = View.GONE
+            trca_btn_presentase.visibility = View.GONE
+
+            trca_group.visibility = View.VISIBLE
+        }else{
+            trca_rv_result.visibility = View.VISIBLE
+            trca_btn_presentase.visibility = View.VISIBLE
+
+            trca_group.visibility = View.GONE
+        }
     }
 }

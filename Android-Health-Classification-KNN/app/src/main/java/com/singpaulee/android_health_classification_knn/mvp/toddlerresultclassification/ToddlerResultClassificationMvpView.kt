@@ -11,4 +11,6 @@ interface ToddlerResultClassificationMvpView : MvpView {
     fun showListClassificationToddler(listClassificationToddler: ArrayList<ToddlerModel>?)
 
     fun showListVillage(listVillage : List<VillageModel>?)
+
+    fun hideListClassification(hide: Boolean)
 }
