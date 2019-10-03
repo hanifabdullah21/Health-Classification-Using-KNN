@@ -21,9 +21,10 @@ object AppContants {
     internal val UNTIL_DATE = "UNTIL_DATE"
 
     enum class STATUS_MODE(val status: String) {
+        STATUS_BURUK("Buruk"),
         STATUS_BAIK("Baik"),
         STATUS_LEBIH("Lebih"),
-        STATUS_Kurang("Kurang"),
-        STATUS_Obesitas("Obesitas"),
+        STATUS_KURANG("Kurang"),
+        STATUS_OBESITAS("Obesitas"),
     }
 }
