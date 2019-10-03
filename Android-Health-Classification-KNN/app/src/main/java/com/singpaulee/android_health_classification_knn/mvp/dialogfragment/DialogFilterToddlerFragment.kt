@@ -12,8 +12,10 @@ import androidx.fragment.app.DialogFragment
 import androidx.fragment.app.Fragment
 import com.singpaulee.android_health_classification_knn.R
 import com.singpaulee.android_health_classification_knn.adapter.SpinnerGenderAdapter
+import com.singpaulee.android_health_classification_knn.adapter.SpinnerStatusToddlerAdapter
 import com.singpaulee.android_health_classification_knn.adapter.SpinnerVillageAdapter
 import com.singpaulee.android_health_classification_knn.eventlistener.DrawableClickListener
+import com.singpaulee.android_health_classification_knn.helper.AppContants
 import com.singpaulee.android_health_classification_knn.helper.GenderModel
 import com.singpaulee.android_health_classification_knn.helper.HelperDate
 import com.singpaulee.android_health_classification_knn.helper.HelperGender
@@ -22,7 +24,6 @@ import com.singpaulee.android_health_classification_knn.model.base.VillageModel
 import kotlinx.android.synthetic.main.fragment_dialog_filter_toddler.*
 import kotlinx.android.synthetic.main.fragment_dialog_filter_toddler.view.*
 import org.jetbrains.anko.sdk27.coroutines.onItemSelectedListener
-import org.jetbrains.anko.support.v4.intentFor
 import org.jetbrains.anko.support.v4.toast
 import org.jetbrains.anko.toast
 import java.util.*
@@ -39,6 +40,7 @@ class DialogFilterToddlerFragment : DialogFragment(), View.OnClickListener {
     var villageId: Int? = null
     var dateFrom: String? = null
     var dateUntil: String? = null
+    var status: String? = null
 
     val onDateFromListener = DatePickerDialog.OnDateSetListener { _, year, month, dayOfMonth ->
         calendar.set(Calendar.YEAR, year)
@@ -81,6 +83,7 @@ class DialogFilterToddlerFragment : DialogFragment(), View.OnClickListener {
 
         showSpinnerGender()
         showSpinnerVillage()
+        showSpinnerStatus()
 
         view.fdft_edt_posyandu_date_from.setDrawableClickListener(object : DrawableClickListener {
             override fun onClick(target: DrawableClickListener.DrawablePosition) {
@@ -150,6 +153,38 @@ class DialogFilterToddlerFragment : DialogFragment(), View.OnClickListener {
         }
     }
 
+    fun showSpinnerStatus() {
+        val statusList = listOf<String>(
+            "Silahkan pilih status",
+            AppContants.STATUS_MODE.STATUS_BURUK.status,
+            AppContants.STATUS_MODE.STATUS_KURANG.status,
+            AppContants.STATUS_MODE.STATUS_BAIK.status,
+            AppContants.STATUS_MODE.STATUS_LEBIH.status,
+            AppContants.STATUS_MODE.STATUS_OBESITAS.status
+        )
+
+        val adapter = SpinnerStatusToddlerAdapter(
+            activity!!.applicationContext,
+            R.layout.item_spinner_gender,
+            statusList
+        )
+
+        fdft_spinner_status.adapter = adapter
+        fdft_spinner_status.dropDownVerticalOffset = 120
+        fdft_spinner_status.onItemSelectedListener {
+            onItemSelected { adapterView, view, i, l ->
+                if (i == 0) {
+                    status = null
+                } else {
+                    status = fdft_spinner_status.getItemAtPosition(i).toString()
+                }
+            }
+            onNothingSelected {
+
+            }
+        }
+    }
+
     override fun onClick(v: View?) {
         when (v) {
             fdft_btn_reset -> {
@@ -179,17 +214,21 @@ class DialogFilterToddlerFragment : DialogFragment(), View.OnClickListener {
                     activity?.toast("Semua tanggal harus diisi !!")
                     return
                 } else if (dateFrom != null && dateUntil != null) {
-                    val timeMillsDateFrom : Long = HelperDate.parseDateDefault(dateFrom.toString()).time
-                    val timeMillsDateUntil : Long = HelperDate.parseDateDefault(dateUntil.toString()).time
+                    val timeMillsDateFrom: Long =
+                        HelperDate.parseDateDefault(dateFrom.toString()).time
+                    val timeMillsDateUntil: Long =
+                        HelperDate.parseDateDefault(dateUntil.toString()).time
                     Log.d("DATEPICKER", "$timeMillsDateFrom $timeMillsDateUntil")
 
-                    if (timeMillsDateFrom > timeMillsDateUntil){
+                    if (timeMillsDateFrom > timeMillsDateUntil) {
                         toast("tanggal invalid")
                         return
                     }
 
                     toddlerFilter.posyanduDate = dateFrom + "to" + dateUntil
                 }
+
+                toddlerFilter.status = status
 
                 val dialogListener = activity as DialogFilterToddlerListener
                 dialogListener.filterToddlerClassification(toddlerFilter)

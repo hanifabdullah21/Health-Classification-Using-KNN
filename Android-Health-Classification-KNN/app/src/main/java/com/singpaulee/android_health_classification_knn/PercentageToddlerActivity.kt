@@ -30,14 +30,16 @@ class PercentageToddlerActivity : AppCompatActivity() {
 
         val listClassificationGroup: Map<String?, List<ToddlerModel>> =
             listClassification!!.groupBy { it.status }
+        val statusBuruk =
+            listClassificationGroup[AppContants.STATUS_MODE.STATUS_BURUK.status]?.size ?: 0
         val statusBaik =
             listClassificationGroup[AppContants.STATUS_MODE.STATUS_BAIK.status]?.size ?: 0
         val statusKurang =
-            listClassificationGroup[AppContants.STATUS_MODE.STATUS_Kurang.status]?.size ?: 0
+            listClassificationGroup[AppContants.STATUS_MODE.STATUS_KURANG.status]?.size ?: 0
         val statusLebih =
             listClassificationGroup[AppContants.STATUS_MODE.STATUS_LEBIH.status]?.size ?: 0
         val statusObesitas =
-            listClassificationGroup[AppContants.STATUS_MODE.STATUS_Obesitas.status]?.size ?: 0
+            listClassificationGroup[AppContants.STATUS_MODE.STATUS_OBESITAS.status]?.size ?: 0
 
         pta_piechart.setUsePercentValues(true)
         pta_piechart.description.isEnabled = false
@@ -81,15 +83,22 @@ class PercentageToddlerActivity : AppCompatActivity() {
         val entries: ArrayList<PieEntry> = ArrayList()
         entries.add(
             PieEntry(
-                statusBaik.toFloat(),
-                AppContants.STATUS_MODE.STATUS_BAIK.status,
+                statusBuruk.toFloat(),
+                AppContants.STATUS_MODE.STATUS_BURUK.status,
                 null
             )
         )
         entries.add(
             PieEntry(
                 statusKurang.toFloat(),
-                AppContants.STATUS_MODE.STATUS_Kurang.status,
+                AppContants.STATUS_MODE.STATUS_KURANG.status,
+                null
+            )
+        )
+        entries.add(
+            PieEntry(
+                statusBaik.toFloat(),
+                AppContants.STATUS_MODE.STATUS_BAIK.status,
                 null
             )
         )
@@ -103,7 +112,7 @@ class PercentageToddlerActivity : AppCompatActivity() {
         entries.add(
             PieEntry(
                 statusObesitas.toFloat(),
-                AppContants.STATUS_MODE.STATUS_Obesitas.status,
+                AppContants.STATUS_MODE.STATUS_OBESITAS.status,
                 null
             )
         )
@@ -150,7 +159,7 @@ class PercentageToddlerActivity : AppCompatActivity() {
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        when(item.itemId){
+        when (item.itemId) {
             android.R.id.home -> onBackPressed()
         }
         return true

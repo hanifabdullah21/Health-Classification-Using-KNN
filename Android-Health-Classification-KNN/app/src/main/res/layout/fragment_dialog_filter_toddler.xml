@@ -20,7 +20,7 @@
             android:layout_height="24dp"
             android:src="@drawable/ic_close"
             app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toTopOf="parent"/>
+            app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
             android:id="@+id/fdft_tv_name"
@@ -120,12 +120,35 @@
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintTop_toBottomOf="@id/fdft_tv_posyadu_date_until" />
 
+        <!--Guideline for date-->
         <androidx.constraintlayout.widget.Guideline
             android:id="@+id/guideline"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="vertical"
             app:layout_constraintGuide_percent="0.5" />
+
+        <androidx.constraintlayout.widget.Barrier
+            android:id="@+id/barrier"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:barrierDirection="bottom"
+            app:constraint_referenced_ids="fdft_edt_posyandu_date_from,fdft_edt_posyandu_date_until" />
+
+        <TextView
+            android:id="@+id/fdft_tv_status"
+            style="@style/title_edittext"
+            android:layout_marginTop="10dp"
+            android:text="Status"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/barrier" />
+
+        <Spinner
+            android:id="@+id/fdft_spinner_status"
+            style="@style/style_edittext_field"
+            android:spinnerMode="dialog"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/fdft_tv_status" />
 
         <Button
             android:id="@+id/fdft_btn_filter"
@@ -135,7 +158,7 @@
             android:background="@drawable/selector_button"
             android:text="Cari"
             app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/fdft_edt_posyandu_date_until" />
+            app:layout_constraintTop_toBottomOf="@id/fdft_spinner_status" />
 
         <Button
             android:id="@+id/fdft_btn_reset"
@@ -146,7 +169,7 @@
             android:background="@drawable/selector_button_reset"
             android:text="Reset"
             app:layout_constraintRight_toLeftOf="@id/fdft_btn_filter"
-            app:layout_constraintTop_toBottomOf="@id/fdft_edt_posyandu_date_until" />
+            app:layout_constraintTop_toBottomOf="@id/fdft_spinner_status" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
