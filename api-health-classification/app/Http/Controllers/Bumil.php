@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\BumilClassificationModel;
+use App\Models\BumilTrainingModel;
 use Validator;
 
 class Bumil extends Controller{
@@ -42,5 +43,14 @@ class Bumil extends Controller{
             $q->where('status', $req->status);
         });
         return $this->response->success($bumil->get());
+    }
+
+    public function addBumilTraining(Request $req){
+        $bumilTraining = BumilTrainingModel::create($req->only('nama','usia_kehamilan', 'berat_badan', 'tinggi_badan', 'status'));
+        return $this->response->success($bumilTraining->orderBy('id','desc')->first());
+    }
+
+    public function getBumilTraining(){
+        return $this->response->success(BumilTrainingModel::get());
     }
 }
