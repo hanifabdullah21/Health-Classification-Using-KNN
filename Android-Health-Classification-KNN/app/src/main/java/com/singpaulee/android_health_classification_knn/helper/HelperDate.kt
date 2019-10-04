@@ -5,11 +5,18 @@ import java.util.*
 
 object HelperDate {
 
-    val LOCALE_IN = "in"
-    val LOCALE_ID = "ID"
+    const val LOCALE_IN = "in"
+    const val LOCALE_ID = "ID"
 
-    val SIMPLE_DATE_FORMAT_DEFAULT = "yyyy-MM-dd"
-    val SIMPLE_DATE_FORMAT_DMY = "dd-MM-yyyy"
+    const val SIMPLE_DATE_FORMAT_DEFAULT = "yyyy-MM-dd"
+    const val SIMPLE_DATE_FORMAT_DMY = "dd-MM-yyyy"
+    const val SIMPLE_DATE_FORMAT_WITH_TIME = "yyyy-MM-dd hh:mm:ss"
+
+    fun getCurrentDateFormatDefaultWithTime() : String{
+        val date = Calendar.getInstance().time
+        val sdf = SimpleDateFormat(SIMPLE_DATE_FORMAT_WITH_TIME)
+        return sdf.format(date)
+    }
 
     fun getCurrentDateFormatDefault() : String{
         val date = Calendar.getInstance().time

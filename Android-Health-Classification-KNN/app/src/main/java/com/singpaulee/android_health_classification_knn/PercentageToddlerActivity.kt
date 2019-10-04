@@ -69,7 +69,7 @@ class PercentageToddlerActivity : AppCompatActivity() {
         l.verticalAlignment = Legend.LegendVerticalAlignment.TOP
         l.horizontalAlignment = Legend.LegendHorizontalAlignment.RIGHT
         l.orientation = Legend.LegendOrientation.VERTICAL
-        l.setDrawInside(false)
+        l.setDrawInside(true)
         l.xEntrySpace = 7f
         l.yEntrySpace = 0f
         l.yOffset = 0f
