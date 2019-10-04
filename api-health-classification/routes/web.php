@@ -43,4 +43,9 @@ $router->group(['middleware' => 'auth'], function() use ($router) {
     $router->post('/training', 'Balita@addBalitaTraining');
     $router->get('/training', 'Balita@getBalitaTraining');
   });
+
+  $router->group(['prefix' => 'bumil'], function() use ($router){
+    $router->post('/classification','Bumil@addBumilClassification');
+    $router->get('/classification','Bumil@getListBumilClassification');
+  });
 });
