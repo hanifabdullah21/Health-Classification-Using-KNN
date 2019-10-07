@@ -4,7 +4,7 @@
     package="com.singpaulee.android_health_classification_knn">
 
     <uses-permission android:name="android.permission.INTERNET" />
-    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
 
     <application
         android:name="androidx.multidex.MultiDexApplication"
@@ -15,7 +15,8 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:ignore="GoogleAppIndexingWarning">
-        <activity android:name=".PercentageToddlerActivity" />
+        <activity android:name=".mvp.mainpregnant.MainPregnantActivity"></activity>
+        <activity android:name=".mvp.toddlerrpercentage.PercentageToddlerActivity" />
         <activity
             android:name=".mvp.toddlerresultclassification.ToddlerResultClassificationActivity"
             android:windowSoftInputMode="adjustResize" />

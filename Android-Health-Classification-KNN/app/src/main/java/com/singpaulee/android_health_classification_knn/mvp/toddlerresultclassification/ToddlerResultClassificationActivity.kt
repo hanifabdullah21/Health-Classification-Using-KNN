@@ -9,7 +9,7 @@ import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.DialogFragment
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.singpaulee.android_health_classification_knn.PercentageToddlerActivity
+import com.singpaulee.android_health_classification_knn.mvp.toddlerrpercentage.PercentageToddlerActivity
 import com.singpaulee.android_health_classification_knn.R
 import com.singpaulee.android_health_classification_knn.adapter.ToddlerClassificationAdapter
 import com.singpaulee.android_health_classification_knn.helper.ExcelUtil
