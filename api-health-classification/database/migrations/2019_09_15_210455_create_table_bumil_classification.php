@@ -24,6 +24,7 @@ class CreateTableBumilClassification extends Migration
           $table->double('tinggi_badan');
           $table->double('LILA');
           $table->boolean('KEK');
+          $table->date('tanggal_posyandu');
           $table->string('status');
           $table->timestamps();
 

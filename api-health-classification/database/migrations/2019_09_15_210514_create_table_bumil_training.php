@@ -16,6 +16,7 @@ class CreateTableBumilTraining extends Migration
         Schema::create('bumil_training', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('nama');
+            $table->integer('usia_bumil');
             $table->integer('usia_kehamilan');
             $table->double('berat_badan');
             $table->double('tinggi_badan');

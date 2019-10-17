@@ -21,7 +21,7 @@ class Bumil extends Controller{
         if($validator->fails()) return $this->response->notValidInput($validator->errors());
 
         $req->merge(['account_id'=>$req->account->id]);
-        $bumilClassification = BumilClassificationModel::create($req->only('account_id','dusun_id','nama','usia_bumil','usia_kehamilan','berat_badan','tinggi_badan','LILA','KEK','status'));
+        $bumilClassification = BumilClassificationModel::create($req->only('account_id','dusun_id','nama','usia_bumil','usia_kehamilan','tanggal_posyandu','berat_badan','tinggi_badan','LILA','KEK','status'));
         return $this->response->success($bumilClassification->with('account')->orderBy('id','desc')->first());
     }
 
@@ -46,7 +46,7 @@ class Bumil extends Controller{
     }
 
     public function addBumilTraining(Request $req){
-        $bumilTraining = BumilTrainingModel::create($req->only('nama','usia_kehamilan', 'berat_badan', 'tinggi_badan', 'status'));
+        $bumilTraining = BumilTrainingModel::create($req->only('nama','usia_kehamilan', 'berat_badan', 'tinggi_badan', 'status','usia_bumil'));
         return $this->response->success($bumilTraining->orderBy('id','desc')->first());
     }
 
