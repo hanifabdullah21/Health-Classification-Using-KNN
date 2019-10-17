@@ -1,9 +1,6 @@
 package com.singpaulee.android_health_classification_knn.connection
 
-import com.singpaulee.android_health_classification_knn.model.response.AuthResponseModel
-import com.singpaulee.android_health_classification_knn.model.response.ToddlerListResponseModel
-import com.singpaulee.android_health_classification_knn.model.response.ToddlerResponseModel
-import com.singpaulee.android_health_classification_knn.model.response.VillageResponseModel
+import com.singpaulee.android_health_classification_knn.model.response.*
 import io.reactivex.Observable
 import retrofit2.http.*
 
@@ -88,4 +85,25 @@ interface ApiInterface {
         @Query("range_tanggal") rangeDate: String?,
         @Query("status") status: String?
     ): Observable<ToddlerListResponseModel?>
+
+    @GET("bumil/training")
+    fun getListBumilTraining(
+        @Header("Authorization") auth: String?
+    ): Observable<MotherPregnantListResponseModel?>
+
+    @FormUrlEncoded
+    @POST("bumil/classification")
+    fun addBumilClassification(
+        @Header("Authorization") auth: String?,
+        @Field("dusun_id") dusunId: Int?,
+        @Field("nama") name: String?,
+        @Field("usia_bumil") usiaBumil: Int?,
+        @Field("usia_kehamilan") usiaKehamilan: Int?,
+        @Field("berat_badan") weight: Double?,
+        @Field("tinggi_badan") height: Double?,
+        @Field("LILA") LILA: Double?,
+        @Field("KEK") KEK: Int,
+        @Field("status") status: String?,
+        @Field("tanggal_posyandu") posyanduDate: String?
+    ): Observable<MotherPregnantResponseModel?>
 }

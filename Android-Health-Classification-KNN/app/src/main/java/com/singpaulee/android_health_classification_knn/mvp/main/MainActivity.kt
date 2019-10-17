@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatActivity
 import com.singpaulee.android_health_classification_knn.R
 import com.singpaulee.android_health_classification_knn.mvp.maintoddler.ToddlerMainActivity
 import com.singpaulee.android_health_classification_knn.mvp.login.LoginActivity
+import com.singpaulee.android_health_classification_knn.mvp.mainpregnant.MainPregnantActivity
 import kotlinx.android.synthetic.main.activity_main.*
 import org.jetbrains.anko.intentFor
 
@@ -35,7 +36,7 @@ class MainActivity : AppCompatActivity(), MainMvpView, View.OnClickListener {
     }
 
     override fun moveToMainPregnantMother() {
-
+        startActivity(intentFor<MainPregnantActivity>())
     }
 
     override fun showLoading() {

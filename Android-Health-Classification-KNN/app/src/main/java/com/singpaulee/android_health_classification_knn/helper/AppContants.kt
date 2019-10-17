@@ -15,6 +15,9 @@ object AppContants {
     internal val EMPTY_VILLAGE = 1011
     internal val EMPTY_HEIGHT = 1012
     internal val EMPTY_WEIGHT = 1013
+    internal val EMPTY_AGE = 1014
+    internal val EMPTY_PREGNANT_AGE = 1015
+    internal val EMPTY_LILA = 1016
 
     internal val DATE_PICKER = "datepicker"
     internal val FROM_DATE = "FROM_DATE"
@@ -25,6 +28,13 @@ object AppContants {
         STATUS_BAIK("Baik"),
         STATUS_LEBIH("Lebih"),
         STATUS_KURANG("Kurang"),
+        STATUS_OBESITAS("Obesitas"),
+    }
+
+    enum class STATUS_PREGNANT(val status: String) {
+        STATUS_KURANG("Kurang"),
+        STATUS_NORMAL("Normal"),
+        STATUS_OVERWEIGHT("Overweight"),
         STATUS_OBESITAS("Obesitas"),
     }
 }

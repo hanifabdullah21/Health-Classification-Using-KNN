@@ -5,7 +5,10 @@ import android.view.MenuItem
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import com.singpaulee.android_health_classification_knn.R
+import com.singpaulee.android_health_classification_knn.mvp.maintoddler.ToddlerMainActivity
+import com.singpaulee.android_health_classification_knn.mvp.motherpregnantclassification.MotherPregnantClassificationActivity
 import kotlinx.android.synthetic.main.activity_main_pregnant.*
+import org.jetbrains.anko.intentFor
 
 class MainPregnantActivity : AppCompatActivity(), MainPregnantMvpView, View.OnClickListener {
 
@@ -25,7 +28,7 @@ class MainPregnantActivity : AppCompatActivity(), MainPregnantMvpView, View.OnCl
     }
 
     override fun moveToMotherPregnantClassification() {
-
+        startActivity(intentFor<MotherPregnantClassificationActivity>())
     }
 
     override fun moveToMotherPregnantResultClassification() {
