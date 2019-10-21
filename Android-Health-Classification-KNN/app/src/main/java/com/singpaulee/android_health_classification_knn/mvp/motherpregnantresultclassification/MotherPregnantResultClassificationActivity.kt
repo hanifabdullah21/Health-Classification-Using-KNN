@@ -16,6 +16,7 @@ import com.singpaulee.android_health_classification_knn.model.base.MotherPregnan
 import com.singpaulee.android_health_classification_knn.model.base.VillageModel
 import com.singpaulee.android_health_classification_knn.mvp.dialogfragment.DialogFilterBumilFragment
 import com.singpaulee.android_health_classification_knn.mvp.dialogfragment.DialogFilterToddlerFragment
+import com.singpaulee.android_health_classification_knn.mvp.motherpregnantpercentage.MotherPregnantPercentageActivity
 import com.singpaulee.android_health_classification_knn.mvp.toddlerrpercentage.PercentageToddlerActivity
 import io.reactivex.disposables.CompositeDisposable
 import kotlinx.android.synthetic.main.activity_mother_pregnant_result_classification.*
@@ -58,7 +59,7 @@ class MotherPregnantResultClassificationActivity : AppCompatActivity(),
         }
 
         mprca_btn_presentase.onClick {
-//            startActivity(intentFor<PercentageToddlerActivity>("listClassification" to listClassification))
+            startActivity(intentFor<MotherPregnantPercentageActivity>("listClassification" to listClassification))
         }
 
         mprca_btn_print_to_excel.onClick {
