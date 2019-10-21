@@ -106,4 +106,13 @@ interface ApiInterface {
         @Field("status") status: String?,
         @Field("tanggal_posyandu") posyanduDate: String?
     ): Observable<MotherPregnantResponseModel?>
+
+    @GET("bumil/classification")
+    fun getClassificationBumil(
+        @Header("Authorization") auth: String?,
+        @Query("nama") name: String?,
+        @Query("dusun_id") villageId: Int?,
+        @Query("usia_kehamilan") usiaKehamilan: Int?,
+        @Query("status") status: String?
+    ): Observable<MotherPregnantListResponseModel?>
 }

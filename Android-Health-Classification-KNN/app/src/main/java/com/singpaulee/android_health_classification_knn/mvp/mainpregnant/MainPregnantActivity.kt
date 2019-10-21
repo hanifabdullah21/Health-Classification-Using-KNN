@@ -7,6 +7,7 @@ import androidx.appcompat.app.AppCompatActivity
 import com.singpaulee.android_health_classification_knn.R
 import com.singpaulee.android_health_classification_knn.mvp.maintoddler.ToddlerMainActivity
 import com.singpaulee.android_health_classification_knn.mvp.motherpregnantclassification.MotherPregnantClassificationActivity
+import com.singpaulee.android_health_classification_knn.mvp.motherpregnantresultclassification.MotherPregnantResultClassificationActivity
 import kotlinx.android.synthetic.main.activity_main_pregnant.*
 import org.jetbrains.anko.intentFor
 
@@ -32,7 +33,7 @@ class MainPregnantActivity : AppCompatActivity(), MainPregnantMvpView, View.OnCl
     }
 
     override fun moveToMotherPregnantResultClassification() {
-
+        startActivity(intentFor<MotherPregnantResultClassificationActivity>())
     }
 
     override fun showLoading() {

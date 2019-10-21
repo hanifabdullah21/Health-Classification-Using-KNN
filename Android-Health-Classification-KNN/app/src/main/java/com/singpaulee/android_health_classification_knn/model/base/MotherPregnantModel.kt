@@ -11,7 +11,7 @@ data class MotherPregnantModel(
     var posyanduDate: String? = null,
 
     @field:SerializedName("dusun")
-    val dusun: VillageModel? = null,
+    var dusun: VillageModel? = null,
 
     @field:SerializedName("berat_badan")
     val beratBadan: Double? = null,
@@ -23,10 +23,10 @@ data class MotherPregnantModel(
     val usiaBumil: Int? = null,
 
     @field:SerializedName("usia_kehamilan")
-    val usiaKehamilan: Int? = null,
+    var usiaKehamilan: Int? = null,
 
     @field:SerializedName("dusun_id")
-    val dusunId: Int? = null,
+    var dusunId: Int? = null,
 
     @field:SerializedName("KEK")
     var kEK: Int? = null,
@@ -38,7 +38,7 @@ data class MotherPregnantModel(
     val accountId: Int? = null,
 
     @field:SerializedName("nama")
-    val nama: String? = null,
+    var nama: String? = null,
 
     @field:SerializedName("updated_at")
     val updatedAt: String? = null,
