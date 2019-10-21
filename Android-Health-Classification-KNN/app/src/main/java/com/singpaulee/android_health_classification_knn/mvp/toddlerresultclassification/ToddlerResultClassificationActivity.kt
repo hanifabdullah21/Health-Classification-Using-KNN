@@ -97,6 +97,8 @@ class ToddlerResultClassificationActivity : AppCompatActivity(),
         }
 
         Log.d("PATHFILE", extStorageDirectory)
+
+        toast("File disimpan di $extStorageDirectory")
     }
 
     override fun openDialogFilter() {
