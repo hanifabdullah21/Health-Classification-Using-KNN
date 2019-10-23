@@ -25,7 +25,7 @@ class Response {
       return $this->responseJson(false, 401, $message, $message);
   }
   public function error($message) {
-      return $this->responseJson(false, 500, $message, $message);
+      return $this->responseJson(false, 400, $message, null);
   }
   public function notFound() {
     return $this->responseJson(false, 404, 'Route Not Found', 'Route Not Found');

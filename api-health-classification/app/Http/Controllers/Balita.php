@@ -72,6 +72,11 @@ class Balita extends Controller{
 
         if($validator->fails()) return $this->response->notValidInput($validator->errors());
 
+        $tanggalSamaPosyandu = BalitaClassificationModel::where('balita_id', $req->balita_id)
+          ->where('tanggal_posyandu', $req->tanggal_posyandu)->first();
+
+        if ($tanggalSamaPosyandu) return $this->response->error('sudah melakukan pemeriksaan pada tanggal '.$req->tanggal_posyandu);
+
         $req->merge(['account_id'=>$req->account->id]);
         $balitaClassification = BalitaClassificationModel::create($req->only('account_id','balita_id','umur','tanggal_posyandu','berat_badan','tinggi_badan','status'));
         return $this->response->success($balitaClassification->with('account','balita')->orderBy('id','desc')->first());
