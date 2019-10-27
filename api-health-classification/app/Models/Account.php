@@ -8,11 +8,17 @@ class Account extends Model {
 
     protected $table = 'accounts';
 
-    protected $fillable = [
-        'email', 'username', 'password'
-    ];
+    protected $guarded = [];
 
     protected $hidden = [
         'password'
     ];
+
+    public function balita(){
+        return $this->hasMany('App\Models\Balita', 'account_id');
+    }
+
+    public function balitaClassification(){
+        return $this->hasMany('App\Models\BalitaClassificationModel', 'account_id');
+    }
 }

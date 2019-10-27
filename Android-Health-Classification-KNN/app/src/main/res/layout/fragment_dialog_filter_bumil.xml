@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".mvp.dialogfragment.DialogFilterBumilFragment">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom"
+        android:background="#fff"
+        android:padding="20dp">
+
+        <ImageView
+            android:id="@+id/fdft_iv_close"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:src="@drawable/ic_close"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/fdft_tv_name"
+            style="@style/title_edittext"
+            android:text="Nama"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/fdft_iv_close" />
+
+        <EditText
+            android:id="@+id/fdft_edt_name"
+            style="@style/style_edittext_field"
+            android:hint="Cari nama bumil"
+            android:imeOptions="actionNext"
+            android:inputType="text"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/fdft_tv_name" />
+
+        <TextView
+            android:id="@+id/fdft_tv_age_pregnant"
+            style="@style/title_edittext"
+            android:layout_marginTop="10dp"
+            android:text="Usia Kehamilan"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/fdft_edt_name" />
+
+        <EditText
+            android:id="@+id/fdft_edt_age_pregnant"
+            style="@style/style_edittext_field"
+            android:hint="Masukkan Usia Kehamilan"
+            android:imeOptions="actionNext"
+            android:inputType="number"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/fdft_tv_age_pregnant" />
+
+
+        <TextView
+            android:id="@+id/fdft_tv_village"
+            style="@style/title_edittext"
+            android:layout_marginTop="10dp"
+            android:text="Dusun"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/fdft_edt_age_pregnant" />
+
+        <Spinner
+            android:id="@+id/fdft_spinner_village"
+            style="@style/style_edittext_field"
+            android:spinnerMode="dialog"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/fdft_tv_village" />
+
+        <TextView
+            android:id="@+id/fdft_tv_status"
+            style="@style/title_edittext"
+            android:layout_marginTop="10dp"
+            android:text="Status"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/fdft_spinner_village" />
+
+        <Spinner
+            android:id="@+id/fdft_spinner_status"
+            style="@style/style_edittext_field"
+            android:spinnerMode="dialog"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/fdft_tv_status" />
+
+        <Button
+            android:id="@+id/fdft_btn_filter"
+            android:layout_width="120dp"
+            android:layout_height="40dp"
+            android:layout_marginTop="20dp"
+            android:background="@drawable/selector_button"
+            android:text="Cari"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/fdft_spinner_status" />
+
+        <Button
+            android:id="@+id/fdft_btn_reset"
+            android:layout_width="120dp"
+            android:layout_height="40dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginRight="10dp"
+            android:background="@drawable/selector_button_reset"
+            android:text="Reset"
+            app:layout_constraintRight_toLeftOf="@id/fdft_btn_filter"
+            app:layout_constraintTop_toBottomOf="@id/fdft_spinner_status" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</FrameLayout>

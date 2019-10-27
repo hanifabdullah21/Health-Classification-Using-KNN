@@ -17,7 +17,8 @@ class CreateTableAccount extends Migration
             $table->bigIncrements('id');
             $table->string('username')->unique();
             $table->string('email')->unique();
-            $table->string('password');          
+            $table->string('nama');
+            $table->string('password');
             $table->timestamps();
         });
     }

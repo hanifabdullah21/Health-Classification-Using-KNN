@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:focusableInTouchMode="true"
+    android:padding="20dp"
+    tools:context=".mvp.toddlerresultclassification.ToddlerResultClassificationActivity">
+
+    <Button
+        android:id="@+id/trca_btn_filter"
+        android:layout_width="wrap_content"
+        android:layout_height="30dp"
+        android:background="@drawable/selector_button"
+        android:text="FILTER"
+        app:layout_constraintBottom_toBottomOf="@id/trca_edt_search"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="@id/trca_edt_search" />
+
+    <EditText
+        android:id="@+id/trca_edt_search"
+        style="@style/style_edittext_field"
+        android:layout_width="0dp"
+        android:layout_marginRight="10dp"
+        android:drawableLeft="@drawable/ic_search"
+        android:drawablePadding="10dp"
+        android:enabled="false"
+        android:hint="Cari"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toLeftOf="@id/trca_btn_filter"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <androidx.constraintlayout.widget.Group
+        android:id="@+id/trca_group_search"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:constraint_referenced_ids="trca_btn_filter,trca_edt_search" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/trca_rv_result"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginTop="20dp"
+        android:paddingBottom="70dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/trca_edt_search"
+        tools:listitem="@layout/item_toddler_classification" />
+
+    <Button
+        android:id="@+id/trca_btn_presentase"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="10dp"
+        android:background="@drawable/selector_button"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp"
+        android:text="Lihat Presentase Data"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toRightOf="@id/trca_btn_print_to_excel"
+        app:layout_constraintRight_toRightOf="parent" />
+
+    <Button
+        android:id="@+id/trca_btn_print_to_excel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="10dp"
+        android:background="@drawable/selector_button"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp"
+        android:text="Cetak ke excel"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toLeftOf="@id/trca_btn_presentase" />
+
+    <FrameLayout
+        android:id="@+id/trca_frame_dialog"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/trca_iv_empty_box"
+        android:layout_width="200dp"
+        android:layout_height="200dp"
+        android:src="@drawable/ic_empty_box"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/trca_group_search" />
+
+    <TextView
+        android:id="@+id/trca_tv_empty_list"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Tidak Ada Data Balita"
+        android:textSize="18sp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/trca_iv_empty_box" />
+
+    <androidx.constraintlayout.widget.Group
+        android:id="@+id/trca_group"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:constraint_referenced_ids="trca_iv_empty_box,trca_tv_empty_list"
+        tools:layout_editor_absoluteX="20dp"
+        tools:layout_editor_absoluteY="20dp" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

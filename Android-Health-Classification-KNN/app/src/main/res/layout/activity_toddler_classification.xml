@@ -1,0 +1,197 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:focusableInTouchMode="true"
+    android:padding="20dp"
+    tools:context=".mvp.toddlerclassification.ToddlerClassificationActivity">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <FrameLayout
+            android:id="@+id/tca_frame_dialog"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"/>
+
+        <ImageView
+            android:id="@+id/tca_iv_indicator_success"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:src="@drawable/ic_checked"
+            android:visibility="gone"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/tca_tv_indicator_message"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:visibility="gone"
+            app:layout_constraintBottom_toBottomOf="@id/tca_iv_indicator_success"
+            app:layout_constraintLeft_toRightOf="@id/tca_iv_indicator_success"
+            app:layout_constraintTop_toTopOf="@id/tca_iv_indicator_success"
+            tools:text="Data Training Tersedia" />
+
+        <TextView
+            android:id="@+id/tca_tv_indicator_try_again"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:visibility="gone"
+            app:layout_constraintBottom_toBottomOf="@id/tca_iv_indicator_success"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="@id/tca_iv_indicator_success"
+            tools:text="Coba lagi" />
+
+        <TextView
+            android:id="@+id/tca_tv_name"
+            style="@style/title_edittext"
+            android:layout_marginTop="20dp"
+            android:text="Nama"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tca_iv_indicator_success" />
+
+        <EditText
+            android:id="@+id/tca_edt_name"
+            style="@style/style_edittext_field"
+            android:enabled="false"
+            android:hint="Masukkan nama"
+            android:imeOptions="actionNext"
+            android:inputType="none"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tca_tv_name" />
+
+        <TextView
+            android:id="@+id/tca_tv_gender"
+            style="@style/title_edittext"
+            android:layout_marginTop="10dp"
+            android:text="Jenis Kelamin"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tca_edt_name" />
+
+        <EditText
+            android:id="@+id/tca_edt_gender"
+            style="@style/style_edittext_field"
+            android:enabled="false"
+            android:hint="Masukkan Jenis Kelamin"
+            android:imeOptions="actionNext"
+            android:inputType="none"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tca_tv_gender" />
+
+        <TextView
+            android:id="@+id/tca_tv_age"
+            style="@style/title_edittext"
+            android:layout_marginTop="10dp"
+            android:text="Umur"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tca_edt_gender" />
+
+        <EditText
+            android:id="@+id/tca_edt_age"
+            style="@style/style_edittext_field"
+            android:enabled="false"
+            android:hint="Masukkan Umur"
+            android:imeOptions="actionNext"
+            android:inputType="none"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tca_tv_age" />
+
+        <TextView
+            android:id="@+id/tca_tv_village"
+            style="@style/title_edittext"
+            android:layout_marginTop="10dp"
+            android:text="Dusun"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tca_edt_age" />
+
+        <EditText
+            android:id="@+id/tca_edt_village"
+            style="@style/style_edittext_field"
+            android:enabled="false"
+            android:hint="Masukkan dusun"
+            android:imeOptions="actionNext"
+            android:inputType="none"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tca_tv_village" />
+
+        <TextView
+            android:id="@+id/tca_tv_date_posyandu"
+            style="@style/title_edittext"
+            android:layout_marginTop="10dp"
+            android:text="Tanggal Posyandu"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tca_edt_village" />
+
+        <EditText
+            android:id="@+id/tca_edt_date_posyandu"
+            style="@style/style_edittext_field"
+            android:enabled="false"
+            android:hint="Masukkan dusun"
+            android:imeOptions="actionNext"
+            android:inputType="none"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tca_tv_date_posyandu" />
+
+        <TextView
+            android:id="@+id/tca_tv_date_weight"
+            style="@style/title_edittext"
+            android:layout_marginTop="10dp"
+            android:text="Berat badan (kg)"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tca_edt_date_posyandu" />
+
+        <EditText
+            android:id="@+id/tca_edt_weight"
+            style="@style/style_edittext_field"
+            android:hint="Masukkan berat badan"
+            android:imeOptions="actionNext"
+            android:inputType="numberDecimal"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tca_tv_date_weight" />
+
+        <TextView
+            android:id="@+id/tca_tv_date_height"
+            style="@style/title_edittext"
+            android:layout_marginTop="10dp"
+            android:text="Tinggi badan (cm)"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tca_edt_weight" />
+
+        <EditText
+            android:id="@+id/tca_edt_height"
+            style="@style/style_edittext_field"
+            android:hint="Masukkan tinggi badan"
+            android:imeOptions="actionNext"
+            android:inputType="number"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tca_tv_date_height" />
+
+        <Button
+            android:id="@+id/tca_btn_classification"
+            android:layout_width="150dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:text="KLASIFIKASI"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tca_edt_height" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</ScrollView>

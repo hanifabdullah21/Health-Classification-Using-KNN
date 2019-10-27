@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="5dp"
+    app:cardCornerRadius="5dp"
+    app:cardElevation="2dp">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp">
+
+        <TextView
+            android:id="@+id/itbc_tv_title_name"
+            android:layout_width="80dp"
+            android:layout_height="wrap_content"
+            android:text="Nama"
+            android:textSize="14sp"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/itbc_tv_name"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:textSize="14sp"
+            app:layout_constraintLeft_toRightOf="@id/itbc_tv_title_name"
+            app:layout_constraintRight_toLeftOf="@id/itbc_btn_edit"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="Nama Balitanya siapa yaa" />
+
+        <TextView
+            android:id="@+id/itbc_tv_title_age"
+            android:layout_width="80dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:text="Umur"
+            android:textSize="14sp"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/itbc_tv_title_name" />
+
+        <TextView
+            android:id="@+id/itbc_tv_age"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:textSize="14sp"
+            app:layout_constraintLeft_toRightOf="@id/itbc_tv_title_age"
+            app:layout_constraintRight_toLeftOf="@id/itbc_btn_edit"
+            app:layout_constraintTop_toBottomOf="@id/itbc_tv_name"
+            tools:text="Nama Balitanya siapa yaa" />
+
+        <TextView
+            android:id="@+id/itbc_tv_title_village"
+            android:layout_width="80dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:text="Dusun"
+            android:textSize="14sp"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/itbc_tv_title_age" />
+
+        <TextView
+            android:id="@+id/itbc_tv_village"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:textSize="14sp"
+            app:layout_constraintLeft_toRightOf="@id/itbc_tv_title_village"
+            app:layout_constraintRight_toLeftOf="@id/itbc_btn_edit"
+            app:layout_constraintTop_toBottomOf="@id/itbc_tv_age"
+            tools:text="Nama Balitanya siapa yaa" />
+
+        <Button
+            android:id="@+id/itbc_btn_edit"
+            android:layout_width="wrap_content"
+            android:layout_height="35dp"
+            android:layout_marginTop="10dp"
+            android:text="Pilih"
+            android:textSize="12sp"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"/>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</androidx.cardview.widget.CardView>
