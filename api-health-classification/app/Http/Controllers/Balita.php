@@ -114,7 +114,7 @@ class Balita extends Controller{
 
 
     public function addBalitaTraining(Request $req){
-        $balitaTraining = BalitaTrainingModel::create($req->only('umur', 'berat_badan', 'tinggi_badan', 'status'));
+        $balitaTraining = BalitaTrainingModel::create($req->only('umur', 'berat_badan', 'tinggi_badan', 'jenis_kelamin','status'));
         return $this->response->success($balitaTraining->orderBy('id','desc')->first());
     }
 
