@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\BumilClassificationModel;
 use App\Models\BumilTrainingModel;
+use App\Models\BumilTestModel;
 use Validator;
 
 class Bumil extends Controller{
@@ -52,5 +53,14 @@ class Bumil extends Controller{
 
     public function getBumilTraining(){
         return $this->response->success(BumilTrainingModel::get());
+    }
+
+    public function addBumilTest(Request $req){
+        $bumil = BumilTestModel::create($req->only('nama','usia_kehamilan', 'berat_badan', 'tinggi_badan', 'status','usia_bumil'));
+        return $this->response->success($bumil->orderBy('id','desc')->first());
+    }
+
+    public function getBumilTest(){
+        return $this->response->success(BumilTestModel::get());
     }
 }

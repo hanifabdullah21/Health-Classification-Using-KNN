@@ -49,5 +49,7 @@ $router->group(['middleware' => 'auth'], function() use ($router) {
     $router->get('/classification','Bumil@getListBumilClassification');
     $router->post('/training','Bumil@addBumilTraining');
     $router->get('/training','Bumil@getBumilTraining');
+    $router->post('/test','Bumil@addBumilTest');
+    $router->get('/test','Bumil@getBumilTest');
   });
 });
