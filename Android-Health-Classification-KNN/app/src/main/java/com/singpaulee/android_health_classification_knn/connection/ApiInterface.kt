@@ -39,6 +39,13 @@ interface ApiInterface {
         @Header("Authorization") auth: String?
     ): Observable<VillageResponseModel?>
 
+    @FormUrlEncoded
+    @POST("dusun")
+    fun addNewVillage(
+        @Header("Authorization") auth: String?,
+        @Field("nama") name: String?
+    ): Observable<VillageResponseObjectModel>
+
     /* **************************************** TODDLER *******************************************/
 
     @FormUrlEncoded

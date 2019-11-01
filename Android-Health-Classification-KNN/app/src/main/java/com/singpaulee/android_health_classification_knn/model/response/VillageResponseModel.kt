@@ -11,5 +11,12 @@ data class VillageResponseModel(
 
     @field:SerializedName("result")
     val result: List<VillageModel>? = null
+)
 
+data class VillageResponseObjectModel(
+    @field:SerializedName("status")
+    val statusModel: StatusModel? = null,
+
+    @field:SerializedName("result")
+    val result: VillageModel? = null
 )
