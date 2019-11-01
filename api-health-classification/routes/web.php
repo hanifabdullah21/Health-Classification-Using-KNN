@@ -42,6 +42,8 @@ $router->group(['middleware' => 'auth'], function() use ($router) {
     $router->get('/classification', 'Balita@getListBalitaClassification');
     $router->post('/training', 'Balita@addBalitaTraining');
     $router->get('/training', 'Balita@getBalitaTraining');
+    $router->post('/test', 'Balita@addBalitaTest');
+    $router->get('/test', 'Balita@getBalitaTest');
   });
 
   $router->group(['prefix' => 'bumil'], function() use ($router){

@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\Balita as BalitaModel;
 use App\Models\BalitaClassificationModel;
 use App\Models\BalitaTrainingModel;
+use App\Models\BalitaTestModel;
 use Validator;
 
 class Balita extends Controller{
@@ -121,4 +122,13 @@ class Balita extends Controller{
     public function getBalitaTraining(){
         return $this->response->success(BalitaTrainingModel::get());
     }
+
+    public function addBalitaTest(Request $req){
+      $balita = BalitaTestModel::create($req->only('umur', 'berat_badan', 'tinggi_badan', 'jenis_kelamin','status'));
+      return $this->response->success($balita->orderBy('id','desc')->first());
+  }
+
+  public function getBalitaTest(){
+      return $this->response->success(BalitaTestModel::get());
+  }
 }
