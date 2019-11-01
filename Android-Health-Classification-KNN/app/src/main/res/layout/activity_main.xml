@@ -109,7 +109,7 @@
         android:layout_height="36dp"
         android:background="@color/colorPrimary"
         android:padding="5dp"
-        android:src="@drawable/ic_toddler_training"
+        android:src="@drawable/ic_toddler_test"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintHorizontal_chainStyle="spread"
         app:layout_constraintLeft_toRightOf="@id/ma_iv_toddler_training"

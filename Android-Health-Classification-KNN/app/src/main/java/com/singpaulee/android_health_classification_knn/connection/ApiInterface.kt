@@ -104,10 +104,24 @@ interface ApiInterface {
         @Query("status") status: String?
     ): Observable<ToddlerListResponseModel?>
 
+    /* **************************************** BUMIL *******************************************/
+
     @GET("bumil/training")
     fun getListBumilTraining(
         @Header("Authorization") auth: String?
     ): Observable<MotherPregnantListResponseModel?>
+
+    @FormUrlEncoded
+    @POST("bumil/training")
+    fun addBumilTraining(
+        @Header("Authorization") auth: String?,
+        @Field("nama") name: String?,
+        @Field("usia_bumil") usiaBumil: Int?,
+        @Field("usia_kehamilan") usiaKehamilan: Int?,
+        @Field("berat_badan") weight: Double?,
+        @Field("tinggi_badan") height: Double?,
+        @Field("status") status: String?
+    ): Observable<MotherPregnantResponseModel?>
 
     @FormUrlEncoded
     @POST("bumil/classification")

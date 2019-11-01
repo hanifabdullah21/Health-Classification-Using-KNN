@@ -7,6 +7,7 @@ import com.singpaulee.android_health_classification_knn.R
 import com.singpaulee.android_health_classification_knn.mvp.maintoddler.ToddlerMainActivity
 import com.singpaulee.android_health_classification_knn.mvp.login.LoginActivity
 import com.singpaulee.android_health_classification_knn.mvp.mainpregnant.MainPregnantActivity
+import com.singpaulee.android_health_classification_knn.mvp.motherpregnanttraining.MotherPregnantTrainingActivity
 import com.singpaulee.android_health_classification_knn.mvp.toddlertraining.ToddlerTrainingActivity
 import com.singpaulee.android_health_classification_knn.mvp.village.VillageActivity
 import kotlinx.android.synthetic.main.activity_main.*
@@ -27,6 +28,7 @@ class MainActivity : AppCompatActivity(), MainMvpView, View.OnClickListener {
         main_cv_bumil.setOnClickListener(this)
         main_cv_logout.setOnClickListener(this)
         ma_iv_toddler_training.setOnClickListener(this)
+        ma_iv_pregnant_training.setOnClickListener(this)
         ma_iv_village.setOnClickListener(this)
     }
 
@@ -69,6 +71,7 @@ class MainActivity : AppCompatActivity(), MainMvpView, View.OnClickListener {
             main_cv_bumil -> moveToMainPregnantMother()
             main_cv_logout -> presenter.deleteAllSession()
             ma_iv_toddler_training -> startActivity(intentFor<ToddlerTrainingActivity>())
+            ma_iv_pregnant_training -> startActivity(intentFor<MotherPregnantTrainingActivity>())
             ma_iv_village -> startActivity(intentFor<VillageActivity>())
         }
     }

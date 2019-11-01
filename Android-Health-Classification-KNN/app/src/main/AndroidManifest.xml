@@ -15,7 +15,8 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:ignore="GoogleAppIndexingWarning">
-        <activity android:name=".mvp.village.VillageActivity"></activity>
+        <activity android:name=".mvp.motherpregnanttraining.MotherPregnantTrainingActivity"></activity>
+        <activity android:name=".mvp.village.VillageActivity" />
         <activity android:name=".mvp.toddlertraining.ToddlerTrainingActivity" />
         <activity android:name=".mvp.motherpregnantpercentage.MotherPregnantPercentageActivity" />
         <activity android:name=".mvp.motherpregnantresultclassification.MotherPregnantResultClassificationActivity" />
