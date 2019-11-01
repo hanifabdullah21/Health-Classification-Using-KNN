@@ -7,6 +7,7 @@ import com.singpaulee.android_health_classification_knn.R
 import com.singpaulee.android_health_classification_knn.mvp.maintoddler.ToddlerMainActivity
 import com.singpaulee.android_health_classification_knn.mvp.login.LoginActivity
 import com.singpaulee.android_health_classification_knn.mvp.mainpregnant.MainPregnantActivity
+import com.singpaulee.android_health_classification_knn.mvp.toddlertraining.ToddlerTrainingActivity
 import kotlinx.android.synthetic.main.activity_main.*
 import org.jetbrains.anko.intentFor
 
@@ -24,6 +25,7 @@ class MainActivity : AppCompatActivity(), MainMvpView, View.OnClickListener {
         main_cv_balita.setOnClickListener(this)
         main_cv_bumil.setOnClickListener(this)
         main_cv_logout.setOnClickListener(this)
+        ma_iv_toddler_training.setOnClickListener(this)
     }
 
     override fun moveToLogin() {
@@ -64,6 +66,7 @@ class MainActivity : AppCompatActivity(), MainMvpView, View.OnClickListener {
             main_cv_balita -> moveToMainToddler()
             main_cv_bumil -> moveToMainPregnantMother()
             main_cv_logout -> presenter.deleteAllSession()
+            ma_iv_toddler_training -> startActivity(intentFor<ToddlerTrainingActivity>())
         }
     }
 }

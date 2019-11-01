@@ -91,4 +91,69 @@
             android:textSize="18sp" />
     </androidx.cardview.widget.CardView>
 
+    <ImageView
+        android:id="@+id/ma_iv_toddler_training"
+        android:layout_width="36dp"
+        android:layout_height="36dp"
+        android:background="@color/colorPrimary"
+        android:padding="5dp"
+        android:src="@drawable/ic_toddler_training"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintHorizontal_chainStyle="spread"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toLeftOf="@id/ma_iv_toddler_test" />
+
+    <ImageView
+        android:id="@+id/ma_iv_toddler_test"
+        android:layout_width="36dp"
+        android:layout_height="36dp"
+        android:background="@color/colorPrimary"
+        android:padding="5dp"
+        android:src="@drawable/ic_toddler_training"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintHorizontal_chainStyle="spread"
+        app:layout_constraintLeft_toRightOf="@id/ma_iv_toddler_training"
+        app:layout_constraintRight_toLeftOf="@id/ma_iv_village" />
+
+    <ImageView
+        android:id="@+id/ma_iv_village"
+        android:layout_width="36dp"
+        android:layout_height="36dp"
+        android:background="@color/colorPrimary"
+        android:padding="5dp"
+        android:src="@drawable/ic_village"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintHorizontal_chainStyle="spread"
+        app:layout_constraintLeft_toRightOf="@id/ma_iv_toddler_test"
+        app:layout_constraintRight_toLeftOf="@id/ma_iv_pregnant_training" />
+
+    <ImageView
+        android:id="@+id/ma_iv_pregnant_training"
+        android:layout_width="36dp"
+        android:layout_height="36dp"
+        android:background="@color/colorPrimary"
+        android:padding="5dp"
+        android:src="@drawable/ic_pregnant_training"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintHorizontal_chainStyle="spread"
+        app:layout_constraintLeft_toRightOf="@id/ma_iv_village"
+        app:layout_constraintRight_toLeftOf="@id/ma_iv_pregnant_test" />
+
+    <ImageView
+        android:id="@+id/ma_iv_pregnant_test"
+        android:layout_width="36dp"
+        android:layout_height="36dp"
+        android:background="@color/colorPrimary"
+        android:padding="5dp"
+        android:src="@drawable/ic_pregnant_test"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintHorizontal_chainStyle="spread"
+        app:layout_constraintLeft_toRightOf="@id/ma_iv_pregnant_training"
+        app:layout_constraintRight_toRightOf="parent" />
+
+    <androidx.constraintlayout.widget.Group
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:constraint_referenced_ids="ma_iv_pregnant_test,ma_iv_pregnant_training,ma_iv_toddler_test,ma_iv_toddler_training,ma_iv_village"/>
+
 </androidx.constraintlayout.widget.ConstraintLayout>

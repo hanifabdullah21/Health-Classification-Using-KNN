@@ -20,13 +20,13 @@ android {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
 
-            buildConfigField "String", 'BASEURL', "\"http://10.0.2.2:9000/\""
+            buildConfigField "String", 'BASEURL', "\"https://knn.sandec.org/\""
         }
         debug {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
 
-            buildConfigField "String", 'BASEURL', "\"http://10.0.2.2:9000/\""
+            buildConfigField "String", 'BASEURL', "\"https://knn.sandec.org/\""
         }
     }
 }

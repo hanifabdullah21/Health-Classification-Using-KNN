@@ -58,6 +58,17 @@ interface ApiInterface {
         @Query("nama") nama: String?
     ): Observable<ToddlerListResponseModel?>
 
+    @FormUrlEncoded
+    @POST("balita/training")
+    fun addBalitaTraining(
+        @Header("Authorization") auth: String?,
+        @Field("umur") age:Int?,
+        @Field("tinggi_badan") height: Double?,
+        @Field("berat_badan") weight: Double?,
+        @Field("jenis_kelamin") gender: String?,
+        @Field("status") status: String?
+    ): Observable<ToddlerResponseModel?>
+
     @GET("balita/training")
     fun getListBalitaTraining(
         @Header("Authorization") auth: String?
