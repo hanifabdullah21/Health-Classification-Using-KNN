@@ -28,7 +28,9 @@ class MainActivity : AppCompatActivity(), MainMvpView, View.OnClickListener {
         main_cv_bumil.setOnClickListener(this)
         main_cv_logout.setOnClickListener(this)
         ma_iv_toddler_training.setOnClickListener(this)
+        ma_iv_toddler_test.setOnClickListener(this)
         ma_iv_pregnant_training.setOnClickListener(this)
+        ma_iv_pregnant_test.setOnClickListener(this)
         ma_iv_village.setOnClickListener(this)
     }
 
@@ -70,8 +72,10 @@ class MainActivity : AppCompatActivity(), MainMvpView, View.OnClickListener {
             main_cv_balita -> moveToMainToddler()
             main_cv_bumil -> moveToMainPregnantMother()
             main_cv_logout -> presenter.deleteAllSession()
-            ma_iv_toddler_training -> startActivity(intentFor<ToddlerTrainingActivity>())
-            ma_iv_pregnant_training -> startActivity(intentFor<MotherPregnantTrainingActivity>())
+            ma_iv_toddler_training -> startActivity(intentFor<ToddlerTrainingActivity>("BALITA" to "TRAINING"))
+            ma_iv_toddler_test -> startActivity(intentFor<ToddlerTrainingActivity>("BALITA" to "TEST"))
+            ma_iv_pregnant_training -> startActivity(intentFor<MotherPregnantTrainingActivity>("PREGNANT" to "TRAINING"))
+            ma_iv_pregnant_test -> startActivity(intentFor<MotherPregnantTrainingActivity>("PREGNANT" to "TEST"))
             ma_iv_village -> startActivity(intentFor<VillageActivity>())
         }
     }

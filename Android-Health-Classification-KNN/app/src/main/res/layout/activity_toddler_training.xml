@@ -80,7 +80,7 @@
         style="@style/style_edittext_field"
         android:hint="Masukkan berat badan (kg)"
         android:imeOptions="actionNext"
-        android:inputType="number"
+        android:inputType="numberDecimal"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintTop_toBottomOf="@id/tta_tv_weight" />
 
@@ -97,7 +97,7 @@
         style="@style/style_edittext_field"
         android:hint="Masukkan tinggi balita (cm)"
         android:imeOptions="actionNext"
-        android:inputType="number"
+        android:inputType="numberDecimal"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintTop_toBottomOf="@id/tta_tv_height" />
 

@@ -29,6 +29,8 @@ class ToddlerTrainingActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_toddler_training)
 
+        val data = intent.getStringExtra("BALITA")
+
         setSpinnerGender()
         setSpinnerStatus()
 
@@ -36,7 +38,11 @@ class ToddlerTrainingActivity : AppCompatActivity() {
             if (!validation()) {
                 return@onClick
             }
-            sendDataTraining()
+            if (data == "TRAINING"){
+                sendDataTraining()
+            }else if (data == "TEST"){
+                sendDataTest()
+            }
         }
     }
 
@@ -45,6 +51,38 @@ class ToddlerTrainingActivity : AppCompatActivity() {
         val token = SharedPrefManager(this).getToken()
         val post = NetworkConfig.retrofitConfig().create(ApiInterface::class.java)
             .addBalitaTraining(
+                "Bearer "+token,
+                tta_edt_age.text.toString().toInt(),
+                tta_edt_height.text.toString().toDouble(),
+                tta_edt_weight.text.toString().toDouble(),
+                genderId,
+                status
+            )
+
+        post.subscribeOn(Schedulers.newThread())
+            .observeOn(AndroidSchedulers.mainThread())
+            .subscribe({
+                toast("Data Training Balita berhasil ditambahkan")
+                tta_edt_name.text = null
+                tta_edt_age.text = null
+                tta_edt_height.text = null
+                tta_edt_weight.text = null
+                tta_spinner_gender.setSelection(0)
+                genderId = null
+                tta_spinner_status.setSelection(0)
+                status = null
+            },{
+                toast("Data Training Balita Gagal Ditambahkan")
+                Log.d("POSTBALITATRAINING", it.localizedMessage)
+            })
+
+    }
+
+    @SuppressLint("CheckResult")
+    private fun sendDataTest() {
+        val token = SharedPrefManager(this).getToken()
+        val post = NetworkConfig.retrofitConfig().create(ApiInterface::class.java)
+            .addBalitaTest(
                 "Bearer "+token,
                 tta_edt_age.text.toString().toInt(),
                 tta_edt_height.text.toString().toDouble(),

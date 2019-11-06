@@ -82,6 +82,22 @@ interface ApiInterface {
     ): Observable<ToddlerListResponseModel?>
 
     @FormUrlEncoded
+    @POST("balita/test")
+    fun addBalitaTest(
+        @Header("Authorization") auth: String?,
+        @Field("umur") age:Int?,
+        @Field("tinggi_badan") height: Double?,
+        @Field("berat_badan") weight: Double?,
+        @Field("jenis_kelamin") gender: String?,
+        @Field("status") status: String?
+    ): Observable<ToddlerResponseModel?>
+
+    @GET("balita/test")
+    fun getListBalitaTest(
+        @Header("Authorization") auth: String?
+    ): Observable<ToddlerListResponseModel?>
+
+    @FormUrlEncoded
     @POST("balita/classification")
     fun postClassification(
         @Header("Authorization") auth: String?,
@@ -114,6 +130,23 @@ interface ApiInterface {
     @FormUrlEncoded
     @POST("bumil/training")
     fun addBumilTraining(
+        @Header("Authorization") auth: String?,
+        @Field("nama") name: String?,
+        @Field("usia_bumil") usiaBumil: Int?,
+        @Field("usia_kehamilan") usiaKehamilan: Int?,
+        @Field("berat_badan") weight: Double?,
+        @Field("tinggi_badan") height: Double?,
+        @Field("status") status: String?
+    ): Observable<MotherPregnantResponseModel?>
+
+    @GET("bumil/test")
+    fun getListBumilTest(
+        @Header("Authorization") auth: String?
+    ): Observable<MotherPregnantListResponseModel?>
+
+    @FormUrlEncoded
+    @POST("bumil/test")
+    fun addBumilTest(
         @Header("Authorization") auth: String?,
         @Field("nama") name: String?,
         @Field("usia_bumil") usiaBumil: Int?,

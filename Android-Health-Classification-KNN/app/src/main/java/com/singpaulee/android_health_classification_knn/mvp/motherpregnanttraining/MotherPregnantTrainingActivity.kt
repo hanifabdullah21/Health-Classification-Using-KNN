@@ -25,13 +25,19 @@ class MotherPregnantTrainingActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_mother_pregnant_training)
 
+        val data = intent.getStringExtra("PREGNANT")
+
         setSpinnserStatus()
 
         mpta_btn_submit.onClick {
             if(!validation()){
                 return@onClick
             }
-            addBumilTraining()
+            if (data == "TRAINING"){
+                addBumilTraining()
+            }else if (data == "TEST"){
+                addBumilTest()
+            }
         }
     }
 
@@ -40,6 +46,37 @@ class MotherPregnantTrainingActivity : AppCompatActivity() {
         val token = SharedPrefManager(this).getToken()
         val post = NetworkConfig.retrofitConfig().create(ApiInterface::class.java)
             .addBumilTraining(
+                "Bearer $token",
+                mpta_edt_name.text.toString(),
+                mpta_edt_age.text.toString().toInt(),
+                mpta_edt_age_pregnant.text.toString().toInt(),
+                mpta_edt_weight.text.toString().toDouble(),
+                mpta_edt_height.text.toString().toDouble(),
+                status
+            )
+
+        post.subscribeOn(Schedulers.newThread())
+            .observeOn(AndroidSchedulers.mainThread())
+            .subscribe({
+                toast("Berhasil menambahkan data training bumil")
+
+                mpta_edt_name.text = null
+                mpta_edt_age.text = null
+                mpta_edt_age_pregnant.text = null
+                mpta_edt_weight.text = null
+                mpta_edt_height.text = null
+                mpta_spinner_status.setSelection(0)
+                status = null
+            },{
+                toast("Gagal menambahkan data training bumil")
+            })
+    }
+
+    @SuppressLint("CheckResult")
+    private fun addBumilTest() {
+        val token = SharedPrefManager(this).getToken()
+        val post = NetworkConfig.retrofitConfig().create(ApiInterface::class.java)
+            .addBumilTest(
                 "Bearer $token",
                 mpta_edt_name.text.toString(),
                 mpta_edt_age.text.toString().toInt(),
