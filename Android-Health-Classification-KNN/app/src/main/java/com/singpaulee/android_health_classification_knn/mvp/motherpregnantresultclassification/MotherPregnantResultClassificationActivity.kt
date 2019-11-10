@@ -78,7 +78,7 @@ class MotherPregnantResultClassificationActivity : AppCompatActivity(),
 
     private fun saveExcelToMyDirectory(workbook: Workbook) {
         val fileName =
-            "Presentase Klasifikasi Bumil ${HelperDate.getCurrentDateFormatDefaultWithTime()}.xlsx"
+            "Presentase Klasifikasi Bumil ${HelperDate.getCurrentDateFormatDefaultWithTime().replace(":","-")}.xlsx"
         val extStorageDirectory = Environment.getExternalStorageDirectory().toString()
         val folder = File(extStorageDirectory, "Klasifikasi KNN")
         folder.mkdir()
