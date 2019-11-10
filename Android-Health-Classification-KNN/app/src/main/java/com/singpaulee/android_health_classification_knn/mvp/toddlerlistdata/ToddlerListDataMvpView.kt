@@ -13,4 +13,6 @@ interface ToddlerListDataMvpView : MvpView {
 
     fun emptyListData(hide: Boolean)
 
+    fun refreshDataToddler()
+
 }

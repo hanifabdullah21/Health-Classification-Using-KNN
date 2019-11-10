@@ -58,6 +58,13 @@ interface ApiInterface {
         @Field("tanggal_lahir") tanggalLahir: String?
     ): Observable<ToddlerResponseModel?>
 
+    @FormUrlEncoded
+    @POST("balita/delete")
+    fun deleteToddler(
+        @Header("Authorization") auth: String?,
+        @Field("balita_id") toddlerId: Int?
+    ): Observable<ToddlerResponseModel?>
+
     @GET("balita/filter")
     fun getListBalitaFilter(
         @Header("Authorization") auth: String?,

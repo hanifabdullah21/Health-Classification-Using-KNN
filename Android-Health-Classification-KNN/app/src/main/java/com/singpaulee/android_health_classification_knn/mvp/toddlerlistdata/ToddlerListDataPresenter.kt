@@ -24,6 +24,28 @@ internal constructor(compositeDisposable: CompositeDisposable, val context: Cont
         token = SharedPrefManager(context).getToken()
     }
 
+    override fun deleteToddlerData(toddlerId: Int?) {
+        val observable = apiNetwork?.deleteToddler("Bearer $token", toddlerId)
+
+        getMvpView()?.showLoading()
+        compositeDisposable?.add(
+            observable!!
+                .subscribeOn(Schedulers.newThread())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe({
+                    getMvpView()?.hideLoading()
+                    if (it?.statusModel?.success as Boolean) {
+                        getMvpView()?.refreshDataToddler()
+                    } else {
+                        getMvpView()?.showMessage(it.statusModel.message.toString())
+                    }
+                }, {
+                    getMvpView()?.hideLoading()
+                    getMvpView()?.onError(it.localizedMessage!!)
+                })
+        )
+    }
+
     override fun getListVillage() {
         val observable = apiNetwork?.getListVillage("Bearer $token")
 

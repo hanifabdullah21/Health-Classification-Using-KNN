@@ -7,4 +7,6 @@ interface ToddlerListDataMvpPresenter<V : ToddlerListDataMvpView> : MvpPresenter
     fun getListVillage()
 
     fun getListToddlerFilter(dusunId: Int?, nama: String?)
+
+    fun deleteToddlerData(toddlerId: Int?)
 }

@@ -86,6 +86,10 @@ class ToddlerListDataActivity : AppCompatActivity(), ToddlerListDataMvpView, Vie
         TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
     }
 
+    override fun refreshDataToddler() {
+        presenter.getListToddlerFilter(villageId, tlda_edt_search_name.text.toString())
+    }
+
     override fun emptyListData(hide: Boolean) {
         if (hide) {
             tlda_rv_toddler.visibility = View.GONE
@@ -110,7 +114,7 @@ class ToddlerListDataActivity : AppCompatActivity(), ToddlerListDataMvpView, Vie
     }
 
     override fun onDeleteClickListener(toddlerId: Int?) {
-
+        presenter.deleteToddlerData(toddlerId)
     }
 
     override fun onItemClickListener(toddler: ToddlerModel?) {
