@@ -132,6 +132,9 @@ class Balita extends Controller{
   }
 
   public function getBalitaTest(){
-      return $this->response->success(BalitaTestModel::get());
+    $balita = BalitaTestModel::when($req->filled('jenis_kelamin'), function($q) use ($req){
+      $q->where('jenis_kelamin', $req->jenis_kelamin);
+    });
+    return $this->response->success($balita->get());
   }
 }
