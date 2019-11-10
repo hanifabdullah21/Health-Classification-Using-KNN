@@ -5,7 +5,7 @@ import com.singpaulee.android_health_classification_knn.mvp.base.MvpPresenter
 
 interface ToddlerClassificationMvpPresenter<V : ToddlerClassificationMvpView> : MvpPresenter<V> {
 
-    fun getListDataTraining()
+    fun getListDataTraining(gender: String?)
 
     fun classificationToddler(toddler: ToddlerModel?)
 

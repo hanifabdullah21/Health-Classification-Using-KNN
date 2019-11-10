@@ -33,7 +33,8 @@ class ToddlerClassificationActivity : AppCompatActivity(), ToddlerClassification
         presenter = ToddlerClassificationPresenter(CompositeDisposable(), this)
         presenter.onAttach(this)
 
-        presenter.getListDataTraining()
+        presenter.getListDataTraining(toddler?.gender)
+        toast(toddler?.gender.toString())
 
         tca_btn_classification.onClick {
             if (!presenter.validationInput(tca_edt_height.text.toString(), tca_edt_weight.text.toString())){

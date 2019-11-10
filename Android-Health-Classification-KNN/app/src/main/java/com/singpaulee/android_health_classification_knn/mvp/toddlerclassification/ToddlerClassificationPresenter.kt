@@ -26,8 +26,8 @@ internal constructor(compositeDisposable: CompositeDisposable, context: Context)
         token = SharedPrefManager(context).getToken()
     }
 
-    override fun getListDataTraining() {
-        val observable = apiNetwork?.getListBalitaTraining("Bearer $token")
+    override fun getListDataTraining(gender: String?) {
+        val observable = apiNetwork?.getListBalitaTraining("Bearer $token", gender)
 
         getMvpView()?.showLoading()
         compositeDisposable?.add(
