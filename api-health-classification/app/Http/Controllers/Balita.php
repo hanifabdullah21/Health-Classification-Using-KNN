@@ -120,7 +120,11 @@ class Balita extends Controller{
     }
 
     public function getBalitaTraining(){
-        return $this->response->success(BalitaTrainingModel::get());
+        $balita = BalitaTrainingModel::with()
+        ->when($req->filled('balita_id'), function($q) use ($req){
+          $q->where('balita_id', $req->balita_id);
+        });
+        return $this->response->success($balita->get());
     }
 
     public function addBalitaTest(Request $req){
