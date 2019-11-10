@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="20dp"
+    android:focusableInTouchMode="true"
+    tools:context=".mvp.toddlerupdate.ToddlerUpdateActivity">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:id="@+id/tra_tv_name"
+            style="@style/title_edittext"
+            android:text="Nama"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.186" />
+
+        <EditText
+            android:id="@+id/tra_edt_name"
+            style="@style/style_edittext_field"
+            android:hint="Masukkan nama balita"
+            android:imeOptions="actionNext"
+            android:inputType="text"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tra_tv_name" />
+
+        <TextView
+            android:id="@+id/tra_tv_gender"
+            style="@style/title_edittext"
+            android:layout_marginTop="10dp"
+            android:text="Jenis Kelamin"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tra_edt_name" />
+
+        <Spinner
+            android:id="@+id/tra_spinner_gender"
+            style="@style/style_edittext_field"
+            android:spinnerMode="dropdown"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tra_tv_gender" />
+
+        <TextView
+            android:id="@+id/tra_tv_born_date"
+            style="@style/title_edittext"
+            android:layout_marginTop="10dp"
+            android:text="Tanggal Lahir"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tra_spinner_gender" />
+
+        <com.singpaulee.android_health_classification_knn.helper.customview.CustomEdittext
+            android:id="@+id/tra_edt_born_date"
+            style="@style/style_edittext_field"
+            android:enabled="false"
+            android:hint="Pilih tanggal lahir"
+            android:imeOptions="actionNext"
+            android:inputType="text"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tra_tv_born_date" />
+
+        <TextView
+            android:id="@+id/tra_tv_village"
+            style="@style/title_edittext"
+            android:layout_marginTop="10dp"
+            android:text="Dusun"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tra_edt_born_date" />
+
+        <Spinner
+            android:id="@+id/tra_spinner_village"
+            style="@style/style_edittext_field"
+            android:spinnerMode="dialog"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tra_tv_village" />
+
+        <Button
+            android:id="@+id/tra_btn_submit"
+            android:layout_width="120dp"
+            android:layout_height="40dp"
+            android:layout_marginTop="20dp"
+            android:background="@drawable/selector_button"
+            android:text="UPDATE"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tra_spinner_village" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</ScrollView>

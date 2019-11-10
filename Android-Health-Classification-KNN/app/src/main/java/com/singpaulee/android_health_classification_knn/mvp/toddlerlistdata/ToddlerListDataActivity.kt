@@ -13,8 +13,10 @@ import com.singpaulee.android_health_classification_knn.eventlistener.ToddlerIte
 import com.singpaulee.android_health_classification_knn.helper.LoadingUtil
 import com.singpaulee.android_health_classification_knn.model.base.ToddlerModel
 import com.singpaulee.android_health_classification_knn.model.base.VillageModel
+import com.singpaulee.android_health_classification_knn.mvp.toddlerupdate.ToddlerUpdateActivity
 import io.reactivex.disposables.CompositeDisposable
 import kotlinx.android.synthetic.main.activity_toddler_list_data.*
+import org.jetbrains.anko.intentFor
 import org.jetbrains.anko.sdk27.coroutines.onItemSelectedListener
 import org.jetbrains.anko.toast
 
@@ -110,7 +112,7 @@ class ToddlerListDataActivity : AppCompatActivity(), ToddlerListDataMvpView, Vie
     }
 
     override fun onEditClickListener(toddler: ToddlerModel?) {
-
+        startActivity(intentFor<ToddlerUpdateActivity>("TODDLER" to toddler))
     }
 
     override fun onDeleteClickListener(toddlerId: Int?) {
