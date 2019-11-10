@@ -119,7 +119,7 @@ class Balita extends Controller{
         return $this->response->success($balitaTraining->orderBy('id','desc')->first());
     }
 
-    public function getBalitaTraining(){
+    public function getBalitaTraining(Request $req){
         $balita = BalitaTrainingModel::with()
         ->when($req->filled('balita_id'), function($q) use ($req){
           $q->where('balita_id', $req->balita_id);
