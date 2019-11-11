@@ -98,7 +98,7 @@ class PercentageToddlerActivity : AppCompatActivity() {
         xAxis.valueFormatter = IAxisValueFormatter { value, axis -> "" }
 
         val leftAxis = pta_barchart.axisLeft
-        leftAxis.valueFormatter = LargeValueFormatter()
+//        leftAxis.valueFormatter = LargeValueFormatter()
 //        leftAxis.setDrawGridLines(false)
         leftAxis.spaceTop = 50f
         leftAxis.axisMinimum = 0f // this replaces setStartAtZero(true)

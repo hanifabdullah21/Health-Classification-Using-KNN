@@ -6,9 +6,9 @@ import android.os.Bundle
 import android.view.MenuItem
 import com.github.mikephil.charting.animation.Easing
 import com.github.mikephil.charting.components.Legend
-import com.github.mikephil.charting.data.PieData
-import com.github.mikephil.charting.data.PieDataSet
-import com.github.mikephil.charting.data.PieEntry
+import com.github.mikephil.charting.data.*
+import com.github.mikephil.charting.formatter.IAxisValueFormatter
+import com.github.mikephil.charting.formatter.LargeValueFormatter
 import com.github.mikephil.charting.formatter.PercentFormatter
 import com.github.mikephil.charting.utils.ColorTemplate
 import com.github.mikephil.charting.utils.MPPointF
@@ -30,6 +30,79 @@ class MotherPregnantPercentageActivity : AppCompatActivity() {
 
         listClassification = intent.getParcelableArrayListExtra("listClassification")
 
+        setPiechart(listClassification)
+        setBarChart(listClassification)
+    }
+
+    private fun setBarChart(listClassification: ArrayList<MotherPregnantModel>?) {
+        val listClassificationGroup: Map<String?, List<MotherPregnantModel>> =
+            listClassification!!.groupBy { it.status }
+        val statusKurang =
+            listClassificationGroup[AppContants.STATUS_PREGNANT.STATUS_KURANG.status]?.size ?: 0
+        val statusNormal =
+            listClassificationGroup[AppContants.STATUS_PREGNANT.STATUS_NORMAL.status]?.size ?: 0
+        val statusOverweight =
+            listClassificationGroup[AppContants.STATUS_PREGNANT.STATUS_OVERWEIGHT.status]?.size ?: 0
+        val statusObesitas =
+            listClassificationGroup[AppContants.STATUS_PREGNANT.STATUS_OBESITAS.status]?.size ?: 0
+
+        val colors: ArrayList<Int> = ArrayList()
+        for (c in ColorTemplate.VORDIPLOM_COLORS)
+            colors.add(c)
+
+        //Set Data Entries
+        val entriesKurang: ArrayList<BarEntry> =
+            mutableListOf(BarEntry(0.toFloat(), statusKurang.toFloat())) as ArrayList<BarEntry>
+        val barDataSetKurang = BarDataSet(entriesKurang, "Kurang [$statusKurang]")
+        barDataSetKurang.color = colors[0]
+
+        val entriesNormal: ArrayList<BarEntry> =
+            mutableListOf(BarEntry(1.toFloat(), statusNormal.toFloat())) as ArrayList<BarEntry>
+        val barDataSetNormal = BarDataSet(entriesNormal, "Normal [$statusNormal]")
+        barDataSetNormal.color = colors[1]
+
+        val entriesOverweight: ArrayList<BarEntry> =
+            mutableListOf(BarEntry(2.toFloat(), statusOverweight.toFloat())) as ArrayList<BarEntry>
+        val barDataSetOverweight = BarDataSet(entriesOverweight, "Overweight [$statusOverweight]")
+        barDataSetOverweight.color = colors[2]
+
+        val entriesObesitas: ArrayList<BarEntry> =
+            mutableListOf(BarEntry(3.toFloat(), statusObesitas.toFloat())) as ArrayList<BarEntry>
+        val barDataSetObesitas = BarDataSet(entriesObesitas, "Obesitas [$statusObesitas]")
+        barDataSetObesitas.color = colors[3]
+
+        val barData = BarData()
+        barData.addDataSet(barDataSetKurang)
+        barData.addDataSet(barDataSetNormal)
+        barData.addDataSet(barDataSetOverweight)
+        barData.addDataSet(barDataSetObesitas)
+
+        pta_barchart.description.isEnabled = false
+        pta_barchart.setPinchZoom(false)
+        pta_barchart.setDrawBarShadow(false)
+        pta_barchart.setDrawGridBackground(false)
+
+        val xAxis = pta_barchart.getXAxis()
+        xAxis.granularity = 1f
+        xAxis.setCenterAxisLabels(true)
+//        xAxis.setDrawGridLines(false)
+        xAxis.valueFormatter = IAxisValueFormatter { value, axis -> "" }
+
+        val leftAxis = pta_barchart.axisLeft
+//        leftAxis.valueFormatter = IAxisValueFormatter { value, axis -> value.toInt().toString() }
+//        leftAxis.setDrawGridLines(false)
+        leftAxis.spaceTop = 30f
+        leftAxis.mAxisRange = 1F
+        leftAxis.axisMinimum = 0f // this replaces setStartAtZero(true)
+
+        pta_barchart.axisRight.isEnabled = false
+
+        pta_barchart.data = barData
+        pta_barchart.invalidate()
+
+    }
+
+    private fun setPiechart(listClassification: ArrayList<MotherPregnantModel>?) {
         val listClassificationGroup: Map<String?, List<MotherPregnantModel>> =
             listClassification!!.groupBy { it.status }
         val statusKurang =
