@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\BumilMasterModel;
 use App\Models\BumilClassificationModel;
 use App\Models\BumilTrainingModel;
 use App\Models\BumilTestModel;
@@ -14,6 +15,56 @@ class Bumil extends Controller{
         parent::__construct();
     }
 
+    public function getListBumil(Request $req){
+        return $this->response->success(BumilMasterModel::with('dusun','account')->get());
+    }
+
+    public function getListBumilFilter(Request $req){
+        $bumil = BumilMasterModel::when($req->filled('nama'), function($q) use ($req) {
+            $q->where('nama','like','%'.$req->nama.'%');
+        })->when($req->filled('dusun_id'), function($q) use ($req) {
+            $q->where('dusun_id', $req->dusun_id);
+        });
+        return $this->response->success($bumil->with('dusun','account')->get());
+    }
+
+    public function addBumil(Request $req){
+        $validator = Validator::make($req->all(),[
+            'nama' => 'required|string',
+            'dusun_id' => 'required|integer',
+            'tanggal_lahir' => 'required|date'
+        ]);
+
+        if($validator->fails()) return $this->response->notValidInput($validator->errors());
+
+        $req->merge(['account_id'=>$req->account->id]);
+        $bumil = BumilMasterModel::create($req->only('account_id','dusun_id','nama','tanggal_lahir'));
+        $bumil->load('dusun','account');
+        return $this->response->success($bumil);
+    }
+
+    public function updateBumil(Request $req){
+        $validator = Validator::make($req->all(),[
+            'nama' => 'required|string',
+            'dusun_id' => 'required|integer',
+            'tanggal_lahir' => 'required|date',
+            'bumil_id' => 'required|integer'
+        ]);
+
+        if($validator->fails()) return $this->response->notValidInput($validator->errors());
+
+        $bumil = BumilMasterModel::with('dusun','account')->find($req->balita_id);
+        $bumil->update($req->only('nama', 'dusun_id', 'tanggal_lahir'));
+        $bumil->load('dusun','account');
+        return $this->response->success($bumil);
+    }
+
+    public function deleteBumil(Request $req){
+        $bumil = BumilMasterModel::find($req->bumil_id);
+        $bumil->delete();
+        return $this->response->success(null);
+    }
+
     public function addBumilClassification(Request $req){
         $validator = Validator::make($req->all(),[
 
@@ -22,7 +73,7 @@ class Bumil extends Controller{
         if($validator->fails()) return $this->response->notValidInput($validator->errors());
 
         $req->merge(['account_id'=>$req->account->id]);
-        $bumilClassification = BumilClassificationModel::create($req->only('account_id','dusun_id','nama','usia_bumil','usia_kehamilan','tanggal_posyandu','berat_badan','tinggi_badan','LILA','KEK','status'));
+        $bumilClassification = BumilClassificationModel::create($req->only('account_id','dusun_id','bumil_id','nama','usia_bumil','usia_kehamilan','tanggal_posyandu','berat_badan','tinggi_badan','LILA','KEK','status'));
         return $this->response->success($bumilClassification->with('account')->orderBy('id','desc')->first());
     }
 

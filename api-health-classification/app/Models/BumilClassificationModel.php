@@ -19,4 +19,8 @@ class BumilClassificationModel extends Model{
     public function dusun(){
         return $this->belongsTo('App\Models\Dusun', 'dusun_id');
     }
+
+    public function master() {
+        return $this->belongsTo('App\Models\BumilMasterModel', 'bumil_id');
+    }
 }
