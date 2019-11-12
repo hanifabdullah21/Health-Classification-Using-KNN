@@ -53,7 +53,7 @@ class Bumil extends Controller{
 
         if($validator->fails()) return $this->response->notValidInput($validator->errors());
 
-        $bumil = BumilMasterModel::with('dusun','account')->find($req->balita_id);
+        $bumil = BumilMasterModel::with('dusun','account')->find($req->bumil_id);
         $bumil->update($req->only('nama', 'dusun_id', 'tanggal_lahir'));
         $bumil->load('dusun','account');
         return $this->response->success($bumil);
@@ -71,6 +71,11 @@ class Bumil extends Controller{
         ]);
     
         if($validator->fails()) return $this->response->notValidInput($validator->errors());
+
+        $tanggalSamaPosyandu = BumilClassificationModel::where('bumil_id', $req->bumil_id)
+          ->where('tanggal_posyandu', $req->tanggal_posyandu)->first();
+
+        if ($tanggalSamaPosyandu) return $this->response->error('sudah melakukan pemeriksaan pada tanggal '.$req->tanggal_posyandu);
 
         $req->merge(['account_id'=>$req->account->id]);
         $bumilClassification = BumilClassificationModel::create($req->only('account_id','dusun_id','bumil_id','nama','usia_bumil','usia_kehamilan','tanggal_posyandu','berat_badan','tinggi_badan','LILA','KEK','status'));
