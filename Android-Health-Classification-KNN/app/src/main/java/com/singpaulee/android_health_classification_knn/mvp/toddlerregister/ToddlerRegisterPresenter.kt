@@ -1,5 +1,6 @@
 package com.singpaulee.android_health_classification_knn.mvp.toddlerregister
 
+import android.app.AlertDialog
 import android.app.DatePickerDialog
 import android.content.Context
 import com.singpaulee.android_health_classification_knn.R
@@ -84,6 +85,7 @@ internal constructor(compositeDisposable: CompositeDisposable?, val context: Con
 
         val datePicker = DatePickerDialog(
             context,
+            AlertDialog.THEME_HOLO_DARK,
             onDatePickerListener,
             calendar.get(Calendar.YEAR),
             calendar.get(Calendar.MONTH),
