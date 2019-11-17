@@ -15,7 +15,8 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:ignore="GoogleAppIndexingWarning">
-        <activity android:name=".mvp.motherpregnantregister.MotherPregnantRegisterActivity"></activity>
+        <activity android:name=".mvp.motherpregnantlistdata.MotherPregnantListDataActivity"></activity>
+        <activity android:name=".mvp.motherpregnantregister.MotherPregnantRegisterActivity" />
         <activity
             android:name=".mvp.SplashScreenActivity"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar">

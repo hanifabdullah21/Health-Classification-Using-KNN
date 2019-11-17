@@ -1,5 +1,6 @@
 package com.singpaulee.android_health_classification_knn.connection
 
+import com.singpaulee.android_health_classification_knn.model.base.MotherPregnantModel
 import com.singpaulee.android_health_classification_knn.model.response.*
 import io.reactivex.Observable
 import retrofit2.http.*
@@ -149,6 +150,30 @@ interface ApiInterface {
         @Field("nama") nama: String?,
         @Field("tanggal_lahir") tanggalLahir: String?
     ): Observable<MotherPregnantResponseModel?>
+
+    @FormUrlEncoded
+    @POST("bumil/delete")
+    fun deleteBumil(
+        @Header("Authorization") auth: String?,
+        @Field("bumil_id") bumilId: Int?
+    ): Observable<MotherPregnantResponseModel?>
+
+    @FormUrlEncoded
+    @POST("bumil/update")
+    fun updateBumil(
+        @Header("Authorization") auth: String?,
+        @Field("dusun_id") dusunId: Int?,
+        @Field("nama") nama: String?,
+        @Field("tanggal_lahir") tanggalLahir: String?,
+        @Field("bumil_id") bumilId: Int?
+    ): Observable<MotherPregnantResponseModel?>
+
+    @GET("bumil/filter")
+    fun getListBumilFilter(
+        @Header("Authorization") auth: String?,
+        @Query("dusun_id") dusunId: Int?,
+        @Query("nama") nama: String?
+    ): Observable<MotherPregnantListResponseModel?>
 
     @GET("bumil/training")
     fun getListBumilTraining(

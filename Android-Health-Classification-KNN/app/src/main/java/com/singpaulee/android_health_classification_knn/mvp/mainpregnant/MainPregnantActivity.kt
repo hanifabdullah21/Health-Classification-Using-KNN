@@ -7,6 +7,7 @@ import androidx.appcompat.app.AppCompatActivity
 import com.singpaulee.android_health_classification_knn.R
 import com.singpaulee.android_health_classification_knn.mvp.maintoddler.ToddlerMainActivity
 import com.singpaulee.android_health_classification_knn.mvp.motherpregnantclassification.MotherPregnantClassificationActivity
+import com.singpaulee.android_health_classification_knn.mvp.motherpregnantlistdata.MotherPregnantListDataActivity
 import com.singpaulee.android_health_classification_knn.mvp.motherpregnantregister.MotherPregnantRegisterActivity
 import com.singpaulee.android_health_classification_knn.mvp.motherpregnantresultclassification.MotherPregnantResultClassificationActivity
 import kotlinx.android.synthetic.main.activity_main_pregnant.*
@@ -28,6 +29,7 @@ class MainPregnantActivity : AppCompatActivity(), MainPregnantMvpView, View.OnCl
         pma_cv_classification.setOnClickListener(this)
         pma_cv_result_classification.setOnClickListener(this)
         pma_cv_register.setOnClickListener(this)
+        pma_cv_data.setOnClickListener(this)
     }
 
     override fun moveToMotherPregnantClassification() {
@@ -40,6 +42,10 @@ class MainPregnantActivity : AppCompatActivity(), MainPregnantMvpView, View.OnCl
 
     fun moveToMotherPregnantRegister() {
         startActivity(intentFor<MotherPregnantRegisterActivity>())
+    }
+
+    private fun moveToMotherPregnantList() {
+        startActivity(intentFor<MotherPregnantListDataActivity>())
     }
 
     override fun showLoading() {
@@ -67,8 +73,10 @@ class MainPregnantActivity : AppCompatActivity(), MainPregnantMvpView, View.OnCl
             pma_cv_classification -> moveToMotherPregnantClassification()
             pma_cv_result_classification -> moveToMotherPregnantResultClassification()
             pma_cv_register -> moveToMotherPregnantRegister()
+            pma_cv_data -> moveToMotherPregnantList()
         }
     }
+
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
 //        return super.onOptionsItemSelected(item)
         when(item.itemId){
