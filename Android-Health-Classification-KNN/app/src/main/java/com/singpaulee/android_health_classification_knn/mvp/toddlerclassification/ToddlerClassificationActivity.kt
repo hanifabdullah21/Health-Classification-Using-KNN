@@ -9,6 +9,7 @@ import androidx.appcompat.app.AppCompatActivity
 import com.singpaulee.android_health_classification_knn.R
 import com.singpaulee.android_health_classification_knn.helper.HelperDate
 import com.singpaulee.android_health_classification_knn.helper.LoadingUtil
+import com.singpaulee.android_health_classification_knn.helper.sharedpref.SharedPrefManager
 import com.singpaulee.android_health_classification_knn.model.base.ToddlerModel
 import com.singpaulee.android_health_classification_knn.mvp.dialogfragment.DialogResultFragment
 import io.reactivex.disposables.CompositeDisposable
@@ -45,7 +46,7 @@ class ToddlerClassificationActivity : AppCompatActivity(), ToddlerClassification
             toddler?.weight = tca_edt_weight.text.toString().toDouble()
             toddler?.posyanduDate = HelperDate.getCurrentDateFormatDefault()
 
-            presenter.classificationToddler(toddler)
+            presenter.classificationToddler(toddler, SharedPrefManager(this@ToddlerClassificationActivity).K)
         }
     }
 

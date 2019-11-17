@@ -54,8 +54,8 @@ internal constructor(val context: Context, compositeDisposable: CompositeDisposa
         )
     }
 
-    override fun classificationMotherPregnant(motherPregnant: MotherPregnantModel?) {
-        val result = MotherPregnantKNN.doClassification(listTrainingBumil, motherPregnant, 3)
+    override fun classificationMotherPregnant(motherPregnant: MotherPregnantModel?, k:Int?) {
+        val result = MotherPregnantKNN.doClassification(listTrainingBumil, motherPregnant, k!!)
         val kek : Int = if(motherPregnant?.lILA!! < 23.5)  1 else 0
         result?.kEK = kek
 

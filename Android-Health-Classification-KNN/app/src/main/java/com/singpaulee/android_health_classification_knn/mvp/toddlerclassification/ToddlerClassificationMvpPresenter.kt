@@ -7,7 +7,7 @@ interface ToddlerClassificationMvpPresenter<V : ToddlerClassificationMvpView> : 
 
     fun getListDataTraining(gender: String?)
 
-    fun classificationToddler(toddler: ToddlerModel?)
+    fun classificationToddler(toddler: ToddlerModel?, k:Int?)
 
     fun addClassification(toddler: ToddlerModel?)
 

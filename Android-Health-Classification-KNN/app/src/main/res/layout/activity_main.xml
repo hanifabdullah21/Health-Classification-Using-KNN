@@ -29,12 +29,13 @@
         app:cardBackgroundColor="#FFF"
         app:cardCornerRadius="5dp"
         app:cardElevation="1dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
+        android:layout_marginBottom="10dp"
+        app:layout_constraintVertical_bias="0.4"
+        app:layout_constraintTop_toBottomOf="@id/main_tv_welcome"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/main_tv_welcome"
-        app:layout_constraintVertical_bias="0.247">
+        app:layout_constraintBottom_toTopOf="@id/main_cv_bumil"
+        app:layout_constraintVertical_chainStyle="packed">
 
         <TextView
             android:layout_width="match_parent"
@@ -52,12 +53,12 @@
         app:cardBackgroundColor="#FFF"
         app:cardCornerRadius="5dp"
         app:cardElevation="1dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
+        android:layout_marginBottom="10dp"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toBottomOf="@id/main_cv_balita"
-        app:layout_constraintVertical_bias="0.052">
+        app:layout_constraintBottom_toTopOf="@id/main_cv_setting"
+        app:layout_constraintVertical_chainStyle="packed">
 
         <TextView
             android:layout_width="match_parent"
@@ -69,18 +70,40 @@
     </androidx.cardview.widget.CardView>
 
     <androidx.cardview.widget.CardView
+        android:id="@+id/main_cv_setting"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        app:cardBackgroundColor="#FFF"
+        app:cardCornerRadius="5dp"
+        android:layout_marginBottom="10dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/main_cv_bumil"
+        app:layout_constraintBottom_toTopOf="@id/main_cv_logout"
+        app:layout_constraintVertical_chainStyle="packed"
+        app:cardElevation="1dp">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:gravity="center"
+            android:text="ATUR K"
+            android:textSize="18sp" />
+    </androidx.cardview.widget.CardView>
+
+    <androidx.cardview.widget.CardView
         android:id="@+id/main_cv_logout"
         android:layout_width="200dp"
         android:layout_height="wrap_content"
         app:cardBackgroundColor="#FFF"
         app:cardCornerRadius="5dp"
         app:cardElevation="1dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
+        android:layout_marginBottom="10dp"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/main_cv_bumil"
-        app:layout_constraintVertical_bias="0.073">
+        app:layout_constraintTop_toBottomOf="@id/main_cv_setting"
+        app:layout_constraintBottom_toBottomOf="parent">
 
         <TextView
             android:layout_width="match_parent"

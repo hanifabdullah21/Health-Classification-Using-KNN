@@ -8,7 +8,7 @@ interface MotherPregnantClassificationMvpPresenter<V : MotherPregnantClassificat
 
     fun getListDataTraining()
 
-    fun classificationMotherPregnant(motherPregnant: MotherPregnantModel?)
+    fun classificationMotherPregnant(motherPregnant: MotherPregnantModel?, k:Int?)
 
     fun addClassification(motherPregnant: MotherPregnantModel?)
 

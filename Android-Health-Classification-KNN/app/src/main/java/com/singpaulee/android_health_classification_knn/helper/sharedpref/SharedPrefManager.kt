@@ -10,6 +10,7 @@ class SharedPrefManager(context: Context) {
 
     private val IS_LOGGED_IN = "IS_LOGGED_IN"
     private val TOKEN_EXTRA = "TOKEN"
+    private val K_VALUE = "K_VALUE"
 
     private val preference = context.getSharedPreferences(PREFERENCE_NAME, PRIVATE_MODE)
 
@@ -23,4 +24,8 @@ class SharedPrefManager(context: Context) {
     fun setIsLoggedIn(isLoggedIn: Boolean) {
         preference.edit { putBoolean(IS_LOGGED_IN, isLoggedIn) }
     }
+
+    var K
+        get() = preference.getInt(K_VALUE, 3)
+        set(value) = preference.edit { putInt(K_VALUE, value) }
 }

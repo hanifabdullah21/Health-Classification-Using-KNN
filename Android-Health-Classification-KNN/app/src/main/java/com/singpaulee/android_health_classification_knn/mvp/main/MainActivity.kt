@@ -8,6 +8,7 @@ import com.singpaulee.android_health_classification_knn.mvp.maintoddler.ToddlerM
 import com.singpaulee.android_health_classification_knn.mvp.login.LoginActivity
 import com.singpaulee.android_health_classification_knn.mvp.mainpregnant.MainPregnantActivity
 import com.singpaulee.android_health_classification_knn.mvp.motherpregnanttraining.MotherPregnantTrainingActivity
+import com.singpaulee.android_health_classification_knn.mvp.setting.SettingActivity
 import com.singpaulee.android_health_classification_knn.mvp.toddlertraining.ToddlerTrainingActivity
 import com.singpaulee.android_health_classification_knn.mvp.village.VillageActivity
 import kotlinx.android.synthetic.main.activity_main.*
@@ -29,6 +30,7 @@ class MainActivity : AppCompatActivity(), MainMvpView, View.OnClickListener {
         main_cv_balita.setOnClickListener(this)
         main_cv_bumil.setOnClickListener(this)
         main_cv_logout.setOnClickListener(this)
+        main_cv_setting.setOnClickListener(this)
         ma_iv_toddler_training.setOnClickListener(this)
         ma_iv_toddler_test.setOnClickListener(this)
         ma_iv_pregnant_training.setOnClickListener(this)
@@ -73,6 +75,7 @@ class MainActivity : AppCompatActivity(), MainMvpView, View.OnClickListener {
         when(v){
             main_cv_balita -> moveToMainToddler()
             main_cv_bumil -> moveToMainPregnantMother()
+            main_cv_setting -> startActivity(intentFor<SettingActivity>())
             main_cv_logout -> {
                 alert("Keluar aplikasi ?") {
                     positiveButton("YA"){

@@ -9,6 +9,7 @@ import com.singpaulee.android_health_classification_knn.R
 import com.singpaulee.android_health_classification_knn.helper.AppContants
 import com.singpaulee.android_health_classification_knn.helper.HelperDate
 import com.singpaulee.android_health_classification_knn.helper.LoadingUtil
+import com.singpaulee.android_health_classification_knn.helper.sharedpref.SharedPrefManager
 import com.singpaulee.android_health_classification_knn.model.base.MotherPregnantModel
 import com.singpaulee.android_health_classification_knn.mvp.dialogfragment.DialogResultBumilFragment
 import com.singpaulee.android_health_classification_knn.mvp.main.MainActivity
@@ -66,7 +67,7 @@ class MotherPregnantClassificationActivity : AppCompatActivity(),
                 posyanduDate = HelperDate.getCurrentDateFormatDefault()
             )
 
-            presenter.classificationMotherPregnant(mother)
+            presenter.classificationMotherPregnant(mother, SharedPrefManager(this@MotherPregnantClassificationActivity).K)
         }
     }
 
