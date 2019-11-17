@@ -64,6 +64,7 @@
             style="@style/style_edittext_field"
             android:hint="Masukkan nama"
             android:imeOptions="actionNext"
+            android:enabled="false"
             android:inputType="none"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
@@ -81,8 +82,9 @@
             android:id="@+id/mpca_edt_age"
             style="@style/style_edittext_field"
             android:hint="Masukkan Umur"
+            android:enabled="false"
+            android:inputType="none"
             android:imeOptions="actionNext"
-            android:inputType="number"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintTop_toBottomOf="@id/mpca_tv_age" />
@@ -113,12 +115,16 @@
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintTop_toBottomOf="@id/mpca_edt_pregnant_age" />
 
-        <Spinner
-            android:id="@+id/mpca_spinner_village"
+        <EditText
+            android:id="@+id/mpca_edt_village"
             style="@style/style_edittext_field"
-            android:spinnerMode="dialog"
+            android:enabled="false"
+            android:hint="Masukkan dusun"
+            android:imeOptions="actionNext"
+            android:inputType="none"
+            app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/mpca_tv_village" />
+            app:layout_constraintTop_toBottomOf="@id/mpca_tv_village"  />
 
         <TextView
             android:id="@+id/mpca_tv_date_posyandu"
@@ -126,15 +132,15 @@
             android:layout_marginTop="10dp"
             android:text="Tanggal Posyandu"
             app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/mpca_spinner_village" />
+            app:layout_constraintTop_toBottomOf="@id/mpca_edt_village" />
 
         <EditText
             android:id="@+id/mpca_edt_date_posyandu"
             style="@style/style_edittext_field"
             android:enabled="false"
+            android:inputType="none"
             android:hint="Tanggal Posyandu"
             android:imeOptions="actionNext"
-            android:inputType="none"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintTop_toBottomOf="@id/mpca_tv_date_posyandu" />

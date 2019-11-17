@@ -6,19 +6,16 @@ import android.util.Log
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import com.singpaulee.android_health_classification_knn.R
-import com.singpaulee.android_health_classification_knn.adapter.SpinnerVillageAdapter
 import com.singpaulee.android_health_classification_knn.helper.AppContants
 import com.singpaulee.android_health_classification_knn.helper.HelperDate
 import com.singpaulee.android_health_classification_knn.helper.LoadingUtil
 import com.singpaulee.android_health_classification_knn.model.base.MotherPregnantModel
-import com.singpaulee.android_health_classification_knn.model.base.ToddlerModel
-import com.singpaulee.android_health_classification_knn.model.base.VillageModel
 import com.singpaulee.android_health_classification_knn.mvp.dialogfragment.DialogResultBumilFragment
-import com.singpaulee.android_health_classification_knn.mvp.dialogfragment.DialogResultFragment
+import com.singpaulee.android_health_classification_knn.mvp.main.MainActivity
 import io.reactivex.disposables.CompositeDisposable
 import kotlinx.android.synthetic.main.activity_mother_pregnant_classification.*
+import org.jetbrains.anko.intentFor
 import org.jetbrains.anko.sdk27.coroutines.onClick
-import org.jetbrains.anko.sdk27.coroutines.onItemSelectedListener
 import org.jetbrains.anko.toast
 
 class MotherPregnantClassificationActivity : AppCompatActivity(),
@@ -29,17 +26,19 @@ class MotherPregnantClassificationActivity : AppCompatActivity(),
 
     var villageId: Int? = null
 
+    var motherPregnantModel: MotherPregnantModel? = null
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_mother_pregnant_classification)
+
+        motherPregnantModel = intent.getParcelableExtra("mp")
+        initView()
 
         presenter = MotherPregnantClassificationPresenter(this, CompositeDisposable())
         presenter.onAttach(this)
 
         presenter.getListDataTraining()
-        presenter.getListVillage()
-
-        mpca_edt_date_posyandu.setText(HelperDate.getCurrentDateFormatDmy())
 
         mpca_btn_classification.onClick {
             if (!(presenter.validationInput(
@@ -56,6 +55,7 @@ class MotherPregnantClassificationActivity : AppCompatActivity(),
             }
 
             val mother = MotherPregnantModel(
+                id = motherPregnantModel?.id,
                 nama = mpca_edt_name.text.toString(),
                 usiaBumil = mpca_edt_age.text.toString().toInt(),
                 usiaKehamilan = mpca_edt_pregnant_age.text.toString().toInt(),
@@ -63,28 +63,20 @@ class MotherPregnantClassificationActivity : AppCompatActivity(),
                 tinggiBadan = mpca_edt_height.text.toString().toDouble(),
                 beratBadan = mpca_edt_weight.text.toString().toDouble(),
                 lILA = mpca_edt_lila.text.toString().toDouble(),
-                posyanduDate = HelperDate.getCurrentDateFormatDefault())
+                posyanduDate = HelperDate.getCurrentDateFormatDefault()
+            )
 
             presenter.classificationMotherPregnant(mother)
         }
     }
 
-    override fun showSpinnerVillage(adapter: SpinnerVillageAdapter) {
-        mpca_spinner_village.adapter = adapter
-        mpca_spinner_village.dropDownVerticalOffset = 120
-        mpca_spinner_village.onItemSelectedListener {
-            onItemSelected { adapterView, view, i, l ->
-                if (i == 0) {
-                    villageId = null
-                } else {
-                    val villageModel = mpca_spinner_village.getItemAtPosition(i - 1) as VillageModel
-                    villageId = villageModel.id
-                }
-            }
-            onNothingSelected {
-
-            }
-        }
+    private fun initView() {
+        mpca_edt_name.setText(motherPregnantModel?.nama.toString())
+        val age = motherPregnantModel?.umur!!/12
+        mpca_edt_age.setText(age.toString())
+        villageId = motherPregnantModel?.dusunId
+        mpca_edt_village.setText(motherPregnantModel?.dusun?.name.toString())
+        mpca_edt_date_posyandu.setText(HelperDate.getCurrentDateFormatDmy())
     }
 
     override fun showSuccessGetDataTraining(success: Boolean) {
@@ -170,6 +162,7 @@ class MotherPregnantClassificationActivity : AppCompatActivity(),
     }
 
     override fun backToMainMenu() {
-        finish()
+        finishAffinity()
+        startActivity(intentFor<MainActivity>())
     }
 }

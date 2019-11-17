@@ -21,6 +21,4 @@ interface MotherPregnantClassificationMvpPresenter<V : MotherPregnantClassificat
         weight: String?,
         LILA: String?
     ): Boolean
-
-    fun getListVillage()
 }

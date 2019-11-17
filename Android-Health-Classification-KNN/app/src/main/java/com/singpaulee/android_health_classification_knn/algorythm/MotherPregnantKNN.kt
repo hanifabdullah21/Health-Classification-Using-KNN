@@ -38,6 +38,7 @@ object MotherPregnantKNN {
         val listStatus =
             mutableListOf<StatusClassificationModel>(kurang, normal, overweight, obesitas)
         for (i in 0 until k) {
+            Log.d(TAG,"STATUS GIZI "+listAfterSorting[i].status.toString())
             when {
                 listAfterSorting[i].status.equals(AppContants.STATUS_PREGNANT.STATUS_KURANG.status) -> listStatus[0].total =
                     listStatus[0].total!! + 1

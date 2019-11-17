@@ -8,8 +8,10 @@ import com.singpaulee.android_health_classification_knn.algorythm.MotherPregnant
 import com.singpaulee.android_health_classification_knn.connection.ApiInterface
 import com.singpaulee.android_health_classification_knn.connection.NetworkConfig
 import com.singpaulee.android_health_classification_knn.helper.AppContants
+import com.singpaulee.android_health_classification_knn.helper.FailureHandling
 import com.singpaulee.android_health_classification_knn.helper.sharedpref.SharedPrefManager
 import com.singpaulee.android_health_classification_knn.model.base.MotherPregnantModel
+import com.singpaulee.android_health_classification_knn.model.response.AuthResponseModel
 import com.singpaulee.android_health_classification_knn.mvp.base.BasePresenter
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.CompositeDisposable
@@ -65,6 +67,7 @@ internal constructor(val context: Context, compositeDisposable: CompositeDisposa
         val observable = apiNetwork?.addBumilClassification(
             "Bearer $token",
             motherPregnant?.dusunId,
+            motherPregnant?.id,
             motherPregnant?.nama,
             motherPregnant?.usiaBumil,
             motherPregnant?.usiaKehamilan,
@@ -89,7 +92,8 @@ internal constructor(val context: Context, compositeDisposable: CompositeDisposa
                     }
                 }, {
                     getMvpView()?.hideLoading()
-                    getMvpView()?.onError(it.localizedMessage!!)
+                    val response : AuthResponseModel? = FailureHandling.onFailureRequestHandling(it)
+                    getMvpView()?.onError(response?.status?.message.toString())
                 })
         )
     }
@@ -134,32 +138,5 @@ internal constructor(val context: Context, compositeDisposable: CompositeDisposa
             }
             else -> return true
         }
-    }
-
-    override fun getListVillage() {
-        val observable = apiNetwork?.getListVillage("Bearer $token")
-
-        getMvpView()?.showLoading()
-        compositeDisposable?.add(
-            observable!!
-                .subscribeOn(Schedulers.newThread())
-                .observeOn(AndroidSchedulers.mainThread())
-                .subscribe({
-                    getMvpView()?.hideLoading()
-                    if (it?.statusModel?.success as Boolean) {
-                        val adapter = SpinnerVillageAdapter(
-                            context,
-                            R.layout.item_spinner_gender,
-                            it.result!!
-                        )
-                        getMvpView()?.showSpinnerVillage(adapter)
-                    } else {
-                        getMvpView()?.showMessage(it.statusModel.message.toString())
-                    }
-                }, {
-                    getMvpView()?.hideLoading()
-                    getMvpView()?.onError(it.localizedMessage!!)
-                })
-        )
     }
 }

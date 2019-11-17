@@ -10,6 +10,4 @@ interface MotherPregnantClassificationMvpView : MvpView {
 
     fun showResultClassification(pregnantMother: MotherPregnantModel?)
 
-    fun showSpinnerVillage(adapter: SpinnerVillageAdapter)
-
 }

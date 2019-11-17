@@ -214,6 +214,7 @@ interface ApiInterface {
     fun addBumilClassification(
         @Header("Authorization") auth: String?,
         @Field("dusun_id") dusunId: Int?,
+        @Field("bumil_id") bumilId: Int?,
         @Field("nama") name: String?,
         @Field("usia_bumil") usiaBumil: Int?,
         @Field("usia_kehamilan") usiaKehamilan: Int?,
