@@ -7,6 +7,7 @@ import androidx.appcompat.app.AppCompatActivity
 import com.singpaulee.android_health_classification_knn.R
 import com.singpaulee.android_health_classification_knn.mvp.maintoddler.ToddlerMainActivity
 import com.singpaulee.android_health_classification_knn.mvp.motherpregnantclassification.MotherPregnantClassificationActivity
+import com.singpaulee.android_health_classification_knn.mvp.motherpregnantregister.MotherPregnantRegisterActivity
 import com.singpaulee.android_health_classification_knn.mvp.motherpregnantresultclassification.MotherPregnantResultClassificationActivity
 import kotlinx.android.synthetic.main.activity_main_pregnant.*
 import org.jetbrains.anko.intentFor
@@ -26,6 +27,7 @@ class MainPregnantActivity : AppCompatActivity(), MainPregnantMvpView, View.OnCl
 
         pma_cv_classification.setOnClickListener(this)
         pma_cv_result_classification.setOnClickListener(this)
+        pma_cv_register.setOnClickListener(this)
     }
 
     override fun moveToMotherPregnantClassification() {
@@ -34,6 +36,10 @@ class MainPregnantActivity : AppCompatActivity(), MainPregnantMvpView, View.OnCl
 
     override fun moveToMotherPregnantResultClassification() {
         startActivity(intentFor<MotherPregnantResultClassificationActivity>())
+    }
+
+    fun moveToMotherPregnantRegister() {
+        startActivity(intentFor<MotherPregnantRegisterActivity>())
     }
 
     override fun showLoading() {
@@ -60,6 +66,7 @@ class MainPregnantActivity : AppCompatActivity(), MainPregnantMvpView, View.OnCl
         when (v) {
             pma_cv_classification -> moveToMotherPregnantClassification()
             pma_cv_result_classification -> moveToMotherPregnantResultClassification()
+            pma_cv_register -> moveToMotherPregnantRegister()
         }
     }
     override fun onOptionsItemSelected(item: MenuItem): Boolean {

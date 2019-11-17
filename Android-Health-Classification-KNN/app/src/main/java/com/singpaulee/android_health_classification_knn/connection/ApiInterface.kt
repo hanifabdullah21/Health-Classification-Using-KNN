@@ -141,6 +141,15 @@ interface ApiInterface {
 
     /* **************************************** BUMIL *******************************************/
 
+    @FormUrlEncoded
+    @POST("bumil")
+    fun addNewBumil(
+        @Header("Authorization") auth: String?,
+        @Field("dusun_id") dusunId: Int?,
+        @Field("nama") nama: String?,
+        @Field("tanggal_lahir") tanggalLahir: String?
+    ): Observable<MotherPregnantResponseModel?>
+
     @GET("bumil/training")
     fun getListBumilTraining(
         @Header("Authorization") auth: String?
