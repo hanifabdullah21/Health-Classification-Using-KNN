@@ -11,7 +11,9 @@ import com.singpaulee.android_health_classification_knn.mvp.motherpregnanttraini
 import com.singpaulee.android_health_classification_knn.mvp.toddlertraining.ToddlerTrainingActivity
 import com.singpaulee.android_health_classification_knn.mvp.village.VillageActivity
 import kotlinx.android.synthetic.main.activity_main.*
+import org.jetbrains.anko.alert
 import org.jetbrains.anko.intentFor
+import org.jetbrains.anko.yesButton
 
 class MainActivity : AppCompatActivity(), MainMvpView, View.OnClickListener {
 
@@ -71,7 +73,16 @@ class MainActivity : AppCompatActivity(), MainMvpView, View.OnClickListener {
         when(v){
             main_cv_balita -> moveToMainToddler()
             main_cv_bumil -> moveToMainPregnantMother()
-            main_cv_logout -> presenter.deleteAllSession()
+            main_cv_logout -> {
+                alert("Keluar aplikasi ?") {
+                    positiveButton("YA"){
+                        presenter.deleteAllSession()
+                    }
+                    negativeButton("TIDAK"){
+                        it.dismiss()
+                    }
+                }.show()
+            }
             ma_iv_toddler_training -> startActivity(intentFor<ToddlerTrainingActivity>("BALITA" to "TRAINING"))
             ma_iv_toddler_test -> startActivity(intentFor<ToddlerTrainingActivity>("BALITA" to "TEST"))
             ma_iv_pregnant_training -> startActivity(intentFor<MotherPregnantTrainingActivity>("PREGNANT" to "TRAINING"))

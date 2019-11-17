@@ -16,6 +16,7 @@ import com.singpaulee.android_health_classification_knn.model.base.VillageModel
 import com.singpaulee.android_health_classification_knn.mvp.toddlerupdate.ToddlerUpdateActivity
 import io.reactivex.disposables.CompositeDisposable
 import kotlinx.android.synthetic.main.activity_toddler_list_data.*
+import org.jetbrains.anko.alert
 import org.jetbrains.anko.intentFor
 import org.jetbrains.anko.sdk27.coroutines.onItemSelectedListener
 import org.jetbrains.anko.toast
@@ -116,7 +117,14 @@ class ToddlerListDataActivity : AppCompatActivity(), ToddlerListDataMvpView, Vie
     }
 
     override fun onDeleteClickListener(toddlerId: Int?) {
-        presenter.deleteToddlerData(toddlerId)
+        alert("Hapus Data Balita ?") {
+            positiveButton("HAPUS"){
+                presenter.deleteToddlerData(toddlerId)
+            }
+            negativeButton("BATAL"){
+                it.dismiss()
+            }
+        }.show()
     }
 
     override fun onItemClickListener(toddler: ToddlerModel?) {
