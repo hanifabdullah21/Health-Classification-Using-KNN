@@ -7,6 +7,7 @@ import androidx.appcompat.app.AppCompatActivity
 import com.singpaulee.android_health_classification_knn.R
 import com.singpaulee.android_health_classification_knn.mvp.maintoddler.ToddlerMainActivity
 import com.singpaulee.android_health_classification_knn.mvp.motherpregnantclassification.MotherPregnantClassificationActivity
+import com.singpaulee.android_health_classification_knn.mvp.motherpregnantlistbeoreclassification.MotherPregnantListBeforeClassificationActivity
 import com.singpaulee.android_health_classification_knn.mvp.motherpregnantlistdata.MotherPregnantListDataActivity
 import com.singpaulee.android_health_classification_knn.mvp.motherpregnantregister.MotherPregnantRegisterActivity
 import com.singpaulee.android_health_classification_knn.mvp.motherpregnantresultclassification.MotherPregnantResultClassificationActivity
@@ -33,7 +34,7 @@ class MainPregnantActivity : AppCompatActivity(), MainPregnantMvpView, View.OnCl
     }
 
     override fun moveToMotherPregnantClassification() {
-        startActivity(intentFor<MotherPregnantClassificationActivity>())
+        startActivity(intentFor<MotherPregnantListBeforeClassificationActivity>())
     }
 
     override fun moveToMotherPregnantResultClassification() {
