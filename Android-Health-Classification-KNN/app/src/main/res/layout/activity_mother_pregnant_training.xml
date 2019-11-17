@@ -108,7 +108,7 @@
         android:id="@+id/mpta_tv_status"
         style="@style/title_edittext"
         android:layout_marginTop="10dp"
-        android:text="Status"
+        android:text="Status Gizi"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintTop_toBottomOf="@id/mpta_edt_height" />
 

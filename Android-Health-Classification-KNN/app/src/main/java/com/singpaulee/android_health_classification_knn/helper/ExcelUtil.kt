@@ -13,7 +13,7 @@ class ExcelUtil {
     val AGE = "Umur"
     val WEIGHT = "Berat Badan"
     val HEIGHT = "Tinggi Badan"
-    val STATUS = "Status"
+    val STATUS = "Status Gizi"
 
     val USIA_BUMIL = "Usia Bumil"
     val USIA_KEHAMILAN = "Usia Kehamilan"
