@@ -30,7 +30,7 @@ class MainActivity : AppCompatActivity(), MainMvpView, View.OnClickListener {
         main_cv_balita.setOnClickListener(this)
         main_cv_bumil.setOnClickListener(this)
         main_cv_logout.setOnClickListener(this)
-        main_cv_setting.setOnClickListener(this)
+        ma_cv_setting.setOnClickListener(this)
         ma_iv_toddler_training.setOnClickListener(this)
         ma_iv_toddler_test.setOnClickListener(this)
         ma_iv_pregnant_training.setOnClickListener(this)
@@ -75,7 +75,7 @@ class MainActivity : AppCompatActivity(), MainMvpView, View.OnClickListener {
         when(v){
             main_cv_balita -> moveToMainToddler()
             main_cv_bumil -> moveToMainPregnantMother()
-            main_cv_setting -> startActivity(intentFor<SettingActivity>())
+            ma_cv_setting -> startActivity(intentFor<SettingActivity>())
             main_cv_logout -> {
                 alert("Keluar aplikasi ?") {
                     positiveButton("YA"){
