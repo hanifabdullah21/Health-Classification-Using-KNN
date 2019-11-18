@@ -148,7 +148,8 @@ interface ApiInterface {
         @Header("Authorization") auth: String?,
         @Field("dusun_id") dusunId: Int?,
         @Field("nama") nama: String?,
-        @Field("tanggal_lahir") tanggalLahir: String?
+        @Field("tanggal_lahir") tanggalLahir: String?,
+        @Field("tanggal_kehamilan") tanggalHamil: String?
     ): Observable<MotherPregnantResponseModel?>
 
     @FormUrlEncoded

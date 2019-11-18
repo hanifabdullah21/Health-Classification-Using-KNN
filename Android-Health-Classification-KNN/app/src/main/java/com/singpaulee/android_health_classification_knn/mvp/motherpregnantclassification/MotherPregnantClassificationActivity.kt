@@ -75,6 +75,7 @@ class MotherPregnantClassificationActivity : AppCompatActivity(),
         mpca_edt_name.setText(motherPregnantModel?.nama.toString())
         val age = motherPregnantModel?.umur!!/12
         mpca_edt_age.setText(age.toString())
+        mpca_edt_pregnant_age.setText(motherPregnantModel?.umurKehamilan.toString())
         villageId = motherPregnantModel?.dusunId
         mpca_edt_village.setText(motherPregnantModel?.dusun?.name.toString())
         mpca_edt_date_posyandu.setText(HelperDate.getCurrentDateFormatDmy())

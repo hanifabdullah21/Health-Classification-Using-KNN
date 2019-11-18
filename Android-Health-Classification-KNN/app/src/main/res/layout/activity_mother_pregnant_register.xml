@@ -50,12 +50,31 @@
             app:layout_constraintTop_toBottomOf="@id/mpra_tv_born_date" />
 
         <TextView
+            android:id="@+id/mpra_tv_pregnant_date"
+            style="@style/title_edittext"
+            android:layout_marginTop="10dp"
+            android:text="Tanggal Hamil"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/mpra_edt_born_date" />
+
+        <com.singpaulee.android_health_classification_knn.helper.customview.CustomEdittext
+            android:id="@+id/mpra_edt_pregnant_date"
+            style="@style/style_edittext_field"
+            android:drawableRight="@drawable/ic_calendar"
+            android:enabled="false"
+            android:hint="Pilih tanggal hamil"
+            android:imeOptions="actionNext"
+            android:inputType="text"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/mpra_tv_pregnant_date" />
+
+        <TextView
             android:id="@+id/mpra_tv_village"
             style="@style/title_edittext"
             android:layout_marginTop="10dp"
             android:text="Dusun"
             app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/mpra_edt_born_date" />
+            app:layout_constraintTop_toBottomOf="@id/mpra_edt_pregnant_date" />
 
         <Spinner
             android:id="@+id/mpra_spinner_village"

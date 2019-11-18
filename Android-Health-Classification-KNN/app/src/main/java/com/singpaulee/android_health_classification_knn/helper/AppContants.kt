@@ -12,6 +12,7 @@ object AppContants {
     internal val FALSE_CONFIRM_PASSWORD = 1008
     internal val EMPTY_GENDER = 1009
     internal val EMPTY_BORN_DATE = 1010
+    internal val EMPTY_PREGNANT_DATE = 10101
     internal val EMPTY_VILLAGE = 1011
     internal val EMPTY_HEIGHT = 1012
     internal val EMPTY_WEIGHT = 1013

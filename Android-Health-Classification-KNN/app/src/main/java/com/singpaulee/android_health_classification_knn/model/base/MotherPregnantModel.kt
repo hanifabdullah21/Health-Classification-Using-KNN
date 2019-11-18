@@ -55,6 +55,9 @@ data class MotherPregnantModel(
     @field:SerializedName("umur")
     val umur: Int? = null,
 
+    @field:SerializedName("umur_kehamilan")
+    val umurKehamilan: Int? = null,
+
     @field:SerializedName("distance")
     var distance: Double? = null
 ) : Parcelable

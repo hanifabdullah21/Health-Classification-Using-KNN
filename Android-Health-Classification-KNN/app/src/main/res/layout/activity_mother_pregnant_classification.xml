@@ -74,7 +74,7 @@
             android:id="@+id/mpca_tv_age"
             style="@style/title_edittext"
             android:layout_marginTop="10dp"
-            android:text="Umur"
+            android:text="Umur (tahun)"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintTop_toBottomOf="@id/mpca_edt_name" />
 
@@ -93,7 +93,7 @@
             android:id="@+id/mpca_tv_pregnant_age"
             style="@style/title_edittext"
             android:layout_marginTop="10dp"
-            android:text="Usia Kehamilan"
+            android:text="Usia Kehamilan (bulan)"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintTop_toBottomOf="@id/mpca_edt_age" />
 
@@ -102,7 +102,8 @@
             style="@style/style_edittext_field"
             android:hint="Masukkan Usia Kehamilan"
             android:imeOptions="actionNext"
-            android:inputType="number"
+            android:enabled="false"
+            android:inputType="none"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintTop_toBottomOf="@id/mpca_tv_pregnant_age" />

@@ -50,10 +50,17 @@ class MotherPregnantRegisterActivity : AppCompatActivity() {
             }
         })
 
+        mpra_edt_pregnant_date.setDrawableClickListener(object : DrawableClickListener {
+            override fun onClick(target: DrawableClickListener.DrawablePosition) {
+                setPregnantDatePickerDialog()
+            }
+        })
+
         mpra_btn_submit.onClick {
             submitNewDataBumil(
                 mpra_edt_name.text.toString(),
                 mpra_edt_born_date.text.toString(),
+                mpra_edt_pregnant_date.text.toString(),
                 villageId
             )
         }
@@ -62,9 +69,10 @@ class MotherPregnantRegisterActivity : AppCompatActivity() {
     fun submitNewDataBumil(
         name: String?,
         bornDate: String?,
+        pregnantDate: String?,
         villageId: Int?
     ) {
-        if (!validationNewDataBumil(name, bornDate, villageId)) {
+        if (!validationNewDataBumil(name, bornDate, pregnantDate, villageId)) {
             return
         }
 
@@ -77,9 +85,16 @@ class MotherPregnantRegisterActivity : AppCompatActivity() {
             Locale(HelperDate.LOCALE_IN, HelperDate.LOCALE_ID)
         )
         val convertDate = sdf.format(sdf2.parse(bornDate.toString())!!)
+        val convertPregnantDate = sdf.format(sdf2.parse(pregnantDate.toString())!!)
 
         val observable =
-            apiNetwork?.addNewBumil("Bearer $token", villageId, name, convertDate)
+            apiNetwork?.addNewBumil(
+                "Bearer $token",
+                villageId,
+                name,
+                convertDate,
+                convertPregnantDate
+            )
 
         showLoading()
         CompositeDisposable().add(
@@ -102,6 +117,7 @@ class MotherPregnantRegisterActivity : AppCompatActivity() {
     fun validationNewDataBumil(
         name: String?,
         bornDate: String?,
+        pregnantDate: String?,
         villageId: Int?
     ): Boolean {
         if (name == null || name.toString().isBlank() || name.toString().isEmpty()) {
@@ -109,6 +125,9 @@ class MotherPregnantRegisterActivity : AppCompatActivity() {
             return false
         } else if (bornDate == null || bornDate.toString().isBlank() || bornDate.toString().isEmpty()) {
             showValidationError(AppContants.EMPTY_BORN_DATE)
+            return false
+        } else if (pregnantDate == null || pregnantDate.toString().isBlank() || pregnantDate.toString().isEmpty()) {
+            showValidationError(AppContants.EMPTY_PREGNANT_DATE)
             return false
         } else if (villageId == null || villageId.toString().isBlank() || villageId.toString().isEmpty()) {
             showValidationError(AppContants.EMPTY_VILLAGE)
@@ -125,6 +144,7 @@ class MotherPregnantRegisterActivity : AppCompatActivity() {
             }
             AppContants.EMPTY_GENDER -> toast("Silahkan Pilih Jenis Kelamin")
             AppContants.EMPTY_BORN_DATE -> toast("Silahkan pilih tanggal lahir")
+            AppContants.EMPTY_PREGNANT_DATE -> toast("Silahkan pilih tanggal hamil")
             AppContants.EMPTY_VILLAGE -> toast("Silahkan Pilih Desa")
         }
     }
@@ -133,6 +153,7 @@ class MotherPregnantRegisterActivity : AppCompatActivity() {
         toast("Data bumil berhasil ditambahkan")
         mpra_edt_name.text = null
         mpra_edt_born_date.text = null
+        mpra_edt_pregnant_date.text = null
         mpra_spinner_village.setSelection(0)
     }
 
@@ -190,12 +211,43 @@ class MotherPregnantRegisterActivity : AppCompatActivity() {
         onShowDatePicker(datePicker)
     }
 
+    fun setPregnantDatePickerDialog() {
+        Locale.setDefault(Locale(HelperDate.LOCALE_IN, HelperDate.LOCALE_ID))
+        val calendar = Calendar.getInstance()
+
+        val onDatePickerListener =
+            DatePickerDialog.OnDateSetListener { _, year, month, dayOfMonth ->
+                val sdf = SimpleDateFormat(
+                    HelperDate.SIMPLE_DATE_FORMAT_DMY,
+                    Locale(HelperDate.LOCALE_IN, HelperDate.LOCALE_ID)
+                )
+                calendar.set(Calendar.YEAR, year)
+                calendar.set(Calendar.MONTH, month)
+                calendar.set(Calendar.DAY_OF_MONTH, dayOfMonth)
+                onShowSelectedPregnantDate(sdf.format(calendar.time))
+            }
+
+        val datePicker = DatePickerDialog(
+            this,
+            AlertDialog.THEME_HOLO_DARK,
+            onDatePickerListener,
+            calendar.get(Calendar.YEAR),
+            calendar.get(Calendar.MONTH),
+            calendar.get(Calendar.DAY_OF_MONTH)
+        )
+        onShowDatePicker(datePicker)
+    }
+
     fun onShowDatePicker(datePickerDialog: DatePickerDialog) {
         datePickerDialog.show()
     }
 
     fun onShowSelectedDate(date: String) {
         mpra_edt_born_date.setText(date)
+    }
+
+    fun onShowSelectedPregnantDate(date: String) {
+        mpra_edt_pregnant_date.setText(date)
     }
 
     fun showLoading() {
