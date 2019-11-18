@@ -19,6 +19,7 @@ class CreateTableBumilMaster extends Migration
             $table->unsignedBigInteger('dusun_id')->nullable();
             $table->string('nama');
             $table->date('tanggal_lahir');
+            $table->date('tanggal_kehamilan');
             $table->timestamps();
 
             $table->foreign('account_id')->references('id')->on('accounts')->onDelete('set null')->onUpdate('cascade');

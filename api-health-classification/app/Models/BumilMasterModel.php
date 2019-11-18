@@ -13,7 +13,7 @@ class BumilMasterModel extends Model{
     protected $hidden = [];
 
     protected $appends = [
-        'umur'
+        'umur_kehamilan'
     ];
 
     public function account(){
@@ -28,8 +28,8 @@ class BumilMasterModel extends Model{
         return $this->hasMany('App\Models\BumilClassificationModel', 'bumil_id');
     }
 
-    public function getUmurAttribute() {
-        $tgl_lahir = new Carbon($this->tanggal_lahir);
+    public function getUmurKehamilanAttribute() {
+        $tgl_lahir = new Carbon($this->tanggal_kehamilan);
         return $tgl_lahir->diffInMonths(Carbon::today());
     }
 }

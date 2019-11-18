@@ -32,13 +32,14 @@ class Bumil extends Controller{
         $validator = Validator::make($req->all(),[
             'nama' => 'required|string',
             'dusun_id' => 'required|integer',
-            'tanggal_lahir' => 'required|date'
+            'tanggal_lahir' => 'required|date',
+            'tanggal_kehamilan' => 'required|date'
         ]);
 
         if($validator->fails()) return $this->response->notValidInput($validator->errors());
 
         $req->merge(['account_id'=>$req->account->id]);
-        $bumil = BumilMasterModel::create($req->only('account_id','dusun_id','nama','tanggal_lahir'));
+        $bumil = BumilMasterModel::create($req->only('account_id','dusun_id','nama','tanggal_lahir','tanggal_kehamilan'));
         $bumil->load('dusun','account');
         return $this->response->success($bumil);
     }
@@ -48,13 +49,14 @@ class Bumil extends Controller{
             'nama' => 'required|string',
             'dusun_id' => 'required|integer',
             'tanggal_lahir' => 'required|date',
+            'tanggal_kehamilan' => 'required|date',
             'bumil_id' => 'required|integer'
         ]);
 
         if($validator->fails()) return $this->response->notValidInput($validator->errors());
 
         $bumil = BumilMasterModel::with('dusun','account')->find($req->bumil_id);
-        $bumil->update($req->only('nama', 'dusun_id', 'tanggal_lahir'));
+        $bumil->update($req->only('nama', 'dusun_id', 'tanggal_lahir','tanggal_kehamilan'));
         $bumil->load('dusun','account');
         return $this->response->success($bumil);
     }
