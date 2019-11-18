@@ -14,7 +14,7 @@ class BumilMasterModel extends Model{
 
     protected $appends = [
         'umur_kehamilan',
-        'usia'
+        'umur'
     ];
 
     public function account(){
