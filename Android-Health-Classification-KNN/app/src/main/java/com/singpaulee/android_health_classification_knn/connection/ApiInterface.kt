@@ -166,6 +166,7 @@ interface ApiInterface {
         @Field("dusun_id") dusunId: Int?,
         @Field("nama") nama: String?,
         @Field("tanggal_lahir") tanggalLahir: String?,
+        @Field("tanggal_kehamilan") tanggalHamil: String?,
         @Field("bumil_id") bumilId: Int?
     ): Observable<MotherPregnantResponseModel?>
 

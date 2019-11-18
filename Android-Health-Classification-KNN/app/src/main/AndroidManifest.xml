@@ -15,7 +15,8 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:ignore="GoogleAppIndexingWarning">
-        <activity android:name=".mvp.setting.SettingActivity"></activity>
+        <activity android:name=".mvp.motherpregnantupdate.MotherPregnantUpdateActivity"></activity>
+        <activity android:name=".mvp.setting.SettingActivity" />
         <activity android:name=".mvp.motherpregnantlistbeoreclassification.MotherPregnantListBeforeClassificationActivity" />
         <activity android:name=".mvp.motherpregnantlistdata.MotherPregnantListDataActivity" />
         <activity android:name=".mvp.motherpregnantregister.MotherPregnantRegisterActivity" />

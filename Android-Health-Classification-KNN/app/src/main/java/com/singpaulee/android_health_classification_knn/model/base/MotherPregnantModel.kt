@@ -10,6 +10,12 @@ data class MotherPregnantModel(
     @field:SerializedName("tanggal_posyandu")
     var posyanduDate: String? = null,
 
+    @field:SerializedName("tanggal_lahir")
+    var bornDate: String? = null,
+
+    @field:SerializedName("tanggal_kehamilan")
+    var pregnantDate: String? = null,
+
     @field:SerializedName("dusun")
     var dusun: VillageModel? = null,
 

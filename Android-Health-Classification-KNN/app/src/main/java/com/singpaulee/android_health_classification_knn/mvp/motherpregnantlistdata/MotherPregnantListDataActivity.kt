@@ -13,9 +13,11 @@ import com.singpaulee.android_health_classification_knn.eventlistener.MotherPreg
 import com.singpaulee.android_health_classification_knn.helper.LoadingUtil
 import com.singpaulee.android_health_classification_knn.model.base.MotherPregnantModel
 import com.singpaulee.android_health_classification_knn.model.base.VillageModel
+import com.singpaulee.android_health_classification_knn.mvp.motherpregnantupdate.MotherPregnantUpdateActivity
 import io.reactivex.disposables.CompositeDisposable
 import kotlinx.android.synthetic.main.activity_mother_pregnant_list_data.*
 import org.jetbrains.anko.alert
+import org.jetbrains.anko.intentFor
 import org.jetbrains.anko.sdk27.coroutines.onItemSelectedListener
 import org.jetbrains.anko.toast
 
@@ -112,7 +114,7 @@ class MotherPregnantListDataActivity : AppCompatActivity(), MotherPregnantListDa
     }
 
     override fun onEditClickListener(mp: MotherPregnantModel?) {
-//        startActivity(intentFor<ToddlerUpdateActivity>("TODDLER" to toddler))
+        startActivity(intentFor<MotherPregnantUpdateActivity>("MP" to mp))
     }
 
     override fun onDeleteClickListener(mpId: Int?) {
