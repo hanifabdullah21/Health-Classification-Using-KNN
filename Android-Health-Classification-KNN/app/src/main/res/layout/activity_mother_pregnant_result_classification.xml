@@ -25,6 +25,7 @@
         android:layout_marginRight="10dp"
         android:drawableLeft="@drawable/ic_search"
         android:drawablePadding="10dp"
+        android:visibility="invisible"
         android:enabled="false"
         android:hint="Cari"
         app:layout_constraintLeft_toLeftOf="parent"
@@ -35,7 +36,7 @@
         android:id="@+id/mprca_group_search"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:constraint_referenced_ids="mprca_btn_filter,mprca_edt_search" />
+        app:constraint_referenced_ids="mprca_btn_filter" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/mprca_rv_result"

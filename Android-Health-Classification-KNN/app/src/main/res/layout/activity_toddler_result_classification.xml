@@ -27,6 +27,7 @@
         android:drawablePadding="10dp"
         android:enabled="false"
         android:hint="Cari"
+        android:visibility="invisible"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toLeftOf="@id/trca_btn_filter"
         app:layout_constraintTop_toTopOf="parent" />
@@ -35,7 +36,7 @@
         android:id="@+id/trca_group_search"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:constraint_referenced_ids="trca_btn_filter,trca_edt_search" />
+        app:constraint_referenced_ids="trca_btn_filter" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/trca_rv_result"
