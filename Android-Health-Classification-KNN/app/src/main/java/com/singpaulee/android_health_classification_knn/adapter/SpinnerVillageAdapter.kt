@@ -22,7 +22,7 @@ class SpinnerVillageAdapter(
     override fun getView(position: Int, convertView: View?, parent: ViewGroup): View {
         val customView = LayoutInflater.from(context).inflate(layoutResource, null)
         if (position == 0){
-            customView.isg_gender_name.text = "Silahkan pilih desa"
+            customView.isg_gender_name.text = "Silahkan pilih dusun"
         }else{
             customView.isg_gender_name.text = listVillage[position-1].name
         }

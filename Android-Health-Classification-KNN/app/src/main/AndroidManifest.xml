@@ -15,11 +15,27 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:ignore="GoogleAppIndexingWarning">
-        <activity android:name=".mvp.motherpregnantupdate.MotherPregnantUpdateActivity"></activity>
-        <activity android:name=".mvp.setting.SettingActivity" />
-        <activity android:name=".mvp.motherpregnantlistbeoreclassification.MotherPregnantListBeforeClassificationActivity" />
-        <activity android:name=".mvp.motherpregnantlistdata.MotherPregnantListDataActivity" />
-        <activity android:name=".mvp.motherpregnantregister.MotherPregnantRegisterActivity" />
+        <activity android:name=".mvp.motherpregnantupdate.MotherPregnantUpdateActivity"
+            android:label="EDIT DATA BUMIL"
+            android:windowSoftInputMode="adjustResize">
+
+        </activity>
+        <activity
+            android:name=".mvp.setting.SettingActivity"
+            android:label="MASUKKAN NILAI K"
+            android:windowSoftInputMode="adjustResize"/>
+        <activity
+            android:name=".mvp.motherpregnantlistbeoreclassification.MotherPregnantListBeforeClassificationActivity"
+            android:label="PILIH IBU HAMIL"
+            android:windowSoftInputMode="adjustResize" />
+        <activity
+            android:name=".mvp.motherpregnantlistdata.MotherPregnantListDataActivity"
+            android:label="DATA IBU HAMIL"
+            android:windowSoftInputMode="adjustResize" />
+        <activity
+            android:name=".mvp.motherpregnantregister.MotherPregnantRegisterActivity"
+            android:label="DAFTARKAN IBU HAMIL"
+            android:windowSoftInputMode="adjustResize" />
         <activity
             android:name=".mvp.SplashScreenActivity"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar">
@@ -29,23 +45,58 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".mvp.toddlerupdate.ToddlerUpdateActivity" />
-        <activity android:name=".mvp.motherpregnanttraining.MotherPregnantTrainingActivity" />
-        <activity android:name=".mvp.village.VillageActivity" />
-        <activity android:name=".mvp.toddlertraining.ToddlerTrainingActivity" />
-        <activity android:name=".mvp.motherpregnantpercentage.MotherPregnantPercentageActivity" />
-        <activity android:name=".mvp.motherpregnantresultclassification.MotherPregnantResultClassificationActivity" />
-        <activity android:name=".mvp.motherpregnantclassification.MotherPregnantClassificationActivity" />
-        <activity android:name=".mvp.mainpregnant.MainPregnantActivity" />
-        <activity android:name=".mvp.toddlerrpercentage.PercentageToddlerActivity" />
+        <activity
+            android:name=".mvp.toddlerupdate.ToddlerUpdateActivity"
+            android:label="EDIT DATA BALITA"
+            android:windowSoftInputMode="adjustResize" />
+        <activity
+            android:name=".mvp.motherpregnanttraining.MotherPregnantTrainingActivity"
+            android:label="DATA LATIH/UJI IBU HAMIL"
+            android:windowSoftInputMode="adjustResize" />
+        <activity
+            android:name=".mvp.village.VillageActivity"
+            android:label="DUSUN"
+            android:windowSoftInputMode="adjustResize" />
+        <activity
+            android:name=".mvp.toddlertraining.ToddlerTrainingActivity"
+            android:label="DATA LATIH/UJI BALITA"
+            android:windowSoftInputMode="adjustResize" />
+        <activity
+            android:name=".mvp.motherpregnantpercentage.MotherPregnantPercentageActivity"
+            android:label="DIAGRAM JUMLAH BUMIL"
+            android:windowSoftInputMode="adjustResize" />
+        <activity
+            android:name=".mvp.motherpregnantresultclassification.MotherPregnantResultClassificationActivity"
+            android:label="HASIL KLASIFIKASI BUMIL"
+            android:windowSoftInputMode="adjustResize" />
+        <activity
+            android:name=".mvp.motherpregnantclassification.MotherPregnantClassificationActivity"
+            android:label="KLASIFIKASI IBU HAMIL"
+            android:windowSoftInputMode="adjustResize" />
+        <activity
+            android:name=".mvp.mainpregnant.MainPregnantActivity"
+            android:label="IBU HAMIL"
+            android:windowSoftInputMode="adjustResize" />
+        <activity
+            android:name=".mvp.toddlerrpercentage.PercentageToddlerActivity"
+            android:label="DIAGRAM JUMLAH BALITA"
+            android:windowSoftInputMode="adjustResize" />
         <activity
             android:name=".mvp.toddlerresultclassification.ToddlerResultClassificationActivity"
+            android:label="HASIL KLASIFIKASI BALITA"
             android:windowSoftInputMode="adjustResize" />
         <activity
             android:name=".mvp.toddlerclassification.ToddlerClassificationActivity"
+            android:label="KLASIFIKASI BALITA"
             android:windowSoftInputMode="adjustResize" />
-        <activity android:name=".mvp.toddlerlistbeforeclassification.ToddlerListBeforeClassificationActivity" />
-        <activity android:name=".mvp.toddlerlistdata.ToddlerListDataActivity" />
+        <activity
+            android:name=".mvp.toddlerlistbeforeclassification.ToddlerListBeforeClassificationActivity"
+            android:label="PILIH BALITA"
+            android:windowSoftInputMode="adjustResize" />
+        <activity
+            android:name=".mvp.toddlerlistdata.ToddlerListDataActivity"
+            android:label="DATA BALITA"
+            android:windowSoftInputMode="adjustResize" />
         <activity
             android:name=".mvp.toddlerregister.ToddlerRegisterActivity"
             android:label="DAFTARKAN BALITA"

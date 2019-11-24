@@ -58,7 +58,7 @@
         android:background="@drawable/selector_button"
         android:paddingLeft="10dp"
         android:paddingRight="10dp"
-        android:text="Lihat Presentase Data"
+        android:text="JUMLAH DATA"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toRightOf="@id/mprca_btn_print_to_excel"
         app:layout_constraintRight_toRightOf="parent" />
@@ -71,7 +71,7 @@
         android:background="@drawable/selector_button"
         android:paddingLeft="10dp"
         android:paddingRight="10dp"
-        android:text="Cetak ke excel"
+        android:text="UNDUH DATA"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toLeftOf="@id/mprca_btn_presentase" />
@@ -99,7 +99,7 @@
         android:id="@+id/mprca_tv_empty_list"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Tidak Ada Data Balita"
+        android:text="Tidak Ada Data"
         android:textSize="18sp"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
