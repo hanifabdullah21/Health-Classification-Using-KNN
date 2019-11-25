@@ -15,11 +15,13 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:ignore="GoogleAppIndexingWarning">
-        <activity android:name=".mvp.motherpregnantupdate.MotherPregnantUpdateActivity"
-            android:label="EDIT DATA BUMIL"
-            android:windowSoftInputMode="adjustResize">
-
-        </activity>
+        <activity android:name=".mvp.motherpregnantaccurate.MotherPregnantAccurateActivity"></activity>
+        <activity android:name=".mvp.toddleraccurate.ToddlerAccurateActivity" />
+        <activity android:name=".mvp.motherpregnantupdate.MotherPregnantUpdateActivity" />
+        <activity android:name=".mvp.setting.SettingActivity" />
+        <activity android:name=".mvp.motherpregnantlistbeoreclassification.MotherPregnantListBeforeClassificationActivity" />
+        <activity android:name=".mvp.motherpregnantlistdata.MotherPregnantListDataActivity" />
+        <activity android:name=".mvp.motherpregnantregister.MotherPregnantRegisterActivity" />
         <activity
             android:name=".mvp.setting.SettingActivity"
             android:label="MASUKKAN NILAI K"

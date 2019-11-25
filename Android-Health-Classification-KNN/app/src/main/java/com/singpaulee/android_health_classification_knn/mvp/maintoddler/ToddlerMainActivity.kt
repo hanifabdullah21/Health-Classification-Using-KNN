@@ -5,6 +5,7 @@ import android.view.MenuItem
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import com.singpaulee.android_health_classification_knn.R
+import com.singpaulee.android_health_classification_knn.mvp.toddleraccurate.ToddlerAccurateActivity
 import com.singpaulee.android_health_classification_knn.mvp.toddlerlistbeforeclassification.ToddlerListBeforeClassificationActivity
 import com.singpaulee.android_health_classification_knn.mvp.toddlerlistdata.ToddlerListDataActivity
 import com.singpaulee.android_health_classification_knn.mvp.toddlerregister.ToddlerRegisterActivity
@@ -29,6 +30,11 @@ class ToddlerMainActivity : AppCompatActivity(), MainToddlerMvpView, View.OnClic
         tma_cv_list_data.setOnClickListener(this)
         tma_cv_classification.setOnClickListener(this)
         tma_cv_result_classification.setOnClickListener(this)
+        tma_iv_test.setOnClickListener(this)
+    }
+
+    fun moveToToddlerTest(){
+        startActivity(intentFor<ToddlerAccurateActivity>())
     }
 
     override fun moveToToddlerRegister() {
@@ -73,6 +79,7 @@ class ToddlerMainActivity : AppCompatActivity(), MainToddlerMvpView, View.OnClic
             tma_cv_list_data -> moveToToddlerData()
             tma_cv_classification -> moveToToddlerClassification()
             tma_cv_result_classification -> moveToToddlerResult()
+            tma_iv_test -> moveToToddlerTest()
         }
     }
 

@@ -6,6 +6,7 @@ import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import com.singpaulee.android_health_classification_knn.R
 import com.singpaulee.android_health_classification_knn.mvp.maintoddler.ToddlerMainActivity
+import com.singpaulee.android_health_classification_knn.mvp.motherpregnantaccurate.MotherPregnantAccurateActivity
 import com.singpaulee.android_health_classification_knn.mvp.motherpregnantclassification.MotherPregnantClassificationActivity
 import com.singpaulee.android_health_classification_knn.mvp.motherpregnantlistbeoreclassification.MotherPregnantListBeforeClassificationActivity
 import com.singpaulee.android_health_classification_knn.mvp.motherpregnantlistdata.MotherPregnantListDataActivity
@@ -31,6 +32,7 @@ class MainPregnantActivity : AppCompatActivity(), MainPregnantMvpView, View.OnCl
         pma_cv_result_classification.setOnClickListener(this)
         pma_cv_register.setOnClickListener(this)
         pma_cv_data.setOnClickListener(this)
+        pma_iv_accuration.setOnClickListener(this)
     }
 
     override fun moveToMotherPregnantClassification() {
@@ -75,7 +77,12 @@ class MainPregnantActivity : AppCompatActivity(), MainPregnantMvpView, View.OnCl
             pma_cv_result_classification -> moveToMotherPregnantResultClassification()
             pma_cv_register -> moveToMotherPregnantRegister()
             pma_cv_data -> moveToMotherPregnantList()
+            pma_iv_accuration -> moveToMotherPregnantAccuration()
         }
+    }
+
+    private fun moveToMotherPregnantAccuration() {
+        startActivity(intentFor<MotherPregnantAccurateActivity>())
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {

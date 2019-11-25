@@ -1,0 +1,183 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="20dp"
+    tools:context=".mvp.toddleraccurate.ToddlerAccurateActivity">
+
+    <ImageView
+        android:id="@+id/taa_iv_indicator_training"
+        android:layout_width="24dp"
+        android:layout_height="24dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/taa_tv_message_training"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        app:layout_constraintBottom_toBottomOf="@id/taa_iv_indicator_training"
+        app:layout_constraintLeft_toRightOf="@id/taa_iv_indicator_training"
+        app:layout_constraintTop_toTopOf="@id/taa_iv_indicator_training"
+        tools:text="Berhasil mendapatkan data training" />
+
+    <androidx.constraintlayout.widget.Barrier
+        android:id="@+id/barrier2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:barrierDirection="bottom"
+        app:constraint_referenced_ids="taa_tv_message_training,taa_iv_indicator_training" />
+
+    <ImageView
+        android:id="@+id/taa_iv_indicator_test"
+        android:layout_width="24dp"
+        android:layout_height="24dp"
+        android:layout_marginTop="10dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/barrier2" />
+
+    <TextView
+        android:id="@+id/taa_tv_message_test"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        app:layout_constraintBottom_toBottomOf="@id/taa_iv_indicator_test"
+        app:layout_constraintLeft_toRightOf="@id/taa_iv_indicator_test"
+        app:layout_constraintTop_toTopOf="@id/taa_iv_indicator_test"
+        tools:text="Berhasil mendapatkan data training" />
+
+    <androidx.constraintlayout.widget.Barrier
+        android:id="@+id/barrier3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:barrierDirection="bottom"
+        app:constraint_referenced_ids="taa_tv_message_test,taa_iv_indicator_test" />
+
+    <EditText
+        android:id="@+id/taa_edt_inputk"
+        style="@style/style_edittext_field"
+        android:layout_marginTop="20dp"
+        android:gravity="center"
+        android:hint="Masukkan Nilai K"
+        android:imeOptions="actionDone"
+        android:inputType="number"
+        app:layout_constraintTop_toBottomOf="@id/barrier3" />
+
+    <Button
+        android:id="@+id/taa_btn_submit"
+        android:layout_width="0dp"
+        android:layout_height="40dp"
+        android:layout_marginTop="20dp"
+        android:background="@drawable/selector_button"
+        android:text="HITUNG AKURASI"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/taa_edt_inputk" />
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/taa_vg_result"
+        android:visibility="gone"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/border_black"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/taa_btn_submit"
+        app:layout_constraintVertical_bias="0.2">
+
+        <TextView
+            android:id="@+id/taa_tv_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Hasil Akurasi"
+            android:textColor="#000"
+            android:textSize="20sp"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/taa_tv_true"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:text="BENAR"
+            android:textColor="#000"
+            android:textSize="16sp"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/taa_tv_title" />
+
+        <TextView
+            android:id="@+id/taa_tv_true_count"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:text="17/34"
+            android:textColor="#000"
+            android:textSize="16sp"
+            app:layout_constraintLeft_toLeftOf="@id/guideline2"
+            app:layout_constraintTop_toBottomOf="@id/taa_tv_title" />
+
+        <TextView
+            android:id="@+id/taa_tv_true_percent"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:text="59%"
+            android:textColor="#000"
+            android:textSize="16sp"
+            app:layout_constraintLeft_toLeftOf="@id/guideline3"
+            app:layout_constraintTop_toBottomOf="@id/taa_tv_title" />
+
+        <TextView
+            android:id="@+id/taa_tv_false"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:text="SALAH"
+            android:textColor="#000"
+            android:textSize="16sp"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/taa_tv_true" />
+
+        <TextView
+            android:id="@+id/taa_tv_false_count"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:text="17/34"
+            android:textColor="#000"
+            android:textSize="16sp"
+            app:layout_constraintLeft_toLeftOf="@id/guideline2"
+            app:layout_constraintTop_toBottomOf="@id/taa_tv_true_count" />
+
+        <TextView
+            android:id="@+id/taa_tv_false_percent"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:text="59%"
+            android:textColor="#000"
+            android:textSize="16sp"
+            app:layout_constraintLeft_toLeftOf="@id/guideline3"
+            app:layout_constraintTop_toBottomOf="@id/taa_tv_true_percent" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="0.35" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="0.7" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
