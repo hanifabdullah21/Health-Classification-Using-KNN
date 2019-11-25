@@ -114,7 +114,8 @@ interface ApiInterface {
 
     @GET("balita/test")
     fun getListBalitaTest(
-        @Header("Authorization") auth: String?
+        @Header("Authorization") auth: String?,
+        @Query("jenis_kelamin") gender: String?
     ): Observable<ToddlerListResponseModel?>
 
     @FormUrlEncoded
