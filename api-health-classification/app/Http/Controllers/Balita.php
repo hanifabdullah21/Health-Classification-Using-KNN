@@ -131,7 +131,7 @@ class Balita extends Controller{
       return $this->response->success($balita->orderBy('id','desc')->first());
   }
 
-  public function getBalitaTest(){
+  public function getBalitaTest(Request $req){
     $balita = BalitaTestModel::when($req->filled('jenis_kelamin'), function($q) use ($req){
       $q->where('jenis_kelamin', $req->jenis_kelamin);
     });
