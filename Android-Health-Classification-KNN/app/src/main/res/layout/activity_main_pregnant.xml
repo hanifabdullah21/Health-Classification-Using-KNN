@@ -101,4 +101,13 @@
             android:textSize="18sp" />
     </androidx.cardview.widget.CardView>
 
+    <ImageView
+        android:id="@+id/pma_iv_accuration"
+        android:layout_width="36dp"
+        android:layout_height="36dp"
+        android:layout_margin="20dp"
+        android:src="@drawable/ic_checklist"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintRight_toRightOf="parent" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
