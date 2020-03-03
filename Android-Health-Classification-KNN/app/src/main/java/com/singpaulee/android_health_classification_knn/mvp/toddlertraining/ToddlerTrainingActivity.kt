@@ -31,6 +31,12 @@ class ToddlerTrainingActivity : AppCompatActivity() {
 
         val data = intent.getStringExtra("BALITA")
 
+        if (data == "TRAINING"){
+            tta_tv_title.text = "Masukkan Data Latih Balita"
+        }else if (data == "TEST"){
+            tta_tv_title.text = "Masukkan Data Uji Balita"
+        }
+
         setSpinnerGender()
         setSpinnerStatus()
 

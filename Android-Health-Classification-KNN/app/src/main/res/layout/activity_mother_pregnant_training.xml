@@ -12,7 +12,7 @@
         android:id="@+id/mpta_tv_title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Masukkan Data Latih/Uji Ibu Hamil"
+        tools:text="Masukkan Data Latih/Uji Ibu Hamil"
         android:textSize="20sp"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"

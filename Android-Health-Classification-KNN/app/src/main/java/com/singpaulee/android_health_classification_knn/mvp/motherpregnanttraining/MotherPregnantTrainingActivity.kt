@@ -1,8 +1,8 @@
 package com.singpaulee.android_health_classification_knn.mvp.motherpregnanttraining
 
 import android.annotation.SuppressLint
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.appcompat.app.AppCompatActivity
 import com.singpaulee.android_health_classification_knn.R
 import com.singpaulee.android_health_classification_knn.adapter.SpinnerStatusToddlerAdapter
 import com.singpaulee.android_health_classification_knn.connection.ApiInterface
@@ -12,7 +12,6 @@ import com.singpaulee.android_health_classification_knn.helper.sharedpref.Shared
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers
 import kotlinx.android.synthetic.main.activity_mother_pregnant_training.*
-import kotlinx.android.synthetic.main.activity_toddler_training.*
 import org.jetbrains.anko.sdk27.coroutines.onClick
 import org.jetbrains.anko.sdk27.coroutines.onItemSelectedListener
 import org.jetbrains.anko.toast
@@ -27,15 +26,21 @@ class MotherPregnantTrainingActivity : AppCompatActivity() {
 
         val data = intent.getStringExtra("PREGNANT")
 
+        if (data == "TRAINING") {
+            mpta_tv_title.text = "Masukkan Data Latih Ibu Hamil"
+        } else if (data == "TEST") {
+            mpta_tv_title.text = "Masukkan Data Uji Ibu Hamil"
+        }
+
         setSpinnserStatus()
 
         mpta_btn_submit.onClick {
-            if(!validation()){
+            if (!validation()) {
                 return@onClick
             }
-            if (data == "TRAINING"){
+            if (data == "TRAINING") {
                 addBumilTraining()
-            }else if (data == "TEST"){
+            } else if (data == "TEST") {
                 addBumilTest()
             }
         }
@@ -67,7 +72,7 @@ class MotherPregnantTrainingActivity : AppCompatActivity() {
                 mpta_edt_height.text = null
                 mpta_spinner_status.setSelection(0)
                 status = null
-            },{
+            }, {
                 toast("Gagal menambahkan data training bumil")
             })
     }
@@ -98,13 +103,13 @@ class MotherPregnantTrainingActivity : AppCompatActivity() {
                 mpta_edt_height.text = null
                 mpta_spinner_status.setSelection(0)
                 status = null
-            },{
+            }, {
                 toast("Gagal menambahkan data training bumil")
             })
     }
 
     private fun validation(): Boolean {
-        when{
+        when {
             mpta_edt_name.text.toString().isNullOrBlank() || mpta_edt_name.text.toString().isNullOrEmpty() -> {
                 mpta_edt_name.error = "Tidak boleh kosong"
                 mpta_edt_name.requestFocus()
@@ -130,7 +135,7 @@ class MotherPregnantTrainingActivity : AppCompatActivity() {
                 mpta_edt_name.requestFocus()
                 return false
             }
-            status==null || status=="" -> {
+            status == null || status == "" -> {
                 toast("Harap memilih status")
                 return false
             }
